@@ -209,7 +209,7 @@ DEPENDENCIES
   pry-stack_explorer
   quiet_assets
   rails (= 4.2.0)
-  sass-rails (~> 5.0)
+  sass-rails (>= 3.2)
   sdoc (~> 0.4.0)
   spring
   turbolinks
