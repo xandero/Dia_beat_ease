@@ -15,10 +15,16 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #  password_digest :string
+#  email           :string
 #
 
 class User < ActiveRecord::Base
   has_many :meals
   has_many :activities
   has_many :bloodsugars
+
+  has_secure_password
+
+  validates :username, :uniqueness => true, :presence => true
+  validates :email, :uniqueness => true, :presence => true
 end

@@ -1,0 +1,15 @@
+<%= form_for @user do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username, :autofocus => true, :required => true %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email, :required => true %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+
+  <%= button_tag %>
+<% end %>
