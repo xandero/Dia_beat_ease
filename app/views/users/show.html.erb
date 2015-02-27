@@ -1,0 +1,7 @@
+<h1><%= @user.username %>'s page</h1>
+
+<p><%= @user.email %></p>
+
+<p><%= @user.height %>cm</p>
+<%= link_to 'Edit', edit_user_path %>
+<%= button_to 'Delete', @user, :method => 'delete', :data => {:confirm => 'Are you sure?'}  %>

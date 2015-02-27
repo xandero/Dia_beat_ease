@@ -1,0 +1,41 @@
+<%= form_for @user do |f| %>
+  <p>
+    <%= f.label :username, "Username" %>
+    <%= f.text_field :username,  :class => "form-control", :disabled => "true" %>
+  </p>
+  <p>
+    <%= f.label :email, "Email" %>
+    <%= f.text_field :email,  :class => "form-control" %>
+  </p>
+  <p>
+    <%= f.label :dob, "Date of birth" %>
+    <%= f.date_field :dob, :class => "form-control", :required => true, :autofocus => true %>
+  </p>
+  <p>
+    <%= f.label :gender %>
+    <%= f.select :gender, [['Male','Male'],['Female','Female']], :class => "form-control", :required => true, :include_blank => true %>
+  </p>
+  <p>
+    <%= f.label :weight, "Weight (kg)" %>
+    <%= f.number_field :weight, :class => "form-control", :required => true %>
+  </p>
+  <p>
+    <%= f.label :height, "Height (cm)" %>
+    <%= f.number_field :height, :class => "form-control", :required => true %>
+  </p>
+  <p>
+    <%= f.label :diabetes_type, "Diabetes Type" %>
+    <%= f.select :diabetes_type, [['Type 1','Type 1'],['Type 2','Type 2']], :required => true, :include_blank => true %>
+  </p>
+  <p>
+    <%= f.label :basal_insulin, "Basal Insulin Dose (unit)" %>
+    <%= f.number_field :basal_insulin, :required => true %>
+  </p>
+  <p>
+    <%= f.label :bolus_insulin, "Bolus Insulin Dose (unit)" %>
+    <%= f.number_field :bolus_insulin, :required => true %>
+  </p>
+  <p>
+    <%= f.submit :class => "btn btn-success" %>
+  </p>
+<% end %>
