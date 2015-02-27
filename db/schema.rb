@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150227022701) do
+ActiveRecord::Schema.define(version: 20150227044406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150227022701) do
     t.datetime "activity_time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "bloodsugars", force: :cascade do |t|
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150227022701) do
     t.string   "mealtime"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "foods", force: :cascade do |t|
@@ -44,6 +46,14 @@ ActiveRecord::Schema.define(version: 20150227022701) do
     t.datetime "consumed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "meal_id"
+  end
+
+  create_table "meals", force: :cascade do |t|
+    t.datetime "meal_time"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,9 +65,10 @@ ActiveRecord::Schema.define(version: 20150227022701) do
     t.float    "basal_insulin"
     t.float    "bolus_insulin"
     t.string   "diabetes_type"
-    t.boolean  "is_admin",      default: false
+    t.boolean  "is_admin",        default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
   end
 
 end
