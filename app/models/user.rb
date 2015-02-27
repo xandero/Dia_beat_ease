@@ -17,5 +17,7 @@
 #
 
 class User < ActiveRecord::Base
-
+  has_many :foods
+  has_many :activities
+  has_many :bloodsugars
 end
