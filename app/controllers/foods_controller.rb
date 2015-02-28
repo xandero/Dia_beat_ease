@@ -37,7 +37,7 @@ class FoodsController < ApplicationController
     # binding.pry
     food = Food.find params[:id]
     food.update food_params
-    redirect_to meal_food_path(food.meal_id, food.id)
+    redirect_to meal_path(food.meal_id)
   end
 
   def destroy
