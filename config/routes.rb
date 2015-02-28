@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root :to => 'users#index'
+  root :to => 'pages#landing'
   resources :users, :foods, :activities, :bloodsugars
 
   get '/login' => 'session#new'
