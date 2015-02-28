@@ -1,0 +1,7 @@
+<ol>
+  <% @meals.each do |meal| %>
+    <li><%= link_to meal.meal_time, meal_path(meal) %></li>
+  <% end %>
+</ol>
+
+<%= link_to 'Back to testing', '/testing' %>

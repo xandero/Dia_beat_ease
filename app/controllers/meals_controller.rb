@@ -4,13 +4,13 @@ class MealsController < ApplicationController
     @meals = @current_user.meals
   end
 
+  def new
+    @meal = Meal.new
+  end
+
   def create
     meal = @current_user.meals.create(meal_params)
     redirect_to meal
-  end
-
-  def new
-    @meal = Meal.new
   end
 
   def show
@@ -21,6 +21,7 @@ class MealsController < ApplicationController
   #   @meal = Meal.find params[:meal_id]
   # end
 
+  # might not need this, as it is the foods themselves that will be edited
   def edit
     @meal = Meal.find params[:id]
   end
@@ -28,10 +29,8 @@ class MealsController < ApplicationController
   def update
     meal = Meal.find params[:id]
     meal.update meal_params
-    redirect_to meal_path  
+    redirect_to meal_path
   end
-
-
 
   def destroy
     meal = Meal.find params[:id]
@@ -39,7 +38,7 @@ class MealsController < ApplicationController
     redirect_to meals_path
   end
 
-  private 
+  private
   def meal_params
     params.require(:meal).permit(:meal_time, :user_id)
   end

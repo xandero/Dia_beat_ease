@@ -9,12 +9,17 @@
         <p>
           <%= food.foodname %>
         </p>
-      <% end %> 
+      <% end %>
     </div>
   </div>
 </div>
-<button type="button" class="btn btn-success"><%= link_to 'Add Food', new_meal_food_path(@meal) %></button>
 
-<button type="button" class="btn btn-danger"><%= link_to 'Delete meal', @meal, :method => 'delete', :data => { :confirm => "Are you sure you want to delete this meal?" } %></button>
-<!--  needs mmeal and food id passed in -->
-<button type="button"><%= link_to 'Edit Meal', edit_meal_food_path(@meal) %></button>
+<%= link_to 'Delete meal', meal_path, :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
+<br>
+<%= link_to 'Edit meal', edit_meal_path %>
+<br>
+<%= link_to 'Back to index', meals_path %>
+
+<!-- <button type="button" class="btn btn-success"><%#= link_to 'Add Food', new_meal_food_path(@meal) %></button>
+
+<button type="button" class="btn btn-danger"><%#= link_to 'Delete meal', @meal, :method => 'delete', :data => { :confirm => "Are you sure you want to delete this meal?" } %></button> -->
