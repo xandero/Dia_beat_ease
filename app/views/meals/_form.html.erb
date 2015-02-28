@@ -1,0 +1,7 @@
+<%= form_for @meal do |f| %>
+<p>
+  <%= f.label :meal_time %>
+  <%= f.date_field :meal_time, :class => "form-control", :required => true %>
+</p>
+  <%= f.submit :class => "btn btn-success" %>
+<% end %>
