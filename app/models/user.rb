@@ -28,3 +28,11 @@ class User < ActiveRecord::Base
   validates :username, :uniqueness => true, :presence => true
   validates :email, :uniqueness => true, :presence => true
 end
+
+def calculate_stats
+  daily_insulin = 0.55 * @user.weight
+  @user.basal_insulin = daily_insulin * 0.5 # usually 40-50% depending on individual
+  @user.bolus_insulin = @user.bolus_insulin.to_f
+# !! need to add target BS level to user model >> @bloodsugar.target
+  carb_coverage_ratio = 500 / daily_insulin #1 unit of insulin will counteract this many carbs
+end
