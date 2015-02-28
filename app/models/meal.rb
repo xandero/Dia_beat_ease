@@ -23,4 +23,7 @@ def calculate_insulin
   bs_correction = (@bloodsugar.target - @bloodsugar.bslevel) / @user.bolus_insulin # is this the bolus insulin level? 
   # total required insulin accunting for current BS and carbs that will shortly be consumed.
   reqd_insulin_dose = meal_carb_coverage + bs_correction
+
+# we should add some comments or guidance in faqs regarding how these calculations are performed.
+
 end
