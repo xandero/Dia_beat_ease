@@ -27,6 +27,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'geocoder'
 gem 'forecast_io'
+gem 'simple_form'
+gem 'httparty'
+gem 'vine'
 
 group :development do
   gem 'pry-rails'
