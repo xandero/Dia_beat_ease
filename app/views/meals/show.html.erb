@@ -7,13 +7,16 @@
     <div class="col-md-6">
       <% @meal.foods.each do |food| %>
         <p>
-          <%= food.foodname %>
+          <%= link_to food.foodname, meal_food_path(@meal, food) %>
         </p>
       <% end %>
     </div>
   </div>
 </div>
 
+
+<%= link_to 'Add food', new_meal_food_path(@meal) %>
+<br>
 <%= link_to 'Delete meal', meal_path, :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
 <br>
 <%= link_to 'Edit meal', edit_meal_path %>

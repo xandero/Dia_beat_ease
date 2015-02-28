@@ -1,0 +1,12 @@
+<h3>Food details:</h3>
+
+<p><%= @food.foodname %></p>
+<p><%= @food.quantity %></p>
+<p><%= @food.consumed_at %></p>
+
+<%= link_to 'Edit food', edit_meal_food_path %>
+<br>
+<%= link_to 'Delete food', meal_food_path, :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
+<br>
+<%= link_to 'Back to meal', meal_path(@food.meal_id) %>
+

@@ -1,0 +1,14 @@
+<%= form_for @food do |f| %>
+  <%= f.label :foodname, "Name of Food" %>
+  <%= f.text_field :foodname %>
+
+  <%= f.label :quantity %>
+  <%= f.number_field :quantity %>
+
+  <%= f.label :consumed_at %>
+  <%= f.time_field :consumed_at %>
+
+  <%= f.hidden_field :meal_id, :value => @meal_id %>
+
+  <%= f.submit %>
+<% end %>
