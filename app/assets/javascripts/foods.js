@@ -1,54 +1,77 @@
 // new food AJAX stuff
 console.log('hi')
 
-
+// brings back a JSON object with the specified number of results (based on the user's search query, e.g. banana)
 var searchFoods = function () {
   var query = $('#query').val();
   var nutritionixUrl = 'https://api.nutritionix.com/v1_1/search/' + query;
 
-  var jsonObject = $.getJSON(nutritionixUrl, {
+  $.getJSON(nutritionixUrl, {
     appId: "92a57023",
     appKey: "5a11032e7168104fdfa242bd3b62e636",
     results: "0:2"
+  }).done(listResults);
+};
+
+var listResults = function (result) {
+  console.log(result);
+
+  // 'hits' is an array of foods/search results
+  var foods = result.hits
+
+
+  // need to loop through and print out each food with id
+  _(foods).each(function (food) {
+    var $link = $('<a>').text(food.fields.item_name);
+
+    // need to get these data attributes working (codescool jQuery stuff)
+    // might be because they are not being selected from the dom
+    // currently not secure as attrs but still working (change later)
+    $link.attr('item_id', food.fields.item_id);
+    $link.addClass('result');
+    var $li = $('<li>');
+    $li.append($link);
+    $('#search-results').append($li);
   });
 };
 
+var showFood = function () {
+  // 'this' is empty, not getting the right thing
+  // when this is done, attrs can be converted to data()
+  // and then throwaway calc can be made with this code
+  var item_id = $(this).attr('item_id');
+  debugger;
+  var nutritionixUrl = 'https://api.nutritionix.com/v1_1/item';
 
-
-
-// def search_foods
-//     url = "https://api.nutritionix.com/v1_1/search/#{ params[:name] }?results=0:5&fields=item_name,brand_name,item_id,brand_id,nf_serving_size_qty,nf_serving_size_unit&appId=92a57023&appKey=5a11032e7168104fdfa242bd3b62e636"
-//     raw_data = HTTParty.get url
-//     parsed_data = JSON.parse(raw_data.body)
-//     @food_data = parsed_data['hits']
-//     @meal = params[:meal_id]
-//   end
-
-
-// var searchFlickr = function () {
-//   // $('#images').empty();
-//   $('#page-num').css("visibility", "visible");
-//   var query = $('#query').val();
-//   scrollCounter++;
-//   var flickrUrl = 'https://api.flickr.com/services/rest/?jsoncallback=?';
-
-//   $.getJSON(flickrUrl, {
-//     method: 'flickr.photos.search',
-//     api_key: '2f5ac274ecfac5a455f38745704ad084',
-//     text: query,
-//     format: 'json',
-//     per_page: 100,
-//     page: (scrollCounter)
-
-//   }).done(processImages);
-// };
+  $.getJSON(nutritionixUrl, {
+    id: item_id,
+    appId: "92a57023",
+    appKey: "5a11032e7168104fdfa242bd3b62e636"
+  }).done(function(result) {
+    console.log(result);
+  });
+};
 
 
 $(document).ready(function() {
 
   $('#search').on('click', function (event) {
     event.preventDefault();
+    $('#search-results').empty();
     searchFoods();
   });
+
+  $('#query').on('keypress', function(event) {
+    if (event.which !== 13) {
+      return;
+    }
+    searchFoods();
+  });
+
+  $('#search-results').on('click', 'a', function(event) {
+    // event.preventDefault();
+    showFood();
+  });
+
 
 });
