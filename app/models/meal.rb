@@ -26,7 +26,6 @@ def calculate_insulin
 
   # amount of insulin required to offset carbs in meal
   reqd_insulin_dose = meal.total_carbs / user.bolus_insulin  
-  
 end
 
 # we should add some comments or guidance in faqs regarding how these calculations are performed.
