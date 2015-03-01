@@ -13,6 +13,7 @@ class FoodsController < ApplicationController
   def new
     @food = Food.new
     @meal_id = params[:meal_id]
+    @foods = Food.all
   end
 
   def create

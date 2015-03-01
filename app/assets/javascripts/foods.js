@@ -29,20 +29,24 @@ var listResults = function (result) {
   });
 };
 
-var showFood = function (event) {
-  // should use .data() instead of assigning random attrs
-  var item_id = $(this).attr('item_id');
-  var nutritionixUrl = 'https://api.nutritionix.com/v1_1/item';
+// var showFood = function (event) {
+//   // should use .data() instead of assigning random attrs
+//   var item_id = $(this).attr('item_id');
+//   var nutritionixUrl = 'https://api.nutritionix.com/v1_1/item';
 
-  $.getJSON(nutritionixUrl, {
-    id: item_id,
-    appId: "92a57023",
-    appKey: "5a11032e7168104fdfa242bd3b62e636"
-  }).done(function(result) {
-    // should the relevant data be listed with the food?
-    console.log(result);
-  });
-};
+//   $.getJSON(nutritionixUrl, {
+//     id: item_id,
+//     appId: "92a57023",
+//     appKey: "5a11032e7168104fdfa242bd3b62e636"
+//   }).done(function(result) {
+//     // should the relevant data be listed with the food?
+//     // debugger;
+//     $('#form-serving-size-qty').val(result.nf_serving_size_qty);
+//     $('#form-serving-size-weight').val(result.nf_serving_size_weight);
+//     $('#form-serving-size-unit').val(result.nf_serving_size_unit);
+//     $('#form-carbs').val(result.nf_total_carbohydrate);
+//   });
+// };
 
 $(document).ready(function() {
 
@@ -61,7 +65,10 @@ $(document).ready(function() {
   });
 
   $('#search-results').on('click', 'a', function() {
-    // 'this' won't work in a separate function
+    // populates form
+    // showFood();
+
+    $('#form-foodname').val($(this).attr('foodname'));
     $('#quantity-div').empty();
     $(this).addClass('selected');
     var item_id = $(this).attr('item_id');
@@ -86,9 +93,10 @@ $(document).ready(function() {
     }).done(function(result) {
       console.log(result);
 
-      console.log(result.item_name);
-      console.log(result.nf_serving_size_qty);
-      console.log(result.nf_serving_weight_grams);
+      $('#form-serving-size-qty').val(result.nf_serving_size_qty);
+      $('#form-serving-size-weight').val(result.nf_serving_weight_grams);
+      $('#form-serving-size-unit').val(result.nf_serving_size_unit);
+      $('#form-carbs').val(result.nf_total_carbohydrate);
     });
 
     var $quantityInput = $('<input id="quantity" placeholder="Quantity">');
@@ -99,7 +107,9 @@ $(document).ready(function() {
   });
 
   $('#quantity-div').on('click', 'button', function() {
-    console.log('clicked');
+
+    $('#form-quantity').val($('#quantity').val());
+
     var $li = $('<li>');
     var qty = $('#quantity').val();
     var $badge = $('<span class="badge"></span>');

@@ -1,14 +1,32 @@
 <%= form_for @food do |f| %>
   <%= f.label :foodname, "Name of Food" %>
-  <%= f.text_field :foodname %>
+  <%= f.text_field :foodname, :id => 'form-foodname' %>
 
   <%= f.label :quantity %>
-  <%= f.number_field :quantity %>
+  <%= f.number_field :quantity, :id => 'form-quantity' %>
 
-  <%= f.label :consumed_at %>
-  <%= f.time_field :consumed_at %>
+  <%= f.label :serving_size_qty %>
+  <%= f.number_field :serving_size_qty, :id => 'form-serving-size-qty' %>
+
+  <%= f.label :serving_size_unit %>
+  <%= f.text_field :serving_size_unit, :id => 'form-serving-size-unit' %>
+
+  <%= f.label :serving_size_weight %>
+  <%= f.number_field :serving_size_weight, :id => 'form-serving-size-weight', :step => 'any' %>
+
+  <%= f.label :carbs %>
+  <%= f.number_field :carbs, :id => 'form-carbs', :step => 'any' %>
 
   <%= f.hidden_field :meal_id, :value => @meal_id %>
 
   <%= f.submit %>
 <% end %>
+
+<!--
+name
+quantity
+serving size qty
+serving size unit
+carbs
+serving size weight
+ -->

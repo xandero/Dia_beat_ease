@@ -1,6 +1,11 @@
-<!-- <h2>Add a new food</h2>
+<h2>Add a new food</h2>
 
-<%= render :partial => 'form' %> -->
+<%= render :partial => 'form' %>
+
+<h2>added foods</h2>
+<%= @foods.each do |food| %>
+  <p><%= food.foodname %></p>
+<% end %>
 
 
 <h3>Construct Meal</h3>
