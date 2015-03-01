@@ -16,6 +16,7 @@
 #  updated_at      :datetime
 #  password_digest :string
 #  email           :string
+#  location        :string
 #
 
 class User < ActiveRecord::Base
