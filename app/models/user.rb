@@ -30,10 +30,18 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => true, :presence => true
 end
 
-def calculate_stats
-  daily_insulin = 0.55 * @user.weight
-  @user.basal_insulin = daily_insulin * 0.5 # usually 40-50% depending on individual
-  @user.bolus_insulin = @user.bolus_insulin.to_f
-# !! need to add target BS level to user model >> @bloodsugar.target
-  carb_coverage_ratio = 500 / daily_insulin #1 unit of insulin will counteract this many carbs
+def validate_bolus_level(bolus_insulin)
+  if @user.bolus_insulin < 10 || @user.bolus_insulin > 30
+    "Are you sure that's correct? Those figures are outside the normal range expected. Please confirm before continuing."
+  end
+end
+
+def validate_basal_level(basal_insulin, weight)
+  daily_insulin = 0.55 * weight
+  #expected_basal_insulin = daily_insulin * 0.40
+  if basal_insulin < (daily_insulin * 0.3)
+    "Are you sure that is correct? That figure is below the expected range for your weight. Please confirm before continuing."
+  elsif basal_insulin > (daily_insulin * 0.5)
+    "Are you sure that is correct? That figure is above the expected range for your weight. Please confirm before continuing."
+  end
 end

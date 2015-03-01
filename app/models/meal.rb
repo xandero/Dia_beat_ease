@@ -16,16 +16,22 @@ class Meal < ActiveRecord::Base
   has_many :foods
 end
 
+def calculate_total_carbs
+  meal.total_carbs = @meal.foods.sum(:carbs).round(1)
+end
+
 def calculate_insulin
-# !! add total carb field to meals model.
-  @totalcarbs = @meal.foods.sum(:carbs).round(1)
+  
+  @target_bs = 6.5
+
   # amount of insulin required to offset carbs in meal
-  meal_carb_coverage = @totalcarbs / @user.bolus_insulin
-  # amount of sinsulin required to correct discrepancy between actual and target BS level
-  bs_correction = (@bloodsugar.target - @bloodsugar.bslevel) / @user.bolus_insulin # is this the bolus insulin level? 
-  # total required insulin accunting for current BS and carbs that will shortly be consumed.
-  reqd_insulin_dose = meal_carb_coverage + bs_correction
+  reqd_insulin_dose = meal.total_carbs / user.bolus_insulin  
+  
+end
 
 # we should add some comments or guidance in faqs regarding how these calculations are performed.
 
-end
+# amount of insulin required to correct discrepancy between actual and target BS level
+# bs_correction = (@bloodsugar.target - @bloodsugar.bslevel) / @user.bolus_insulin # is this the bolus insulin level? 
+# total required insulin accounting for current BS and carbs that will shortly be consumed.
+# reqd_insulin_dose = meal_carb_coverage + bs_correction
