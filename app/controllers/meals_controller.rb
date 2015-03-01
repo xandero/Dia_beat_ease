@@ -20,6 +20,7 @@ class MealsController < ApplicationController
   # def complete
   #   @meal = Meal.find params[:meal_id]
   # end
+  # refer to meal model for calculate_total_carbs method to calculate total meal carbs.
 
   # might not need this, as it is the foods themselves that will be edited
   def edit
