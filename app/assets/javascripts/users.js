@@ -10,7 +10,12 @@ function getWeather(lat,long){
   $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?&units=ca", function(data) {
     console.log(data);
     console.log(data.daily.data);
-    debugger;
+
+// Need to construct loop to iterate and find temp min&max over next 7 days.
+// data.daily.data[i].temperatureMax  etc.
+// Calculate different with previous day's max & min.
+// Trigger email event if differnce between consecutive days exceeds XX degrees celsius.
+
     $('#weather').html('time    : ' + data.currently.time +
      '<br>summary               : ' + data.currently.summary +
      '<br>timezone              : ' + data.timezone +
@@ -27,8 +32,10 @@ function getWeather(lat,long){
 }
 $( document ).ready(function() {
   $("#getData").click(function(){
+    //These lat and long will be determined by geocoder in production.
     var lat = $("#lat").val();
     var long = $("#long").val();
     getWeather(lat,long);
   });
 });
+
