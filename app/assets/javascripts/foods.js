@@ -1,6 +1,3 @@
-// new food AJAX stuff
-console.log('hi')
-
 // brings back a JSON object with the specified number of results (based on the user's search query, e.g. banana)
 var searchFoods = function () {
   var query = $('#query').val();
@@ -14,13 +11,8 @@ var searchFoods = function () {
 };
 
 var listResults = function (result) {
-  console.log(result);
-
-  // 'hits' is an array of foods/search results
   var foods = result.hits
 
-
-  // need to loop through and print out each food with id
   _(foods).each(function (food) {
     var $link = $('<a>').text(food.fields.item_name);
 
@@ -31,15 +23,14 @@ var listResults = function (result) {
     $link.attr('item_id', food.fields.item_id);
     $link.addClass('result');
     var $li = $('<li>');
+    $li.addClass('li');
     $li.append($link);
     $('#search-results').append($li);
   });
 };
 
 var showFood = function (event) {
-  // 'this' is empty, not getting the right thing
-  // when this is done, attrs can be converted to data()
-  // and then throwaway calc can be made with this code
+  // should use .data() instead of assigning random attrs
   var item_id = $(this).attr('item_id');
   var nutritionixUrl = 'https://api.nutritionix.com/v1_1/item';
 
@@ -48,10 +39,10 @@ var showFood = function (event) {
     appId: "92a57023",
     appKey: "5a11032e7168104fdfa242bd3b62e636"
   }).done(function(result) {
+    // should the relevant data be listed with the food?
     console.log(result);
   });
 };
-
 
 $(document).ready(function() {
 
@@ -65,16 +56,27 @@ $(document).ready(function() {
     if (event.which !== 13) {
       return;
     }
+    $('#search-results').empty();
     searchFoods();
   });
 
-  $('#search-results').on('click', 'a', function(event) {
-
-    // event.preventDefault();
-    // 'this' only works inside the event handler
-    // if I try to put it in a separate function, 'this' no longer refers to the element the user has clicked on. wtf.
+  $('#search-results').on('click', 'a', function() {
+    // 'this' won't work in a separate function
+    $('#quantity-div').empty();
     $(this).addClass('selected');
     var item_id = $(this).attr('item_id');
+    var item_name = $(this).attr('item_name');
+
+    // get rid of other results
+    var searchResults = $('#search-results a');
+
+    _(searchResults).each(function (result) {
+      if (result.classList.contains('selected') === false) {
+        // delete it!
+        result.parentNode.remove();
+      }
+    });
+
     var nutritionixUrl = 'https://api.nutritionix.com/v1_1/item';
 
     $.getJSON(nutritionixUrl, {
@@ -87,14 +89,11 @@ $(document).ready(function() {
       console.log(result.item_name);
       console.log(result.nf_serving_size_qty);
       console.log(result.nf_serving_weight_grams);
-
-      // need to then prompt the user to enter the quantity
-      // maybe add an input with a placeholder of qty when they click the link
-      // have a nested event handler so when they press enter on that it adds it all to the meal (maybe have an add button instead of enter, feedback that the user is actually adding something to their meal)
     });
 
     var $quantityInput = $('<input id="quantity" placeholder="Quantity">');
     var $addToMeal = $('<button id="add-to-meal">Add to meal</button>');
+
     $('#quantity-div').append($quantityInput);
     $('#quantity-div').append($addToMeal);
   });
@@ -102,11 +101,15 @@ $(document).ready(function() {
   $('#quantity-div').on('click', 'button', function() {
     console.log('clicked');
     var $li = $('<li>');
-    $li.text($('.selected').attr('foodname'));
+    var qty = $('#quantity').val();
+    var $badge = $('<span class="badge"></span>');
+    $badge.text(qty);
+
+    $li.text($('.selected').attr('foodname') + ' ');
+    $li.append($badge);
+
     $('#foods-added').append($li);
     $('#search-results').empty();
     $('#quantity-div').empty();
   });
-
-
 });
