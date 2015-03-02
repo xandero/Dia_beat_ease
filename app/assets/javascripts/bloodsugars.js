@@ -8,3 +8,7 @@ $(function() {
     imageUrl = responseText.file_name.url;
   });
 });
+
+  $(document).ready(function() {
+    // console.log('');
+  });
