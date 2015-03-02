@@ -30,6 +30,11 @@ gem 'forecast_io'
 gem 'httparty'
 gem 'vine'
 gem 'clockwork'
+gem 'mandrill-api'
+
+# env setup for mandrill
+
+gem 'dotenv-rails', :groups => [:development, :test]
 
 # gems for Dropzonejs
 

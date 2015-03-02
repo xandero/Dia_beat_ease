@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  require 'mandrill'
+
   def index
     @users = User.all
   end
@@ -29,6 +31,23 @@ class UsersController < ApplicationController
   def update
     user = User.find params[:id]
     user.update user_params
+
+    # m = Mandrill::API.new
+    #   message = {  
+    #   :subject=> "Weather Alert!",  
+    #   :from_name=> "Diabetease",  
+    #   :text=>"Hi Xander,
+    #   It looks like the weather will be changing.",  
+    #   :to=>[  
+    #   {  
+    #   :email=> 'xandero999@gmail.com',       #@user.email
+    #   :name=> 'Xander'  
+    #   }  
+    #   ],    
+    #   :from_email=>"alerts@diabetease.com"  
+    #   }  
+    #   sending = m.messages.send message
+
     redirect_to user_path
   end
 
@@ -37,6 +56,24 @@ class UsersController < ApplicationController
     user.destroy
     redirect_to users_path
   end
+
+  def notification
+    m = Mandrill::API.new
+      message = {  
+      :subject=> "Weather Alert!",  
+      :from_name=> "Diabetease",  
+      :text=>"Hi #{@user.username},
+      It looks like the weather will be changing.",  
+      :to=>[  
+      {  
+      :email=> 'xandero999@gmail.com',       #@user.email
+      :name=> @user.username  
+      }  
+      ],    
+      :from_email=>"alerts@diabetease.com"  
+      }  
+      sending = m.messages.send message
+  end 
 
   private
   def user_params
