@@ -7,3 +7,14 @@
 <% end %>
 
 
+<h1>Show all files</h1>
+
+<% if @bloodsugars.empty? %>
+  <h5 id="no-bloodsugar">No Media Found</h5>
+<% else %>
+  <% @bloodsugars.each do |bloodsugar| %>
+    <%= bloodsugar.bslevel %>
+    <%= bloodsugar.readingtime %>
+  <% end %>
+<% end %>
+
