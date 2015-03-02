@@ -8,6 +8,10 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
+require "forecast_io"
+
+ForecastIO.api_key = 'this-is-your-api-key'
+ForecastIO.default_params = {units: 'si'}
 
 # require "rails/test_unit/railtie"
 

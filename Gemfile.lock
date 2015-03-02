@@ -59,6 +59,9 @@ GEM
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
     callsite (0.0.11)
+    clockwork (1.1.0)
+      activesupport
+      tzinfo
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -208,6 +211,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3.3.3)
   byebug
+  clockwork
   coffee-rails (~> 4.1.0)
   font-awesome-sass
   forecast_io
