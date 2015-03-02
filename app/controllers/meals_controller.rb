@@ -9,11 +9,13 @@ class MealsController < ApplicationController
   end
 
   def create
+    # binding.pry
     meal = @current_user.meals.create(meal_params)
     redirect_to meal
   end
 
   def show
+    # binding.pry
     @meal = Meal.find params[:id]
     @meal.total_carbs = @meal.foods.sum(:carbs).round(1)
   end
@@ -42,7 +44,7 @@ class MealsController < ApplicationController
 
   private
   def meal_params
-    params.require(:meal).permit(:meal_time, :user_id)
+    params.require(:meal).permit(:meal_time, :meal_date, :user_id)
   end
 
 end

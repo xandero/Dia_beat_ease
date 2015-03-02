@@ -26,6 +26,14 @@ class FoodsController < ApplicationController
   def create
     # needs to be new food within a meal object's foods array
     food = Food.create food_params
+    meal = Meal.find params[:id]
+
+    # need to make sure it can't be saved if the disabled fields are empty....yay
+    # currently not working
+    if food.foodname == ""
+      food.destroy
+      redirect_to meal_path(meal)
+    end
     # redirect_to meal_path(food.meal.id)
   end
 

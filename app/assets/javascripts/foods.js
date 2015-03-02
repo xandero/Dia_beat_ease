@@ -38,6 +38,7 @@ $(document).ready(function() {
     searchFoods();
   });
 
+  // this is mysteriously not working anymore. Great.
   $('#query').on('keypress', function(event) {
     if (event.which !== 13) {
       return;
@@ -107,7 +108,7 @@ $(document).ready(function() {
 
   $('#complete-meal').on('click', 'button', function () {
     $('#construct-meal-forms').toggleClass('hide-meal-construction');
-    debugger;
+
     if ($('#construct-meal-forms').hasClass('hide-meal-construction')) {
       $(this).text('Add foods to meal');
     } else {

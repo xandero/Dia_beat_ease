@@ -1,6 +1,8 @@
+<!-- should probably order this eventually... -->
+
 <ol>
   <% @meals.each do |meal| %>
-    <li><%= link_to meal.meal_time, meal_path(meal) %></li>
+    <li><%= link_to (meal.meal_time.strftime('%R') + ', ' + meal.meal_date.strftime('%e %B %Y')), meal_path(meal) %></li>
   <% end %>
 </ol>
 
