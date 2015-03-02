@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
 
+  post '/whatever' => "foods#test"
+
   get '/testing' => 'pages#testing'
 
   resources :meals do

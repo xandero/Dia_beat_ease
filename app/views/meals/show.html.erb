@@ -10,7 +10,7 @@
 
     <a href="<%= meal_food_path(@meal, food) %>">
       <!-- badges for quantity and total carbs -->
-      <span class="badge">Qty: <%= food.quantity %></span> <span class="badge">Total Carbs: <%= food.carbs * food.quantity %></span> <%= food.foodname %>
+      <span class="badge">Qty: <%= food.quantity %></span> <span class="badge">Carbs: <%= food.carbs * food.quantity %></span> <%= food.foodname %>
     </a>
 
       <a href="<%= edit_meal_food_path(food.meal_id, food.id) %>"><span class="glyphicon glyphicon-pencil"></span></a>
@@ -19,8 +19,69 @@
   <% end %>
 </ul>
 
+<span class="badge">Total Carbs:
+  <% sum = 0 %>
+  <% @meal.foods.each_with_index do |v, i| %>
+    <% sum += (@meal.foods[i].carbs * @meal.foods[i].quantity) %>
+  <% end %>
+  <%= sum %>
+</span>
+
+<h3>Construct Meal</h3>
 
 
+<div id="search-div">
+  <input type="text" id="query" placeholder="Enter a food">
+  <a id="search" class="btn btn-success">Search</a>
+</div>
+
+<div id="results-div">
+  <ul id="search-results"></ul>
+</div>
+
+<div id="quantity-div">
+  <p></p>
+</div>
+
+<div id="ajax-form">
+  <form>
+    <label for="foodname">Name of food</label>
+    <input type="text" id="foodname" name="foodname">
+
+    <label for="quantity">Quantity</label>
+    <input type="text" id="quantity" name="quantity">
+
+    <label for="serving_size_qty">Serving size qty</label>
+    <input type="text" id="serving_size_qty" name="serving_size_qty">
+
+    <label for="serving_size_unit">Serving size unit</label>
+    <input type="text" id="serving_size_unit" name="serving_size_unit">
+
+    <label for="serving_size_weight">Serving size weight</label>
+    <input type="text" id="serving_size_weight" name="serving_size_weight">
+
+    <label for="carbs">Carbs</label>
+    <input type="text" id="carbs" name="carbs">
+
+    <button id="form-submit">Add to meal</button>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
 <%= link_to 'Add food', new_meal_food_path(@meal) %>
 <br>
 <%= link_to 'Delete meal', meal_path, :method => 'delete', :data => {:confirm => 'Are you sure?'} %>

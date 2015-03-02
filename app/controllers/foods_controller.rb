@@ -4,6 +4,10 @@ class FoodsController < ApplicationController
   # needs to be related to the meal in question
   # some might not even be needed as they will be accessed via the meal's food array
 
+  def test
+    binding.pry
+  end
+
   def index
 
     # will need to show the foods that belong to a particular meal
@@ -11,8 +15,11 @@ class FoodsController < ApplicationController
   end
 
   def new
+    # binding.pry
+
     @food = Food.new
     @meal_id = params[:meal_id]
+    @meal = Meal.find params[:meal_id]
     @foods = Food.all
   end
 
