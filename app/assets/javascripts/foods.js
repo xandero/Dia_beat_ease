@@ -123,6 +123,12 @@ $(document).ready(function() {
 
       $('#total-carbs').text('Total Carbs: ' + totalCarbCount);
 
+      // calculates and displays required insulin dosage
+      // maybe add in the unit?
+      var userBolusInsulin = parseInt($('#insulin-required').data('bolus-insulin'));
+      var dosage = totalCarbCount * userBolusInsulin;
+      $('#insulin-required').text('Required Insulin Dose: ' + dosage);
+
     });
 
   });
@@ -169,6 +175,10 @@ $(document).ready(function() {
       original = original.split(' ');
       var totalCarbCount = parseInt(_.last(original)) - minusCarbs;
       $('#total-carbs').text('Total Carbs: ' + Math.round(totalCarbCount));
+
+      var userBolusInsulin = parseInt($('#insulin-required').data('bolus-insulin'));
+      var dosage = totalCarbCount * userBolusInsulin;
+      $('#insulin-required').text('Required Insulin Dose: ' + Math.round(dosage));
 
       // removes the DOM element
       $li.remove();
