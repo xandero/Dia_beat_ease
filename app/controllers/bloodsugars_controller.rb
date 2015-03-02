@@ -10,4 +10,9 @@ class BloodsugarsController < ApplicationController
      render :json => Bloodsugar.all
   end
 
+  def data
+    render :json => Bloodsugar.all
+    # binding.pry
+  end
+
 end

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     collection { post :import }
   end
 
+  get '/readingdata' => 'bloodsugars#data'
+
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'

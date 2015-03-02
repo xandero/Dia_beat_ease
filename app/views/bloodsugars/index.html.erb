@@ -8,9 +8,6 @@
 
 
 <h1>Show all files</h1>
-
-
-
         <table border="1">
             <thead>
                 <tr>
@@ -34,27 +31,24 @@
 
 <h1>AJAX version</h1>
 
+    <table border="1" id="bloodsugar-table">
+        <thead id = "data-table">
+            <tr>
+                <th title="Field #1">Date</th>
+                <th title="Field #2">Result</th>
+            </tr>
+        </thead>
+        <tbody>
 <script type ="x-handlebars-template" id="bloodsugarTemplate">
-
-<table border="1">
-    <thead>
-        <tr>
-            <th title="Field #1">Date</th>
-            <th title="Field #2">Result</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{bloodsugar.readingtime}}</td>
-            <td align="right">{{bloodsugar.bslevel}}</td>
-        </tr>
-    </tbody>
-</table>
-    
+            <tr class = "readings-row">
+                <td>{{readingtime}}</td>
+                <td align="right">{{bslevel}}</td>
+            </tr>
 </script>
+        </tbody>
+    </table> 
 
 
-
-
+<!-- ENSURE THAT BLOOD READING CORRESPONDS TO USER SESSION -->
 
 
