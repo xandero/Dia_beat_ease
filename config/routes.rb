@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :users, :activities
   
-  resources :bloodsugars, only: [:index, :create, :new] do
+  resources :bloodsugars, only: [:index] do
     collection { post :import }
   end
 

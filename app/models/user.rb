@@ -38,15 +38,11 @@ def check_weather
     maxTempMorrow = @forecast["daily"]["data"][i]["temperatureMax"]
     minTempToday = @forecast["daily"]["data"][(i-1)]["temperatureMin"]
     minTempMorrow = @forecast["daily"]["data"][i]["temperatureMin"]   
-    if ( maxTempToday - maxTempMorrow).abs > 10
-      p "The max temperature will change by more than 10 degrees!"
-    else 
-      p "Max temperature change is less than 10 degrees."
+    if ( maxTempToday - maxTempMorrow).abs > 2
+      p 'max temp change'
     end
-    if ( minTempToday - minTempMorrow).abs > 10
-      p "The max temperature will change by more than 10 degrees!"
-    else 
-      p "Min temperature change is less than 10 degrees."
+    if ( minTempToday - minTempMorrow).abs > 2
+      p 'min temp change'
     end
   end
 end 

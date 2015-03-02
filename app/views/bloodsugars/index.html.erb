@@ -5,3 +5,40 @@
    <%= file_field_tag "bloodsugar", multiple: true%>
  </div>
 <% end %>
+
+
+<h1>Show all files</h1>
+
+
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th title="Field #1">Date</th>
+                    <th title="Field #2">Result</th>
+                </tr>
+            </thead>
+            <tbody>
+
+<% if @bloodsugars.empty? %>
+  <h5 id="no-bloodsugar">No Media Found</h5>
+<% else %>
+  <% @bloodsugars.each do |bloodsugar| %>
+                <tr>
+                    <td><%= bloodsugar.readingtime %></td>
+                    <td align="right"><%= bloodsugar.bslevel %></td>
+                </tr>
+  <% end %>
+<% end %>
+            </tbody>
+        </table>
+
+
+
+
+
+
+
+
+
+
