@@ -28,16 +28,12 @@ class Bloodsugar < ActiveRecord::Base
     # binding.pry
     #file_path = file.file_name.file.file
     # csv = CSV.read(file.tempfile, { :col_sep => ";" })
-    # binding.pry
 
     # Define the headers here
-    CSV.parse(file.tempfile, headers: true) do |row|
-      puts "working..."
+    CSV.parse(file.tempfile, :col_sep => ";", :headers => true) do |row|
       #Bloodsugar.create! row.to_hash
-      Bloodsugar.create! :readingtime => row['Date']
-
-      
-    end
+      Bloodsugar.create!(readingtime: row['Date'], bslevel: row['Result'])
+      end
 
     # CSV.foreach(csv.to_csv, headers: true) do |row|
     #   binding.pry
