@@ -31,15 +31,22 @@ class User < ActiveRecord::Base
 end
 
 def check_weather
-  @forecast = ForecastIO.forecast(37.8267, -122.423)
+  @forecast = ForecastIO.forecast(-33.8600, 151.2094)
 
   6.times do |i|
     maxTempToday = @forecast["daily"]["data"][(i-1)]["temperatureMax"]
     maxTempMorrow = @forecast["daily"]["data"][i]["temperatureMax"]
-    if ( maxTempToday - maxTempMorrow).abs > 1
-      @msg = "This will trigger a Mandrill email event!"
+    minTempToday = @forecast["daily"]["data"][(i-1)]["temperatureMin"]
+    minTempMorrow = @forecast["daily"]["data"][i]["temperatureMin"]   
+    if ( maxTempToday - maxTempMorrow).abs > 10
+      p "The max temperature will change by more than 10 degrees!"
     else 
-      "No event triggered."
+      p "Max temperature change is less than 10 degrees."
+    end
+    if ( minTempToday - minTempMorrow).abs > 10
+      p "The max temperature will change by more than 10 degrees!"
+    else 
+      p "Min temperature change is less than 10 degrees."
     end
   end
 end 
