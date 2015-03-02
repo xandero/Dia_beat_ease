@@ -42,7 +42,7 @@ def check_weather
       "No event triggered."
     end
   end
-end
+end 
 
 def validate_bolus_level(bolus_insulin)
   if @user.bolus_insulin < 10 || @user.bolus_insulin > 30

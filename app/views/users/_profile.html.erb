@@ -33,9 +33,9 @@
   </p>
   <p>
     <%= f.label :bolus_insulin, "Bolus Insulin Dose (unit)" %>
-    <%= f.number_field :bolus_insulin, :required => true %>
+    <%= f.number_field :bolus_insulin, :required => true, :id => 'bolus-value' %>
   </p>
   <p>
-    <%= f.submit :class => "btn btn-success" %>
+    <%= f.submit :class => "btn btn-success", :id => "profile-submit" %>
   </p>
 <% end %>
