@@ -25,12 +25,12 @@
   <% @meal.foods.each_with_index do |v, i| %>
     <% sum += (@meal.foods[i].carbs * @meal.foods[i].quantity) %>
   <% end %>
-  <%= sum %>
+  <%= sum.round(2) %>
 </span>
 
 
 
-<div id="construct-meal-forms" >
+<div id="construct-meal-forms" class="hide-meal-construction">
 <h3>Construct Meal</h3>
   <div id="search-div">
     <form class="form-inline">
@@ -77,7 +77,7 @@
 
 <div id="complete-meal">
   <br>
-  <button class="btn btn-success">Complete meal</button>
+  <button class="btn btn-success">Add foods to meal</button>
 </div>
 
 

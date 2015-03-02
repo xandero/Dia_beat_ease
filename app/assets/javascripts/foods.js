@@ -39,6 +39,7 @@ $(document).ready(function() {
   });
 
   // this is mysteriously not working anymore. Great.
+  // just refreshes the page
   $('#query').on('keypress', function(event) {
     if (event.which !== 13) {
       return;
@@ -89,7 +90,7 @@ $(document).ready(function() {
   });
 
   $('#form-submit').on('click', function (event) {
-    // event.preventDefault();
+    event.preventDefault();
     var mealId = $('#form-meal-id').val();
 
     $.post('/meals/' + mealId + '/foods', {
