@@ -17,7 +17,7 @@
   </p>
   <p>
     <%= f.label :weight, "Weight (kg)" %>
-    <%= f.number_field :weight, :class => "form-control", :required => true %>
+    <%= f.number_field :weight, :class => "form-control", :required => true, :id => 'user-weight' %>
   </p>
   <p>
     <%= f.label :height, "Height (cm)" %>
@@ -29,13 +29,13 @@
   </p>
   <p>
     <%= f.label :basal_insulin, "Basal Insulin Dose (unit)" %>
-    <%= f.number_field :basal_insulin, :required => true %>
+    <%= f.number_field :basal_insulin, :required => true, :id => 'basal-value' %>
   </p>
   <p>
     <%= f.label :bolus_insulin, "Bolus Insulin Dose (unit)" %>
-    <%= f.number_field :bolus_insulin, :required => true %>
+    <%= f.number_field :bolus_insulin, :required => true, :id => 'bolus-value' %>
   </p>
   <p>
-    <%= f.submit :class => "btn btn-success" %>
+    <%= f.submit :class => "btn btn-success", :id => "profile-submit" %>
   </p>
 <% end %>

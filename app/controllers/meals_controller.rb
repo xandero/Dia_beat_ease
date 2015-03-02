@@ -15,6 +15,7 @@ class MealsController < ApplicationController
 
   def show
     @meal = Meal.find params[:id]
+    @meal.total_carbs = @meal.foods.sum(:carbs).round(1)
   end
 
   # def complete
