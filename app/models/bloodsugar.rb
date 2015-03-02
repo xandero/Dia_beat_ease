@@ -13,4 +13,5 @@
 
 class Bloodsugar < ActiveRecord::Base
   belongs_to :user
+  mount_uploader :file_name, BloodsugarUploader
 end

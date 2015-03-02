@@ -16,4 +16,7 @@
 //= require turbolinks
 //= require underscore
 //= require handlebars
+//= require dropzone
 //= require_tree .
+
+Dropzone.autoDiscover = false;

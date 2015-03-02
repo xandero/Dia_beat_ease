@@ -1,0 +1,7 @@
+<h1>Upload Blood Glucose Data</h1>
+
+<%= form_tag '/bloodsugars/import', method: :post, class: "dropzone", id: "bloodsugar-dropzone" do %>
+ <div class="fallback">
+   <%= file_field_tag "bloodsugar", multiple: true%>
+ </div>
+<% end %>
