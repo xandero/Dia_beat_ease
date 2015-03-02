@@ -29,24 +29,6 @@ var listResults = function (result) {
   });
 };
 
-// var showFood = function (event) {
-//   // should use .data() instead of assigning random attrs
-//   var item_id = $(this).attr('item_id');
-//   var nutritionixUrl = 'https://api.nutritionix.com/v1_1/item';
-
-//   $.getJSON(nutritionixUrl, {
-//     id: item_id,
-//     appId: "92a57023",
-//     appKey: "5a11032e7168104fdfa242bd3b62e636"
-//   }).done(function(result) {
-//     // should the relevant data be listed with the food?
-//     // debugger;
-//     $('#form-serving-size-qty').val(result.nf_serving_size_qty);
-//     $('#form-serving-size-weight').val(result.nf_serving_size_weight);
-//     $('#form-serving-size-unit').val(result.nf_serving_size_unit);
-//     $('#form-carbs').val(result.nf_total_carbohydrate);
-//   });
-// };
 
 $(document).ready(function() {
 
@@ -65,11 +47,9 @@ $(document).ready(function() {
   });
 
   $('#search-results').on('click', 'a', function() {
-    // populates form
-    // showFood();
 
     $('#form-foodname').val($(this).attr('foodname'));
-    $('#quantity-div').empty();
+    // $('#quantity-div').empty();
     $(this).addClass('selected');
     var item_id = $(this).attr('item_id');
     var item_name = $(this).attr('item_name');
@@ -107,19 +87,38 @@ $(document).ready(function() {
   });
 
   $('#quantity-div').on('click', 'button', function() {
-
     $('#form-quantity').val($('#quantity').val());
 
-    var $li = $('<li>');
-    var qty = $('#quantity').val();
-    var $badge = $('<span class="badge"></span>');
-    $badge.text(qty);
-
-    $li.text($('.selected').attr('foodname') + ' ');
-    $li.append($badge);
-
-    $('#foods-added').append($li);
     $('#search-results').empty();
     $('#quantity-div').empty();
   });
+
+  $('#form-submit').on('click', function (event) {
+    // event.preventDefault();
+    var mealId = $('#form-meal-id').val();
+
+    $.post('/meals/' + mealId + '/foods', {
+      food: {
+        foodname: $('#form-foodname').val(),
+        quantity: $('#form-quantity').val(),
+        serving_size_qty: $('#form-serving-size-qty').val(),
+        serving_size_unit: $('#form-serving-size-unit').val(),
+        serving_size_weight: $('#form-serving-size-weight').val(),
+        carbs: $('#form-carbs').val(),
+        meal_id: mealId
+      }
+    });
+
+  });
+
+  $('#complete-meal').on('click', 'button', function () {
+    $('#construct-meal-forms').toggleClass('hide-meal-construction');
+    debugger;
+    if ($('#construct-meal-forms').hasClass('hide-meal-construction')) {
+      $(this).text('Add foods to meal');
+    } else {
+      $(this).text('Complete meal');
+    }
+  });
+
 });

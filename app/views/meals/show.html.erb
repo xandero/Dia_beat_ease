@@ -29,42 +29,50 @@
 
 <h3>Construct Meal</h3>
 
+<div id="construct-meal-forms">
+  <div id="search-div">
+    <input type="text" id="query" placeholder="Enter a food">
+    <a id="search" class="btn btn-success">Search</a>
+  </div>
 
-<div id="search-div">
-  <input type="text" id="query" placeholder="Enter a food">
-  <a id="search" class="btn btn-success">Search</a>
+  <div id="results-div">
+    <ul id="search-results"></ul>
+  </div>
+
+  <div id="quantity-div">
+    <p></p>
+  </div>
+
+  <div id="ajax-form">
+    <form>
+      <label for="form-foodname">Name of food</label>
+      <input type="text" id="form-foodname" name="form-foodname">
+
+      <label for="form-quantity">Quantity</label>
+      <input type="text" id="form-quantity" name="form-quantity">
+
+      <label for="form-serving-size-qty">Serving size qty</label>
+      <input type="text" id="form-serving-size-qty" name="form-serving-size-qty">
+
+      <label for="form-serving-size-unit">Serving size unit</label>
+      <input type="text" id="form-serving-size-unit" name="form-serving-size-unit">
+
+      <label for="form-serving-size-weight">Serving size weight</label>
+      <input type="text" id="form-serving-size-weight" name="form-serving-size-weight">
+
+      <label for="form-carbs">Carbs</label>
+      <input type="text" id="form-carbs" name="form-carbs">
+
+      <input type="hidden" name="form-meal-id" id="form-meal-id" value="<%= @meal.id %>">
+
+      <button id="form-submit">Add to meal</button>
+    </form>
+  </div>
 </div>
 
-<div id="results-div">
-  <ul id="search-results"></ul>
-</div>
 
-<div id="quantity-div">
-  <p></p>
-</div>
-
-<div id="ajax-form">
-  <form>
-    <label for="foodname">Name of food</label>
-    <input type="text" id="foodname" name="foodname">
-
-    <label for="quantity">Quantity</label>
-    <input type="text" id="quantity" name="quantity">
-
-    <label for="serving_size_qty">Serving size qty</label>
-    <input type="text" id="serving_size_qty" name="serving_size_qty">
-
-    <label for="serving_size_unit">Serving size unit</label>
-    <input type="text" id="serving_size_unit" name="serving_size_unit">
-
-    <label for="serving_size_weight">Serving size weight</label>
-    <input type="text" id="serving_size_weight" name="serving_size_weight">
-
-    <label for="carbs">Carbs</label>
-    <input type="text" id="carbs" name="carbs">
-
-    <button id="form-submit">Add to meal</button>
-  </form>
+<div id="complete-meal">
+  <button>Complete meal</button>
 </div>
 
 
