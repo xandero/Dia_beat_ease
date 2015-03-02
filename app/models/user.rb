@@ -30,6 +30,21 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => true, :presence => true
 end
 
+def check_weather
+    @forecast = ForecastIO.forecast(37.8267, -122.423)
+
+    6.times do |i|
+      maxTempToday = @forecast["daily"]["data"][(i-1)]["temperatureMax"]
+      maxTempMorrow = @forecast["daily"]["data"][i]["temperatureMax"]
+      if ( maxTempToday - maxTempMorrow).abs > 1
+        print "Testing for temp diff greater than 1"
+      end
+      
+    end
+
+binding.pry
+end
+
 def validate_bolus_level(bolus_insulin)
   if @user.bolus_insulin < 10 || @user.bolus_insulin > 30
     "Are you sure that's correct? Those figures are outside the normal range expected. Please confirm before continuing."
