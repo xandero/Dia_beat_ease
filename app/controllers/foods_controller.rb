@@ -26,7 +26,7 @@ class FoodsController < ApplicationController
   def create
     # won't save it if the fields aren't filled in
 
-    # error handling needs to be more thorough
+    # error handling needs to be more thoroughly
     # binding.pry
     unless params["food"]["foodname"] == ""
       @food = Food.create food_params
@@ -71,6 +71,14 @@ class FoodsController < ApplicationController
   def destroy
     food = Food.find params[:id]
     food.destroy
+    @meal = Meal.find params[:meal_id]
+    # updates total_carbs for meal in question upon deletion of a food
+    sum = 0
+    @meal.foods.each do |food|
+      sum += (food.carbs * food.quantity)
+      sum
+    end
+    @meal.update_attribute(:total_carbs, sum.round)
     # require 'pry'
     # binding.pry
     redirect_to "/meals/#{ params[:meal_id] }"

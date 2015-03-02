@@ -63,7 +63,6 @@
       <% end %>
     </ul>
 
-
     <!-- Updated in foods.js as foods are added/deleted from list -->
     <span class="badge" id="total-carbs">Total Carbs:
       <% sum = 0 %>
@@ -71,6 +70,13 @@
         <% sum += (@meal.foods[i].carbs * @meal.foods[i].quantity) %>
       <% end %>
       <%= sum.round %>
+    </span>
+    <span class="badge" id="insulin-required" data-bolus-insulin="<%= @current_user.bolus_insulin %>">Requried Insulin Dose:
+      <% sum = 0 %>
+      <% @meal.foods.each_with_index do |v, i| %>
+        <% sum += (@meal.foods[i].carbs * @meal.foods[i].quantity) %>
+      <% end %>
+      <%= (sum * @current_user.bolus_insulin).round %>
     </span>
     <!--  -->
   </div>
