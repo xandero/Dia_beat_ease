@@ -20,19 +20,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
-
-    @forecast = ForecastIO.forecast(37.8267, -122.423)
-
-    6.times do |i|
-      maxTempToday = @forecast["daily"]["data"][(i-1)]["temperatureMax"]
-      maxTempMorrow = @forecast["daily"]["data"][i]["temperatureMax"]
-      if ( maxTempToday - maxTempMorrow).abs > 1
-        @msg = "The temp difference is greater than 1"
-      else 
-        @msg = "Temp difference is less than 1"
-      end
-    end
-
   end
 
   def edit

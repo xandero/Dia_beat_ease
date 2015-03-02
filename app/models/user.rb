@@ -31,18 +31,17 @@ class User < ActiveRecord::Base
 end
 
 def check_weather
-    @forecast = ForecastIO.forecast(37.8267, -122.423)
+  @forecast = ForecastIO.forecast(37.8267, -122.423)
 
-    6.times do |i|
-      maxTempToday = @forecast["daily"]["data"][(i-1)]["temperatureMax"]
-      maxTempMorrow = @forecast["daily"]["data"][i]["temperatureMax"]
-      if ( maxTempToday - maxTempMorrow).abs > 1
-        print "Testing for temp diff greater than 1"
-      end
-      
+  6.times do |i|
+    maxTempToday = @forecast["daily"]["data"][(i-1)]["temperatureMax"]
+    maxTempMorrow = @forecast["daily"]["data"][i]["temperatureMax"]
+    if ( maxTempToday - maxTempMorrow).abs > 1
+      @msg = "This will trigger a Mandrill email event!"
+    else 
+      "No event triggered."
     end
-
-binding.pry
+  end
 end
 
 def validate_bolus_level(bolus_insulin)

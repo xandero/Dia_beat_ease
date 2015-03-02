@@ -5,24 +5,3 @@
 <p><%= @user.height %>cm</p>
 <%= link_to 'Edit', edit_user_path %>
 <%= button_to 'Delete', @user, :method => 'delete', :data => {:confirm => 'Are you sure?'}  %>
-
-<p>Forecast API testing below</p>
-
-<div id="weather">Values set to Sydney for testing
-
-</div>
-<br><br>
-<b>LAT:</b>
-<input type="text" name="lat" id="lat" value="-37.8449">
-<b>LONG:</b>
-<input type="text" name="long" id="long" value="145.0451">
-<br><br>
-<input type="button" id="getData" name="getData" value="Get Weather Info">
-<br><br>
-
-<p>Testing Forecast IO Gem</p>
-
-<%#= @forecast %>
-
-<%= @msg %>
-
