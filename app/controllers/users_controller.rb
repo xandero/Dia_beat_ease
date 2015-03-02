@@ -40,6 +40,41 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def notification(message)
+  @user = User.find params[:id]
+
+  m = Mandrill::API.new
+    message = {
+    :subject=> "Weather Alert!",
+    :from_name=> "Diabetease",
+    :from_email=>"alerts@diabetease.com",
+    :to=>User.to_mandrill_to(User),
+    :text=>"Hi #{@user.username}, " message,
+  
+    }
+    sending = m.messages.send message
+end
+
+
+  # def notification(message)
+#   @user = User.find params[:id]
+
+#   m = Mandrill::API.new
+#     message = {
+#     :subject=> "Weather Alert!",
+#     :from_name=> "Diabetease",
+#     :text=>"Hi #{@user.username}, " message,
+#     :to=>[
+#     {
+#     :email=> 'xandero999@gmail.com',       #@user.email
+#     :name=> @user.username
+#     }
+#     ],
+#     :from_email=>"alerts@diabetease.com"
+#     }
+#     sending = m.messages.send message
+# end
+
   private
   def user_params
     params.require(:user).permit(:username, :email, :dob, :gender, :weight, :height, :basal_insulin, :bolus_insulin, :diabetes_type, :password, :password_confirmation)
