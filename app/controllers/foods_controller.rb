@@ -49,6 +49,7 @@ class FoodsController < ApplicationController
     # binding.pry
     @food = Food.find params[:id]
     @meal_id = params[:meal_id]
+    @meal = Meal.find params[:meal_id]
   end
 
   def update

@@ -96,8 +96,22 @@ $(document).ready(function() {
     }).done(function (result) {
 
       // result is the returned array of food objects
-      // need to append them to the list of 'added foods'
+
+      // currently appending the food but needs to turn them into links with edit and stuff...yay
+      // just use normal '/whatever' urls for the hrefs
+
+      // $('#added-foods').empty();
       for (var i = 0; i < result.length; i++) {
+        var $li = $('<li>');
+        var mealId = result[i].meal_id;
+        var foodId = result[i].id;
+        $li.text(result[i].foodname);
+        $li.append($('<span class="glyphicon glyphicon-trash delete">'));
+        $li.attr('data-food-id', result[i].id);
+        $li.attr('data-meal-id', result[i].meal_id);
+        // $li.append($('<a href="/meals/' + mealId + '/foods/' + foodId + '/edit"><span class="glyphicon glyphicon-pencil"></span></a>'));
+
+        $('#added-foods').append($li);
         console.log(result[i].foodname);
       }
     });
@@ -106,6 +120,7 @@ $(document).ready(function() {
 
   // empties everything when the food is added to the meal
   $('#form-submit').on('click', function () {
+    // $('#added-foods').empty();
     $('#search-results').empty();
     $('#query').val('');
     $('#form-foodname').val('');
@@ -126,12 +141,18 @@ $(document).ready(function() {
     }
   });
 
-  // $('#form-submit').on('click', function () {
-  //   $.getJSON('/foods').done(function () {
-  //     taskApp.tasks = result;
-  //     taskApp.renderTasks();
-  //   });
-  // }
-  // });
+  $('#added-foods').on('click', '.delete', function () {
+    var $li = $(this).parent();
+    var mealId = $li.data('meal-id');
+    var foodId = $li.data('food-id');
+    $.ajax(('/meals/' + mealId + '/foods/' + foodId), {
+      type: 'POST',
+      data: {
+        _method: 'DELETE'
+      }
+    }).done(function () {
+      $li.remove();
+    });
+  });
 
 });
