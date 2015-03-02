@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  require 'mandrill'
+
   def index
     @users = User.all
   end

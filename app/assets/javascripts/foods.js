@@ -16,11 +16,10 @@ var listResults = function (result) {
   _(foods).each(function (food) {
     var $link = $('<a>').text(food.fields.item_name);
 
-    // need to get these data attributes working (codescool jQuery stuff)
-    // might be because they are not being selected from the dom
-    // currently not secure as attrs but still working (change later)
-    $link.attr('foodname', food.fields.item_name);
-    $link.attr('item_id', food.fields.item_id);
+    // can't seem to attach .data() k/v pairs
+    $link.attr('data-foodname', food.fields.item_name)
+    $link.attr('data-item_id', food.fields.item_id);
+
     $link.addClass('result');
     var $li = $('<li>');
     $li.addClass('li');
@@ -38,23 +37,21 @@ $(document).ready(function() {
     searchFoods();
   });
 
-  // this is mysteriously not working anymore. Great.
-  // just refreshes the page
-  $('#query').on('keypress', function(event) {
-    if (event.which !== 13) {
-      return;
+  // makes the search work when enter is pressed. Take that, bootstrap.
+  $('#query').keydown(function(event){
+    if(event.keyCode == 13) {
+      // event.preventDefault();
+      $('#search-results').empty();
+      $(this).blur();
+      searchFoods();
+      return false;
     }
-    $('#search-results').empty();
-    searchFoods();
   });
 
   $('#search-results').on('click', 'a', function() {
-
-    $('#form-foodname').val($(this).attr('foodname'));
-    // $('#quantity-div').empty();
+    $('#form-foodname').val($(this).data('foodname'));
     $(this).addClass('selected');
-    var item_id = $(this).attr('item_id');
-    var item_name = $(this).attr('item_name');
+    var item_id = $(this).data('item_id');
 
     // get rid of other results
     var searchResults = $('#search-results a');
@@ -82,13 +79,6 @@ $(document).ready(function() {
     });
   });
 
-  $('#quantity-div').on('click', 'button', function() {
-    $('#form-quantity').val($('#quantity').val());
-
-    $('#search-results').empty();
-    $('#quantity-div').empty();
-  });
-
   $('#form-submit').on('click', function (event) {
     event.preventDefault();
     var mealId = $('#form-meal-id').val();
@@ -103,13 +93,55 @@ $(document).ready(function() {
         carbs: $('#form-carbs').val(),
         meal_id: mealId
       }
+    }).done(function (result) {
+      var totalCarbCount = 0;
+      // need to sum up the carb values of each
+
+
+      $('#added-foods').empty();
+      for (var i = 0; i < result.length; i++) {
+        var $li = $('<li>');
+        var mealId = result[i].meal_id;
+        var foodId = result[i].id;
+        $li.text(result[i].foodname);
+
+        totalCarbCount = totalCarbCount + Math.round(result[i].carbs * result[i].quantity);
+        $('#total-carbs').val('Total Carbs: ' + (totalCarbCount));
+
+        $li.prepend($('<span class="badge food-badge">Carbs: ' + Math.round(result[i].quantity * result[i].carbs) + '</span> '));
+        $li.prepend($('<span class="badge food-badge">Qty: ' + result[i].quantity + '</span> '));
+        $li.append($(' <span class="glyphicon glyphicon-trash delete">'));
+        $li.attr('data-food-id', result[i].id);
+        $li.attr('data-meal-id', result[i].meal_id);
+        $li.attr('data-carbs', result[i].carbs);
+        $li.attr('data-quantity', result[i].quantity);
+
+        $('#added-foods').append($li);
+        console.log(result[i].foodname);
+      }
+
+      $('#total-carbs').text('Total Carbs: ' + totalCarbCount);
     });
 
   });
 
-  $('#complete-meal').on('click', 'button', function () {
-    $('#construct-meal-forms').toggleClass('hide-meal-construction');
+  // empties everything when the food is added to the meal
+  $('#form-submit').on('click', function () {
+    // $('#added-foods').empty();
+    $('#search-results').empty();
+    $('#query').val('');
+    $('#form-foodname').val('');
+    $('#form-quantity').val('');
+    $('#form-serving-size-qty').val('');
+    $('#form-serving-size-unit').val('');
+    $('#form-serving-size-weight').val('');
+    $('#form-carbs').val('');
+  });
 
+  $('#complete-meal-button').on('click', function () {
+    console.log('clicked');
+    $('#construct-meal-forms').toggleClass('hide-meal-construction');
+    $(this).blur();
     if ($('#construct-meal-forms').hasClass('hide-meal-construction')) {
       $(this).text('Add foods to meal');
     } else {
@@ -117,4 +149,27 @@ $(document).ready(function() {
     }
   });
 
+  $('#added-foods').on('click', '.delete', function () {
+    var $li = $(this).parent();
+    var mealId = $li.data('meal-id');
+    var foodId = $li.data('food-id');
+    $.ajax(('/meals/' + mealId + '/foods/' + foodId), {
+      type: 'POST',
+      data: {
+        _method: 'DELETE'
+      }
+    }).done(function () {
+      // does the maths with for total carbs
+      var carbs = $li.data('carbs');
+      var quantity = $li.data('quantity');
+      var minusCarbs = carbs * quantity;
+      var original = $('#total-carbs').text();
+      original = original.split(' ');
+      var totalCarbCount = parseInt(_.last(original)) - minusCarbs;
+      $('#total-carbs').text('Total Carbs: ' + Math.round(totalCarbCount));
+
+      // removes the DOM element
+      $li.remove();
+    });
+  });
 });

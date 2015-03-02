@@ -18,6 +18,10 @@ class MealsController < ApplicationController
     # binding.pry
     @meal = Meal.find params[:id]
     @meal.total_carbs = @meal.foods.sum(:carbs).round(1)
+
+    # respond_to do |format|
+    #   format.json { render :json => @meal.foods }
+    # # end
   end
 
   # def complete

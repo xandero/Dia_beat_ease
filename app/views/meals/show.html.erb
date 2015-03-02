@@ -4,30 +4,28 @@
   <h4>You've added these foods to your meal:</h4>
 </p>
 
-<ul>
 
+<!-- This throws up a list when the page loads. List is then manipulated by JS -->
+<ul id="added-foods">
   <% @meal.foods.each do |food| %>
-    <li>
 
-    <a href="<%= meal_food_path(@meal, food) %>">
-      <!-- badges for quantity and total carbs -->
-      <span class="badge">Qty: <%= food.quantity %></span> <span class="badge">Carbs: <%= food.carbs * food.quantity %></span> <%= food.foodname %>
-    </a>
-
-      <a href="<%= edit_meal_food_path(food.meal_id, food.id) %>"><span class="glyphicon glyphicon-pencil"></span></a>
-      <a href="<%= meal_food_path(food.meal_id, food.id) %>" data-method="delete" onclick="return confirm('Are you sure?')"><span class="glyphicon glyphicon-trash"></span></a>
+    <li data-food-id="<%= food.id %>" data-meal-id="<%= food.meal_id %>" data-carbs="<%= food.carbs %>" data-quantity="<%= food.quantity %>">
+      <span class="badge food-badge">Qty: <%= food.quantity.to_i %></span><span class="badge food-badge">Carbs: <%= (food.carbs * food.quantity).round %></span><%= food.foodname %><span class="glyphicon glyphicon-trash delete"></span>
     </li>
+
   <% end %>
 </ul>
 
-<span class="badge">Total Carbs:
+
+<!-- Updated in foods.js as foods are added/deleted from list -->
+<span class="badge" id="total-carbs">Total Carbs:
   <% sum = 0 %>
   <% @meal.foods.each_with_index do |v, i| %>
     <% sum += (@meal.foods[i].carbs * @meal.foods[i].quantity) %>
   <% end %>
-  <%= sum.round(2) %>
+  <%= sum.round %>
 </span>
-
+<!--  -->
 
 
 <div id="construct-meal-forms" class="hide-meal-construction">
@@ -41,10 +39,6 @@
 
   <div id="results-div">
     <ul id="search-results"></ul>
-  </div>
-
-  <div id="quantity-div">
-    <p></p>
   </div>
 
   <div id="ajax-form">
@@ -77,7 +71,7 @@
 
 <div id="complete-meal">
   <br>
-  <button class="btn btn-success">Add foods to meal</button>
+  <button class="btn btn-success" id="complete-meal-button">Add foods to meal</button>
 </div>
 
 

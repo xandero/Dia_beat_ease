@@ -11,7 +11,7 @@ class FoodsController < ApplicationController
   def index
 
     # will need to show the foods that belong to a particular meal
-    @foods = Food.all
+
   end
 
   def new
@@ -26,14 +26,18 @@ class FoodsController < ApplicationController
   def create
     # won't save it if the fields aren't filled in
 
-
+    # error handling needs to be more thorough
     # binding.pry
     unless params["food"]["foodname"] == ""
       @food = Food.create food_params
     end
     @meal = Meal.find params["meal_id"]
 
-    redirect_to meal_path(@meal)
+    respond_to do |format|
+      format.json { render :json => @meal.foods }
+    end
+
+    # redirect_to meal_path(@meal)
   end
 
   def show
@@ -45,6 +49,7 @@ class FoodsController < ApplicationController
     # binding.pry
     @food = Food.find params[:id]
     @meal_id = params[:meal_id]
+    @meal = Meal.find params[:meal_id]
   end
 
   def update
