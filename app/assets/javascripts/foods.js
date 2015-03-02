@@ -183,5 +183,6 @@ $(document).ready(function() {
       // removes the DOM element
       $li.remove();
     });
+
   });
 });
