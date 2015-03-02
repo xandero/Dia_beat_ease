@@ -44,15 +44,12 @@ $(document).ready(function() {
       $('#search-results').empty();
       $(this).blur();
       searchFoods();
-
       return false;
     }
   });
 
   $('#search-results').on('click', 'a', function() {
-
     $('#form-foodname').val($(this).data('foodname'));
-
     $(this).addClass('selected');
     var item_id = $(this).data('item_id');
 
@@ -96,6 +93,13 @@ $(document).ready(function() {
         carbs: $('#form-carbs').val(),
         meal_id: mealId
       }
+    }).done(function (result) {
+
+      // result is the returned array of food objects
+      // need to append them to the list of 'added foods'
+      for (var i = 0; i < result.length; i++) {
+        console.log(result[i].foodname);
+      }
     });
 
   });
@@ -112,7 +116,7 @@ $(document).ready(function() {
     $('#form-carbs').val('');
   });
 
-  $('#complete-meal').on('click', 'button', function () {
+  $('#complete-meal').on('click', function () {
     $('#construct-meal-forms').toggleClass('hide-meal-construction');
 
     if ($('#construct-meal-forms').hasClass('hide-meal-construction')) {
@@ -121,5 +125,13 @@ $(document).ready(function() {
       $(this).text('Complete meal');
     }
   });
+
+  // $('#form-submit').on('click', function () {
+  //   $.getJSON('/foods').done(function () {
+  //     taskApp.tasks = result;
+  //     taskApp.renderTasks();
+  //   });
+  // }
+  // });
 
 });

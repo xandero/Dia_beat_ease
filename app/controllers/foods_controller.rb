@@ -33,7 +33,11 @@ class FoodsController < ApplicationController
     end
     @meal = Meal.find params["meal_id"]
 
-    redirect_to meal_path(@meal)
+    respond_to do |format|
+      format.json { render :json => @meal.foods }
+    end
+
+    # redirect_to meal_path(@meal)
   end
 
   def show
