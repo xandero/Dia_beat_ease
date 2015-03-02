@@ -1,5 +1,4 @@
 var validateBolus = function() {
-  console.log('inside function');
   var bolus_insulin = $('#bolus-value').val();
   if ( bolus_insulin < 10 || bolus_insulin > 24 ) {
 
@@ -15,12 +14,11 @@ var validateBolus = function() {
 };
 
 var validateBasal = function() {
-  console.log('inside function');
   var basal_insulin = $('#basal-value').val();
   var weight = $('#user-weight').val();
   var target_basal = weight * 0.55
 
-  if ( basal_insulin > 1.2 * (target_basal) || basal_insulin < 0.8 * (target_basal) {
+  if ( basal_insulin > 1.2 * (target_basal) || basal_insulin < 0.8 * (target_basal)) {
 
     var retVal = confirm("Are you sure that's correct? That number is outside the standard range for Basal Insulin.");
     if( retVal == true ){
@@ -36,8 +34,10 @@ var validateBasal = function() {
 $(document).ready(function() {
   $('#profile-submit').on('click', validateBolus);
   $('#profile-submit').on('click', validateBasal);
-  console.log('hello');
 
+    $(function() {
+    $(document).tooltip();
+  });
 });
 
 
