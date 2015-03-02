@@ -16,11 +16,10 @@ var listResults = function (result) {
   _(foods).each(function (food) {
     var $link = $('<a>').text(food.fields.item_name);
 
-    // need to get these data attributes working (codescool jQuery stuff)
-    // might be because they are not being selected from the dom
-    // currently not secure as attrs but still working (change later)
-    $link.attr('foodname', food.fields.item_name);
-    $link.attr('item_id', food.fields.item_id);
+    // can't seem to attach .data() k/v pairs
+    $link.attr('data-foodname', food.fields.item_name)
+    $link.attr('data-item_id', food.fields.item_id);
+
     $link.addClass('result');
     var $li = $('<li>');
     $li.addClass('li');
@@ -38,23 +37,24 @@ $(document).ready(function() {
     searchFoods();
   });
 
-  // this is mysteriously not working anymore. Great.
-  // just refreshes the page
-  $('#query').on('keypress', function(event) {
-    if (event.which !== 13) {
-      return;
+  // makes the search work when enter is pressed. Take that, bootstrap.
+  $('#query').keydown(function(event){
+    if(event.keyCode == 13) {
+      // event.preventDefault();
+      $('#search-results').empty();
+      $(this).blur();
+      searchFoods();
+
+      return false;
     }
-    $('#search-results').empty();
-    searchFoods();
   });
 
   $('#search-results').on('click', 'a', function() {
 
-    $('#form-foodname').val($(this).attr('foodname'));
-    // $('#quantity-div').empty();
+    $('#form-foodname').val($(this).data('foodname'));
+
     $(this).addClass('selected');
-    var item_id = $(this).attr('item_id');
-    var item_name = $(this).attr('item_name');
+    var item_id = $(this).data('item_id');
 
     // get rid of other results
     var searchResults = $('#search-results a');
@@ -82,13 +82,6 @@ $(document).ready(function() {
     });
   });
 
-  $('#quantity-div').on('click', 'button', function() {
-    $('#form-quantity').val($('#quantity').val());
-
-    $('#search-results').empty();
-    $('#quantity-div').empty();
-  });
-
   $('#form-submit').on('click', function (event) {
     event.preventDefault();
     var mealId = $('#form-meal-id').val();
@@ -105,6 +98,18 @@ $(document).ready(function() {
       }
     });
 
+  });
+
+  // empties everything when the food is added to the meal
+  $('#form-submit').on('click', function () {
+    $('#search-results').empty();
+    $('#query').val('');
+    $('#form-foodname').val('');
+    $('#form-quantity').val('');
+    $('#form-serving-size-qty').val('');
+    $('#form-serving-size-unit').val('');
+    $('#form-serving-size-weight').val('');
+    $('#form-carbs').val('');
   });
 
   $('#complete-meal').on('click', 'button', function () {

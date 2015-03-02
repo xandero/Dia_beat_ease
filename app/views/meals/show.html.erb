@@ -4,6 +4,8 @@
   <h4>You've added these foods to your meal:</h4>
 </p>
 
+
+<!-- this needs to be done in js so it updates automatically -->
 <ul>
 
   <% @meal.foods.each do |food| %>
@@ -27,7 +29,7 @@
   <% end %>
   <%= sum.round(2) %>
 </span>
-
+<!--  -->
 
 
 <div id="construct-meal-forms" class="hide-meal-construction">
@@ -41,10 +43,6 @@
 
   <div id="results-div">
     <ul id="search-results"></ul>
-  </div>
-
-  <div id="quantity-div">
-    <p></p>
   </div>
 
   <div id="ajax-form">

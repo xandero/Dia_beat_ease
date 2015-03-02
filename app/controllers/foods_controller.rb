@@ -26,7 +26,7 @@ class FoodsController < ApplicationController
   def create
     # won't save it if the fields aren't filled in
 
-
+    # error handling needs to be more thorough
     # binding.pry
     unless params["food"]["foodname"] == ""
       @food = Food.create food_params
