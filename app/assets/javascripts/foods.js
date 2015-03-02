@@ -90,6 +90,7 @@ $(document).ready(function() {
         serving_size_qty: $('#form-serving-size-qty').val(),
         serving_size_unit: $('#form-serving-size-unit').val(),
         serving_size_weight: $('#form-serving-size-weight').val(),
+        // doesn't seem to work if I change it here either...
         carbs: $('#form-carbs').val(),
         meal_id: mealId
       }
@@ -121,6 +122,7 @@ $(document).ready(function() {
       }
 
       $('#total-carbs').text('Total Carbs: ' + totalCarbCount);
+
     });
 
   });

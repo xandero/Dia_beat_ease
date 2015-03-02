@@ -1,92 +1,84 @@
 <h3><%= @meal.meal_time.strftime('%R') %>, <%= @meal.meal_date.strftime('%e %B %Y') %></h3>
 
-<p>
-  <h4>You've added these foods to your meal:</h4>
-</p>
+<div class="row">
 
+  <div class="col-md-4">
+    <div id="construct-meal-forms" class="hide-meal-construction">
+      <h3>Construct Meal</h3>
+      <div id="search-div">
+        <form class="form-inline">
+          <input type="text" id="query" placeholder="Enter a food" class="form-control">
+          <a id="search" class="btn btn-default">Search</a>
+        </form>
+      </div>
 
-<!-- This throws up a list when the page loads. List is then manipulated by JS -->
-<ul id="added-foods">
-  <% @meal.foods.each do |food| %>
+      <div id="results-div">
+        <ul id="search-results"></ul>
+      </div>
 
-    <li data-food-id="<%= food.id %>" data-meal-id="<%= food.meal_id %>" data-carbs="<%= food.carbs %>" data-quantity="<%= food.quantity %>">
-      <span class="badge food-badge">Qty: <%= food.quantity.to_i %></span><span class="badge food-badge">Carbs: <%= (food.carbs * food.quantity).round %></span><%= food.foodname %><span class="glyphicon glyphicon-trash delete"></span>
-    </li>
+      <div id="ajax-form">
+        <form>
+          <label for="form-foodname">Name of food</label>
+          <input type="text" id="form-foodname" name="form-foodname" class="form-control" readonly="readonly" required>
 
-  <% end %>
-</ul>
+          <label for="form-quantity">Quantity</label>
+          <input type="text" id="form-quantity" name="form-quantity" class="form-control" required>
 
+          <label for="form-serving-size-qty">Serving size qty</label>
+          <input type="text" id="form-serving-size-qty" name="form-serving-size-qty" class="form-control" readonly="readonly" required>
 
-<!-- Updated in foods.js as foods are added/deleted from list -->
-<span class="badge" id="total-carbs">Total Carbs:
-  <% sum = 0 %>
-  <% @meal.foods.each_with_index do |v, i| %>
-    <% sum += (@meal.foods[i].carbs * @meal.foods[i].quantity) %>
-  <% end %>
-  <%= sum.round %>
-</span>
-<!--  -->
+          <label for="form-serving-size-unit">Serving size unit</label>
+          <input type="text" id="form-serving-size-unit" name="form-serving-size-unit" class="form-control" readonly="readonly" required>
 
+          <label for="form-serving-size-weight">Serving size weight</label>
+          <input type="text" id="form-serving-size-weight" name="form-serving-size-weight" class="form-control" readonly="readonly" required>
 
-<div id="construct-meal-forms" class="hide-meal-construction">
-<h3>Construct Meal</h3>
-  <div id="search-div">
-    <form class="form-inline">
-      <input type="text" id="query" placeholder="Enter a food" class="form-control">
-      <a id="search" class="btn btn-default">Search</a>
-    </form>
-  </div>
+          <label for="form-carbs">Carbs</label>
+          <input type="text" id="form-carbs" name="form-carbs" class="form-control" readonly="readonly" required>
 
-  <div id="results-div">
-    <ul id="search-results"></ul>
-  </div>
+          <input type="hidden" name="form-meal-id" id="form-meal-id" value="<%= @meal.id %>">
+          <br>
+          <button id="form-submit" class="btn btn-primary">Add to meal</button>
+        </form>
+      </div>
+    </div>
 
-  <div id="ajax-form">
-    <form>
-      <label for="form-foodname">Name of food</label>
-      <input type="text" id="form-foodname" name="form-foodname" class="form-control" readonly="readonly" required>
-
-      <label for="form-quantity">Quantity</label>
-      <input type="text" id="form-quantity" name="form-quantity" class="form-control" required>
-
-      <label for="form-serving-size-qty">Serving size qty</label>
-      <input type="text" id="form-serving-size-qty" name="form-serving-size-qty" class="form-control" readonly="readonly" required>
-
-      <label for="form-serving-size-unit">Serving size unit</label>
-      <input type="text" id="form-serving-size-unit" name="form-serving-size-unit" class="form-control" readonly="readonly" required>
-
-      <label for="form-serving-size-weight">Serving size weight</label>
-      <input type="text" id="form-serving-size-weight" name="form-serving-size-weight" class="form-control" readonly="readonly" required>
-
-      <label for="form-carbs">Carbs</label>
-      <input type="text" id="form-carbs" name="form-carbs" class="form-control" readonly="readonly" required>
-
-      <input type="hidden" name="form-meal-id" id="form-meal-id" value="<%= @meal.id %>">
+    <div id="complete-meal">
       <br>
-      <button id="form-submit" class="btn btn-primary">Add to meal</button>
-    </form>
+      <button class="btn btn-success" id="complete-meal-button">Add foods to meal</button>
+    </div>
+  </div>
+
+  <div class="col-md-7 col-md-offset-1">
+    <h4>You've added these foods to your meal:</h4>
+
+    <!-- This throws up a list when the page loads. List is then manipulated by JS -->
+    <ul id="added-foods">
+      <% @meal.foods.each do |food| %>
+
+        <li data-food-id="<%= food.id %>" data-meal-id="<%= food.meal_id %>" data-carbs="<%= food.carbs %>" data-quantity="<%= food.quantity %>">
+          <span class="badge food-badge">Qty: <%= food.quantity.to_i %></span><span class="badge food-badge">Carbs: <%= (food.carbs * food.quantity).round %></span><%= food.foodname %><span class="glyphicon glyphicon-trash delete"></span>
+        </li>
+
+      <% end %>
+    </ul>
+
+
+    <!-- Updated in foods.js as foods are added/deleted from list -->
+    <span class="badge" id="total-carbs">Total Carbs:
+      <% sum = 0 %>
+      <% @meal.foods.each_with_index do |v, i| %>
+        <% sum += (@meal.foods[i].carbs * @meal.foods[i].quantity) %>
+      <% end %>
+      <%= sum.round %>
+    </span>
+    <!--  -->
   </div>
 </div>
 
-
-<div id="complete-meal">
-  <br>
-  <button class="btn btn-success" id="complete-meal-button">Add foods to meal</button>
-</div>
-
-
-
-
-
-<br>
-<%#= link_to 'Add food', new_meal_food_path(@meal) %>
 <br>
 <%= link_to 'Delete meal', meal_path, :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
 <br>
 <%= link_to 'Edit meal', edit_meal_path %>
 <br>
 <%= link_to 'Back to index', meals_path %>
-
-<!-- <button type="button" class="btn btn-success"><%#= link_to 'Add Food', new_meal_food_path(@meal) %></button>
-
-<button type="button" class="btn btn-danger"><%#= link_to 'Delete meal', @meal, :method => 'delete', :data => { :confirm => "Are you sure you want to delete this meal?" } %></button> -->

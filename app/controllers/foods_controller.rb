@@ -30,14 +30,22 @@ class FoodsController < ApplicationController
     # binding.pry
     unless params["food"]["foodname"] == ""
       @food = Food.create food_params
+      @meal = Meal.find params[:meal_id]
+
+      # updates the value of meal.total_carbs every time a new food is added
+      sum = 0
+      @meal.foods.each do |food|
+        sum += (food.carbs * food.quantity)
+        sum
+      end
+      @meal.update_attribute(:total_carbs, sum.round)
+
     end
     @meal = Meal.find params["meal_id"]
 
     respond_to do |format|
       format.json { render :json => @meal.foods }
     end
-
-    # redirect_to meal_path(@meal)
   end
 
   def show
