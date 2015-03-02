@@ -21,8 +21,9 @@ class Bloodsugar < ActiveRecord::Base
     CSV.parse(file.tempfile, :col_sep => ";", :headers => true) do |row|
     # Bloodsugar.create! new row and << csv data to database
     # binding.pry
-    # Date and time adds to our DB but undefined method for '+'
-    Bloodsugar.create!(readingtime: (row['Date'] + 'T' + row['Time']), bslevel: row['Result'])
+      if row['Date'] && row['Time']  
+        Bloodsugar.create!(readingtime: (row['Date'] + 'T' + row['Time']), bslevel: row['Result'])
+      end
     end
 
   end
