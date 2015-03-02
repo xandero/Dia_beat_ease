@@ -11,7 +11,7 @@ class FoodsController < ApplicationController
   def index
 
     # will need to show the foods that belong to a particular meal
-    @foods = Food.all
+
   end
 
   def new

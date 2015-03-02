@@ -94,26 +94,33 @@ $(document).ready(function() {
         meal_id: mealId
       }
     }).done(function (result) {
+      var totalCarbCount = 0;
+      // need to sum up the carb values of each
 
-      // result is the returned array of food objects
 
-      // currently appending the food but needs to turn them into links with edit and stuff...yay
-      // just use normal '/whatever' urls for the hrefs
-
-      // $('#added-foods').empty();
+      $('#added-foods').empty();
       for (var i = 0; i < result.length; i++) {
         var $li = $('<li>');
         var mealId = result[i].meal_id;
         var foodId = result[i].id;
         $li.text(result[i].foodname);
-        $li.append($('<span class="glyphicon glyphicon-trash delete">'));
+
+        totalCarbCount = totalCarbCount + Math.round(result[i].carbs * result[i].quantity);
+        $('#total-carbs').val('Total Carbs: ' + (totalCarbCount));
+
+        $li.prepend($('<span class="badge food-badge">Carbs: ' + Math.round(result[i].quantity * result[i].carbs) + '</span> '));
+        $li.prepend($('<span class="badge food-badge">Qty: ' + result[i].quantity + '</span> '));
+        $li.append($(' <span class="glyphicon glyphicon-trash delete">'));
         $li.attr('data-food-id', result[i].id);
         $li.attr('data-meal-id', result[i].meal_id);
-        // $li.append($('<a href="/meals/' + mealId + '/foods/' + foodId + '/edit"><span class="glyphicon glyphicon-pencil"></span></a>'));
+        $li.attr('data-carbs', result[i].carbs);
+        $li.attr('data-quantity', result[i].quantity);
 
         $('#added-foods').append($li);
         console.log(result[i].foodname);
       }
+
+      $('#total-carbs').text('Total Carbs: ' + totalCarbCount);
     });
 
   });
@@ -151,8 +158,17 @@ $(document).ready(function() {
         _method: 'DELETE'
       }
     }).done(function () {
+      // does the maths with for total carbs
+      var carbs = $li.data('carbs');
+      var quantity = $li.data('quantity');
+      var minusCarbs = carbs * quantity;
+      var original = $('#total-carbs').text();
+      original = original.split(' ');
+      var totalCarbCount = parseInt(_.last(original)) - minusCarbs;
+      $('#total-carbs').text('Total Carbs: ' + Math.round(totalCarbCount));
+
+      // removes the DOM element
       $li.remove();
     });
   });
-
 });
