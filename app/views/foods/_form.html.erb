@@ -1,21 +1,21 @@
 <%= form_for @food do |f| %>
-  <%= f.label :foodname, "Name of Food" %>
-  <%= f.text_field :foodname, :id => 'form-foodname' %>
+  <%= f.label :foodname, "Name of Food", :title => 'Name of your food, eg. banana, Twix Bar, Big Mac.' %>
+  <%= f.text_field :foodname, :id => 'form-foodname', :title => 'Name of your food, eg. banana, Twix Bar, Big Mac.' %>
 
-  <%= f.label :quantity %>
-  <%= f.number_field :quantity, :id => 'form-quantity' %>
+  <%= f.label :quantity, :title => 'Enter the number of servings consumed.' %>
+  <%= f.number_field :quantity, :id => 'form-quantity', :title => 'Enter the number of servings consumed.' %>
 
-  <%= f.label :serving_size_qty %>
-  <%= f.number_field :serving_size_qty, :id => 'form-serving-size-qty' %>
+  <%= f.label :serving_size_qty, :title => 'The standard serving size quantity for the selected food.' %>
+  <%= f.number_field :serving_size_qty, :id => 'form-serving-size-qty', :title => 'The standard serving size quantity for the selected food.' %>
 
-  <%= f.label :serving_size_unit %>
-  <%= f.text_field :serving_size_unit, :id => 'form-serving-size-unit' %>
+  <%= f.label :serving_size_unit, :title => 'The measurement unit used to determine serving size.' %>
+  <%= f.text_field :serving_size_unit, :id => 'form-serving-size-unit', :title => 'The measurement unit used to determine serving size.' %>
 
-  <%= f.label :serving_size_weight %>
-  <%= f.number_field :serving_size_weight, :id => 'form-serving-size-weight', :step => 'any' %>
+  <%= f.label :serving_size_weight, :title => 'The weight of an individual serving in grams.' %>
+  <%= f.number_field :serving_size_weight, :id => 'form-serving-size-weight', :step => 'any', :title => 'The weight of an individual serving in grams.' %>
 
-  <%= f.label :carbs %>
-  <%= f.number_field :carbs, :id => 'form-carbs', :step => 'any' %>
+  <%= f.label :carbs, :title => 'The total number of carbohydrates (grams) in one serving of the selected food.' %>
+  <%= f.number_field :carbs, :id => 'form-carbs', :step => 'any', :title => 'The total number of carbohydrates (grams) in one serving of the selected food.' %>
 
   <%= f.hidden_field :meal_id, :value => @meal_id %>
 

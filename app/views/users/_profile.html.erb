@@ -4,36 +4,36 @@
     <%= f.text_field :username,  :class => "form-control", :disabled => "true" %>
   </p>
   <p>
-    <%= f.label :email, "Email" %>
-    <%= f.text_field :email,  :class => "form-control" %>
+    <%= f.label :email, "Email", :title => 'Please enter the email address where we can contact you for important alerts and notifications.' %>
+    <%= f.text_field :email, :class => "form-control", :title => 'Please enter the email address where we can contact you for important alerts and notifications.' %>
   </p>
   <p>
-    <%= f.label :dob, "Date of birth" %>
-    <%= f.date_field :dob, :class => "form-control", :required => true, :autofocus => true %>
+    <%= f.label :dob, "Date of birth", :title => 'Please enter your date of birth.' %>
+    <%= f.date_field :dob, :class => "form-control", :required => true, :autofocus => true, :title => 'Please enter your date of birth.' %>
   </p>
   <p>
-    <%= f.label :gender %>
-    <%= f.select :gender, [['Male','Male'],['Female','Female']], :class => "form-control", :required => true, :include_blank => true %>
+    <%= f.label :gender, :title => 'Please select your gender.' %>
+    <%= f.select :gender, [['Male','Male'],['Female','Female'],['Other','Other']], :class => "form-control", :required => true, :include_blank => true %>
   </p>
   <p>
-    <%= f.label :weight, "Weight (kg)" %>
-    <%= f.number_field :weight, :class => "form-control", :required => true, :id => 'user-weight' %>
+    <%= f.label :weight, "Weight (kg)", :title => 'Please enter your weight in kilograms.' %>
+    <%= f.number_field :weight, :class => "form-control", :required => true, :id => 'user-weight', :title => 'Please enter your weight in kilograms.' %>
   </p>
   <p>
-    <%= f.label :height, "Height (cm)" %>
-    <%= f.number_field :height, :class => "form-control", :required => true %>
+    <%= f.label :height, "Height (cm)", :title => 'Please enter your height in centimetres.' %>
+    <%= f.number_field :height, :class => "form-control", :required => true, :title => 'Please enter your height in centimetres.' %>
   </p>
   <p>
-    <%= f.label :diabetes_type, "Diabetes Type" %>
+    <%= f.label :diabetes_type, "Diabetes Type", :title => 'Please select if you have been diagnosed with Type 1 or Type 2 diabetes.'%>
     <%= f.select :diabetes_type, [['Type 1','Type 1'],['Type 2','Type 2']], :required => true, :include_blank => true %>
   </p>
   <p>
-    <%= f.label :basal_insulin, "Basal Insulin Dose (unit)" %>
-    <%= f.number_field :basal_insulin, :required => true, :id => 'basal-value' %>
+    <%= f.label :basal_insulin, "Basal Insulin Dose (unit)", :title => 'Please enter your Basal insulin dose as determined by your doctor.' %>
+    <%= f.number_field :basal_insulin, :required => true, :id => 'basal-value', :title => 'Please enter your Basal insulin dose as determined by your doctor.' %>
   </p>
   <p>
-    <%= f.label :bolus_insulin, "Bolus Insulin Dose (unit)" %>
-    <%= f.number_field :bolus_insulin, :required => true, :id => 'bolus-value' %>
+    <%= f.label :bolus_insulin, "Bolus Insulin Dose (unit)", :title => 'Please enter your Bolus insulin dose as determined by your doctor.' %>
+    <%= f.number_field :bolus_insulin, :required => true, :id => 'bolus-value', :title => 'Please enter your Bolus insulin dose as determined by your doctor.' %>
   </p>
   <p>
     <%= f.submit :class => "btn btn-success", :id => "profile-submit" %>
