@@ -1,12 +1,12 @@
 <%= form_for @meal do |f| %>
 <p>
-  <%= f.label :meal_date %>
-  <%= f.date_field :meal_date, :class => "form-control", :required => true %>
+  <%= f.label :meal_date, :title => "Select the day on which this meal was consumed." %>
+  <%= f.date_field :meal_date, :class => "form-control", :required => true, :title => "Select the day on which this meal was consumed." %>
 </p>
 
 <p>
-  <%= f.label :meal_time %>
-  <%= f.time_field :meal_time, :class => "form-control", :required => true %>
+  <%= f.label :meal_time, :title => 'Enter the time at which this meal was consumed.' %>
+  <%= f.time_field :meal_time, :class => "form-control", :required => true, :title => 'Enter the time at which this meal was consumed.' %>
 </p>
   <%= f.submit :class => "btn btn-success" %>
 <% end %>
