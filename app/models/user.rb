@@ -30,24 +30,15 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => true, :presence => true
 end
 
-# def notification(message)
-#   @user = User.find params[:id]
+def self.to_mandrill_to(users)
+  users.map{|user| {:email => user.email}}
+end
 
-#   m = Mandrill::API.new
-#     message = {
-#     :subject=> "Weather Alert!",
-#     :from_name=> "Diabetease",
-#     :text=>"Hi #{@user.username}, " message,
-#     :to=>[
-#     {
-#     :email=> 'xandero999@gmail.com',       #@user.email
-#     :name=> @user.username
-#     }
-#     ],
-#     :from_email=>"alerts@diabetease.com"
-#     }
-#     sending = m.messages.send message
-# end
+def self.to_mandrill_merge_vars(users)
+  users.map{|user| {:rcpt => user.email, 
+  :vars => [{:name => 'first_name', 
+  :content => user.first_name}]}}
+end
 
 def check_weather
   @forecast = ForecastIO.forecast(-33.8600, 151.2094)

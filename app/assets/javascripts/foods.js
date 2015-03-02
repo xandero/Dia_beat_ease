@@ -169,9 +169,10 @@ $(document).ready(function() {
       original = original.split(' ');
       var totalCarbCount = parseInt(_.last(original)) - minusCarbs;
       $('#total-carbs').text('Total Carbs: ' + Math.round(totalCarbCount));
-
+      
       // removes the DOM element
       $li.remove();
     });
+
   });
 });
