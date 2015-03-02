@@ -138,9 +138,9 @@ $(document).ready(function() {
     $('#form-carbs').val('');
   });
 
-  $('#complete-meal').on('click', function () {
+  $('#complete-meal-button').on('click', function () {
     $('#construct-meal-forms').toggleClass('hide-meal-construction');
-
+    $(this).blur();
     if ($('#construct-meal-forms').hasClass('hide-meal-construction')) {
       $(this).text('Add foods to meal');
     } else {
