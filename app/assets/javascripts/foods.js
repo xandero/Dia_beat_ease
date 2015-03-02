@@ -78,12 +78,6 @@ $(document).ready(function() {
       $('#form-serving-size-unit').val(result.nf_serving_size_unit);
       $('#form-carbs').val(result.nf_total_carbohydrate);
     });
-
-    var $quantityInput = $('<input id="quantity" placeholder="Quantity">');
-    var $addToMeal = $('<button id="add-to-meal">Add to meal</button>');
-
-    $('#quantity-div').append($quantityInput);
-    $('#quantity-div').append($addToMeal);
   });
 
   $('#quantity-div').on('click', 'button', function() {
