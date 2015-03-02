@@ -19,7 +19,6 @@
                 </tr>
             </thead>
             <tbody>
-
 <% if @bloodsugars.empty? %>
   <h5 id="no-bloodsugar">No Media Found</h5>
 <% else %>
@@ -33,9 +32,26 @@
             </tbody>
         </table>
 
+<h1>AJAX version</h1>
 
+<script type ="x-handlebars-template" id="bloodsugarTemplate">
 
-
+<table border="1">
+    <thead>
+        <tr>
+            <th title="Field #1">Date</th>
+            <th title="Field #2">Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{bloodsugar.readingtime}}</td>
+            <td align="right">{{bloodsugar.bslevel}}</td>
+        </tr>
+    </tbody>
+</table>
+    
+</script>
 
 
 

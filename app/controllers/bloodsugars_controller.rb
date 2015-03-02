@@ -2,6 +2,7 @@ class BloodsugarsController < ApplicationController
 
   def index
     @bloodsugars = Bloodsugar.all
+
   end
 
   def import
