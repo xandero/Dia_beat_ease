@@ -10,6 +10,8 @@ require "action_view/railtie"
 require "sprockets/railtie"
 require "forecast_io"
 
+require 'csv'
+
 ForecastIO.api_key = 'this-is-your-api-key'
 ForecastIO.default_params = {units: 'si'}
 

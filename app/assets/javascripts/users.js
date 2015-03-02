@@ -34,10 +34,6 @@ var validateBasal = function() {
 $(document).ready(function() {
   $('#profile-submit').on('click', validateBolus);
   $('#profile-submit').on('click', validateBasal);
-
-    $(function() {
-    $(document).tooltip();
-  });
 });
 
 
