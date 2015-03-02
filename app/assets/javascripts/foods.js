@@ -139,6 +139,7 @@ $(document).ready(function() {
   });
 
   $('#complete-meal-button').on('click', function () {
+    console.log('clicked');
     $('#construct-meal-forms').toggleClass('hide-meal-construction');
     $(this).blur();
     if ($('#construct-meal-forms').hasClass('hide-meal-construction')) {

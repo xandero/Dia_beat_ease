@@ -30,24 +30,24 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => true, :presence => true
 end
 
-def notification(message)
-  @user = User.find params[:id]
+# def notification(message)
+#   @user = User.find params[:id]
 
-  m = Mandrill::API.new
-    message = {  
-    :subject=> "Weather Alert!",  
-    :from_name=> "Diabetease",  
-    :text=>"Hi #{@user.username}, " message,  
-    :to=>[  
-    {  
-    :email=> 'xandero999@gmail.com',       #@user.email
-    :name=> @user.username  
-    }  
-    ],    
-    :from_email=>"alerts@diabetease.com"  
-    }  
-    sending = m.messages.send message
-end 
+#   m = Mandrill::API.new
+#     message = {
+#     :subject=> "Weather Alert!",
+#     :from_name=> "Diabetease",
+#     :text=>"Hi #{@user.username}, " message,
+#     :to=>[
+#     {
+#     :email=> 'xandero999@gmail.com',       #@user.email
+#     :name=> @user.username
+#     }
+#     ],
+#     :from_email=>"alerts@diabetease.com"
+#     }
+#     sending = m.messages.send message
+# end
 
 def check_weather
   @forecast = ForecastIO.forecast(-33.8600, 151.2094)
@@ -56,7 +56,7 @@ def check_weather
     maxTempToday = @forecast["daily"]["data"][(i-1)]["temperatureMax"]
     maxTempMorrow = @forecast["daily"]["data"][i]["temperatureMax"]
     minTempToday = @forecast["daily"]["data"][(i-1)]["temperatureMin"]
-    minTempMorrow = @forecast["daily"]["data"][i]["temperatureMin"]   
+    minTempMorrow = @forecast["daily"]["data"][i]["temperatureMin"]
     if ( maxTempToday - maxTempMorrow ) > 5
       notification('Just letting you know that the maximum temperature over the bext few days is forecast to decrease by more than 10 degrees! Be sure to adjust your insulin dosage in line with the recommendations from your doctor.')
     elsif ( maxTempMorrow - maxTempToday ) > 5
@@ -68,7 +68,7 @@ def check_weather
       notification('Just letting you know that the minimum temperature over the bext few days is forecast to increase by more than 10 degrees! Be sure to adjust your insulin dosage in line with the recommendations from your doctor.')
     end
   end
-end 
+end
 
 def validate_bolus_level(bolus_insulin)
   if @user.bolus_insulin < 10 || @user.bolus_insulin > 30

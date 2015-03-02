@@ -15,7 +15,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require handlebars
-
+//= require foods
 //= require dropzone
 //= require_tree .
 
