@@ -4,7 +4,7 @@
 <% unless @current_user.meals.length == 0 %>
 <ol>
   <% @meals.each do |meal| %>
-    <li><%= link_to (meal.meal_time.strftime('%R') + ', ' + meal.meal_date.strftime('%e %B %Y')), meal_path(meal) %></li>
+    <li><%= link_to (meal.meal_time.strftime('%R, %e %B %Y')), meal_path(meal) %></li>
   <% end %>
 </ol>
 <% else %>
