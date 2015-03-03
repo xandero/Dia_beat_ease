@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
-    @locate = request.remote_ip
+    # @locate = request.remote_ip
  
   end
 
