@@ -148,7 +148,7 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li class="active">
-                            <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                            <a href="/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="charts.html"><i class="fa fa-fw fa-calculator"></i> Calculator</a>
@@ -172,7 +172,12 @@
     </div>
     <!-- /#wrapper -->
 
-
+<script type ="x-handlebars-template" id="bloodsugarTemplate">
+            <tr class = "readings-row">
+                <td>{{readingtime}}</td>
+                <td align="right">{{bslevel}}</td>
+            </tr>
+</script>
 
 </body>
 <div id="footer">DISCLAIMER: The content of this web site is not intended to be a substitute for professional medical advice, diagnosis or treatment. Do not disregard your doctor's advice or delay in seeking it because of something you have read on this website.</div>

@@ -17,6 +17,8 @@
 //= require handlebars
 //= require foods
 //= require dropzone
+//= require Chart
+//= require dashboard
 //= require_tree .
 
 Dropzone.autoDiscover = false;
