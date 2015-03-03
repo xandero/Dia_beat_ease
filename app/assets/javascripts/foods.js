@@ -90,6 +90,7 @@ $(document).ready(function() {
         serving_size_qty: $('#form-serving-size-qty').val(),
         serving_size_unit: $('#form-serving-size-unit').val(),
         serving_size_weight: $('#form-serving-size-weight').val(),
+        // doesn't seem to work if I change it here either...
         carbs: $('#form-carbs').val(),
         meal_id: mealId
       }
@@ -121,6 +122,14 @@ $(document).ready(function() {
       }
 
       $('#total-carbs').text('Total Carbs: ' + totalCarbCount);
+
+      // calculates and displays required insulin dosage
+      // maybe add in the unit?
+      var userBolusInsulin = parseInt($('#insulin-required').data('bolus-insulin'));
+      var dosage = totalCarbCount / 15 * userBolusInsulin;
+      // Math.round magic makes JavaScript play nice and round to 1dp (sans .000000000007 freebie)
+      $('#insulin-required').text('Required Insulin Dose: ' + (Math.round( dosage * 10 ) / 10));
+
     });
 
   });
@@ -168,8 +177,15 @@ $(document).ready(function() {
       var totalCarbCount = parseInt(_.last(original)) - minusCarbs;
       $('#total-carbs').text('Total Carbs: ' + Math.round(totalCarbCount));
 
+      var userBolusInsulin = parseInt($('#insulin-required').data('bolus-insulin'));
+      var dosage = totalCarbCount / 15 * userBolusInsulin;
+      $('#insulin-required').text('Required Insulin Dose: ' + (Math.round( dosage * 10 ) / 10));
+
+      // total carbs /15 * bolus
+
       // removes the DOM element
       $li.remove();
     });
+
   });
 });

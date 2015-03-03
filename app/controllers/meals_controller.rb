@@ -2,6 +2,8 @@ class MealsController < ApplicationController
 
   def index
     @meals = @current_user.meals
+    sum = 0
+
   end
 
   def new
@@ -17,7 +19,16 @@ class MealsController < ApplicationController
   def show
     # binding.pry
     @meal = Meal.find params[:id]
-    @meal.total_carbs = @meal.foods.sum(:carbs).round(1)
+    # @meal.total_carbs = @meal.foods.sum(:carbs).round(1)
+
+    # the code below will only assign a value to total_carbs if the user visits the show page of a meal
+    # sum = 0
+    # @meal.foods.each do |food|
+    #   sum += (food.carbs * food.quantity)
+    #   sum
+    # end
+
+    # @meal.update_attribute(:total_carbs, sum.round)
 
     # respond_to do |format|
     #   format.json { render :json => @meal.foods }
@@ -48,7 +59,7 @@ class MealsController < ApplicationController
 
   private
   def meal_params
-    params.require(:meal).permit(:meal_time, :meal_date, :user_id)
+    params.require(:meal).permit(:meal_time, :meal_date, :user_id, :total_carbs)
   end
 
 end
