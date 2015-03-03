@@ -10,7 +10,7 @@
 #  updated_at  :datetime
 #  user_id     :integer
 #
-require 'pry'
+
 class Bloodsugar < ActiveRecord::Base
   belongs_to :user
 
