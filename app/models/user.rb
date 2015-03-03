@@ -31,55 +31,6 @@ class User < ActiveRecord::Base
   validates :username, :uniqueness => true, :presence => true
   validates :email, :uniqueness => true, :presence => true
 
-  # geocoded_by :ip_address,
-  #   :latitude => :lat, :longitude => :lon
-  # after_validation :geocode
-
-  # def self.to_mandrill_to(users)
-  #   users.map{|user| {:email => user.email}}
-  # end
-
-  # def self.to_mandrill_merge_vars(users)
-  #   users.map{|user| {:rcpt => user.email, 
-  #   :vars => [{:name => 'first_name', 
-  #   :content => user.first_name}]}}
-  # end
-
-  def check_weather(lat, long)
-    @forecast = ForecastIO.forecast(lat, long)
-
-    6.times do |i|
-      maxTempToday = @forecast["daily"]["data"][(i-1)]["temperatureMax"]
-      maxTempMorrow = @forecast["daily"]["data"][i]["temperatureMax"]
-      minTempToday = @forecast["daily"]["data"][(i-1)]["temperatureMin"]
-      minTempMorrow = @forecast["daily"]["data"][i]["temperatureMin"]
-      if ( maxTempToday - maxTempMorrow ) > 5
-        notification('Just letting you know that the maximum temperature over the bext few days is forecast to decrease by more than 10 degrees! Be sure to adjust your insulin dosage in line with the recommendations from your doctor.')
-      elsif ( maxTempMorrow - maxTempToday ) > 5
-        notification('Just letting you know that the maximum temperature over the bext few days is forecast to increase by more than 10 degrees! Be sure to adjust your insulin dosage in line with the recommendations from your doctor.')
-      end
-      if ( minTempToday - minTempMorrow ) > 5
-        notification('Just letting you know that the minimum temperature over the bext few days is forecast to decrease by more than 10 degrees! Be sure to adjust your insulin dosage in line with the recommendations from your doctor.')
-      elsif ( maxTempMorrow - maxTempToday ) > 5
-        notification('Just letting you know that the minimum temperature over the bext few days is forecast to increase by more than 10 degrees! Be sure to adjust your insulin dosage in line with the recommendations from your doctor.')
-      end
-    end
-  end
-
-  # def notification(message)
-  #   @user = User.find params[:id]
-
-  #   m = Mandrill::API.new
-  #     message = {
-  #     :subject=> "Weather Alert!",
-  #     :from_name=> "Diabetease",
-  #     :from_email=>"alerts@diabetease.com",
-  #     :to=>User.to_mandrill_to(User),
-  #     :text=>"Hi #{@user.username}, " message,
-  #     }
-  #     sending = m.messages.send message
-  # end
-
   def validate_bolus_level(bolus_insulin)
     if @user.bolus_insulin < 10 || @user.bolus_insulin > 30
       "Are you sure that's correct? Those figures are outside the normal range expected. Please confirm before continuing."
@@ -96,3 +47,28 @@ class User < ActiveRecord::Base
     end
   end
 end
+
+  # def self.to_mandrill_to(users)
+  #   users.map{|user| {:email => user.email}}
+  # end
+
+  # def self.to_mandrill_merge_vars(users)
+  #   users.map{|user| {:rcpt => user.email, 
+  #   :vars => [{:name => 'first_name', 
+  #   :content => user.first_name}]}}
+  # end
+
+
+  # def notification(message)
+  #   @user = User.find params[:id]
+
+  #   m = Mandrill::API.new
+  #     message = {
+  #     :subject=> "Weather Alert!",
+  #     :from_name=> "Diabetease",
+  #     :from_email=>"alerts@diabetease.com",
+  #     :to=>User.to_mandrill_to(User),
+  #     :text=>"Hi #{@user.username}, " message,
+  #     }
+  #     sending = m.messages.send message
+  # end
