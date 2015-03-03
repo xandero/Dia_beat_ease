@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find params[:id]
     @locate = request.remote_ip
-    binding.pry
+ 
   end
 
   def edit
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
   def send_email
 
-    User.check_weather(   )
+    # User.check_weather(   )
 
   end
 
