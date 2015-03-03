@@ -3,18 +3,18 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+
+    @user = User.find params[:id]
+    @ip_address = request.remote_ip
+    @list = Geocoder.search @ip_address
+    @city = @list.first.city
+
+    @user.update(:lat => @list["latitude"], :long => @list["longitude"])
+
   end
 
   def new
     @user = User.new
-  end
-
- def locate_user
-    @user = User.find_by username: params[:username]
-
-    @ip_address = request.remote_ip
-    @list = Geocoder.search @ip_address
-    @city = @list.first.city
   end
 
   def create
@@ -36,12 +36,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find params[:id]
-
-    
-
-    @ip_address = request.remote_ip
-    @list = Geocoder.search @ip_address
-    @city = @list.first.city
   end
 
   def update
