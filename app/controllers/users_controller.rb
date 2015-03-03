@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     @list = Geocoder.search @ip_address
     @city = @list.first.city
 
-    @user.update(:lat => @list["latitude"], :long => @list["longitude"])
+    @user.update(:lat => @list[0].latitude, :long => @list[0].longitude)
   end
 
   def edit
