@@ -1,6 +1,6 @@
 // JS for the throwaway calc
 
-var searchFoods = function () {
+var searchSingleFoods = function () {
   var query = $('#single-calc').val();
   var nutritionixUrl = 'https://api.nutritionix.com/v1_1/search/' + query;
 
@@ -36,7 +36,7 @@ $(document).ready(function() {
   $('#calculate').on('click', function (event) {
     event.preventDefault();
     $('#search-results').empty();
-    searchFoods();
+    searchSingleFoods();
   });
 
   $('#single-calc').keydown(function(event){
@@ -44,7 +44,7 @@ $(document).ready(function() {
       // event.preventDefault();
       $('#search-results').empty();
       $(this).blur();
-      searchFoods();
+      searchSingleFoods();
       return false;
     }
   });
