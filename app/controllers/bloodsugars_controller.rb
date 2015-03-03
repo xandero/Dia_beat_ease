@@ -11,7 +11,14 @@ class BloodsugarsController < ApplicationController
       if row['Date'] && row['Time']
         # if we have this blood reading at this date, don't create this entry 
         # Bloodsugar.create!(readingtime: (row['Date'] + 'T' + row['Time']), bslevel: row['Result'] )
-        Bloodsugar.create!(readingtime: (row['Date'] + 'T' + row['Time']), bslevel: row['Result'], user_id: @current_user.id )
+        # (Bloodsugar.all).each do |x|
+        #    if x.bslevel != row['Result']
+              Bloodsugar.create!(readingtime: (row['Date'] + 'T' + row['Time']), bslevel: row['Result'], user_id: @current_user.id )
+        #     else
+        #       puts "this data has been duplicated"
+        #    end
+        # end
+
       end
     end
      render :json => Bloodsugar.all

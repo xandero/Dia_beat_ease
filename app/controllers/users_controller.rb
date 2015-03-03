@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
-    @locate = request.remote_ip
+    # @locate = request.remote_ip
  
   end
 
@@ -46,6 +46,19 @@ class UsersController < ApplicationController
 
     # User.check_weather(   )
 
+  end
+
+  def dashboard
+  end
+
+  def bslevel
+    @bslevels = Bloodsugar.pluck :bslevel
+    render :json => @bslevels
+  end
+
+  def readingtime
+    @readingtimes = Bloodsugar.pluck :readingtime
+    render :json => @readingtimes
   end
 
 
