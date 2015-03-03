@@ -1,3 +1,5 @@
+// RENDER CSV DATA IN HTMLTABLE 
+// NOTE: DATA PULLED FROM DATA JSON VIEW
 var bloodsugarsCalc = {
         loadBloodsugars: function() {
             $.getJSON('/readingdata').done(function(result){
@@ -18,10 +20,12 @@ var bloodsugarsCalc = {
                         $('#data-table').append(row(reading))
         }
     }
+
 $(document).ready(function() {
 
+  // RENDERS RECORDS FROM DATABASE
   bloodsugarsCalc.loadBloodsugars();
-
+  // DROPZONE UPLOAD ON SUCCESS
   var bloodsugarDropzone;
   bloodsugarDropzone = new Dropzone("#bloodsugar-dropzone");
   return bloodsugarDropzone.on("success", function() {
