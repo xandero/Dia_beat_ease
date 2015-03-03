@@ -71,7 +71,7 @@
       <% end %>
       <%= sum.round %>
     </span>
-    <span class="badge" id="insulin-required" data-bolus-insulin="<%= @current_user.bolus_insulin %>">Requried Insulin Dose:
+    <span class="badge" id="insulin-required" data-bolus-insulin="<%= @current_user.bolus_insulin %>">Required Insulin Dose:
       <% sum = 0 %>
       <% @meal.foods.each_with_index do |v, i| %>
         <% sum += (@meal.foods[i].carbs * @meal.foods[i].quantity) %>

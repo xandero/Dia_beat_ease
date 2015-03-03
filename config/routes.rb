@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root :to => 'pages#landing'
 
   resources :users, :activities
-  
+
   resources :bloodsugars, only: [:index] do
     collection { post :import }
   end
@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   delete '/login' => 'session#destroy'
 
   post '/whatever' => "foods#test"
+
+  get '/singlecalculation' => 'pages#calc'
 
   get '/testing' => 'pages#testing'
 
