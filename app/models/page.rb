@@ -2,7 +2,7 @@ class Page
 
   def self.check_weather(lat, long, location)
     @forecast = ForecastIO.forecast(lat, long)
-    binding.pry
+
     puts "Hi, just letting you know about some significant temperature changes this week in #{location}. Make sure that you adjust your insulin dosage in line with your doctor's recommendations."      
     
     6.times do |i|
