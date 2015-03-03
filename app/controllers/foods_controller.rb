@@ -5,7 +5,6 @@ class FoodsController < ApplicationController
   # some might not even be needed as they will be accessed via the meal's food array
 
   def test
-    binding.pry
   end
 
   def index
