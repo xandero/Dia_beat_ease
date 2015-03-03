@@ -36,7 +36,7 @@ class Page
   m = Mandrill::API.new
     text = {
     :subject=> "Weather Update",
-    :from_name=> "Diabetease",
+    :from_name=> "Diabet-ease",
     :text=> "#{message}",
     :to=>[
     {
