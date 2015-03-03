@@ -1,0 +1,5 @@
+<h2>Show us your activities</h2>
+
+<%= @activity.activityname %>
+<%= link_to 'Delete activity', activity_path, :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
+<%= link_to 'Edit activity', edit_activity_path %>

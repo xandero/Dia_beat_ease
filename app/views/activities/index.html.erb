@@ -1,0 +1,9 @@
+<h2>Activities Index</h2>
+
+<ul>
+    <% @activities.each do |activity| %>
+        <li><%= link_to activity.activityname, activity_path(activity) %> Duration: <%= activity.duration %> Intensity: <%= activity.intensity %></li>
+    <% end %>
+</ul>
+
+<%= link_to 'Add New Activity', new_activity_path, :class => 'btn btn-primary' %>

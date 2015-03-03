@@ -1,0 +1,15 @@
+<%= form_for @activity do |f| %>
+    <%= f.label :activityname, "Activity name" %>
+    <%= f.text_field :activityname %>
+
+    <%= f.label :duration, "Duration" %>
+    <%= f.text_field :duration %>
+
+    <%= f.label :intensity, "Intensity" %>
+    <%= f.number_field :intensity %>
+
+    <%= f.label :activity_time, "Activity time" %>
+    <%= f.time_field :activity_time %>
+
+    <%= f.submit %>
+<% end %>
