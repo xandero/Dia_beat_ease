@@ -40,6 +40,9 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def send_email
+    
+  end
 
 
 
