@@ -1,9 +1,14 @@
 <!-- should probably order this eventually... -->
+<h2><%= @current_user.username %>'s meals:</h2>
 
+<% unless @current_user.meals.length == 0 %>
 <ol>
   <% @meals.each do |meal| %>
     <li><%= link_to (meal.meal_time.strftime('%R') + ', ' + meal.meal_date.strftime('%e %B %Y')), meal_path(meal) %></li>
   <% end %>
 </ol>
+<% else %>
+  <p>You haven't stored any meal data.</p>
+<% end %>
+<%= link_to 'Add New Meal', new_meal_path, :class => 'btn btn-primary' %>
 
-<%= link_to 'Back to testing', '/testing' %>
