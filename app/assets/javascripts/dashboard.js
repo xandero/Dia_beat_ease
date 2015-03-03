@@ -29,6 +29,8 @@ $(document).ready(function() {
         data.labels = readingtimes;
     });
 
+    
+
     // the above two requests return promises
     // when the two requests are done then draw the chart
     $.when(readingtimeRequest, bslevelRequest).then(function() {

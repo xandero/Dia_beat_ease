@@ -8,7 +8,6 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  total_carbs :float
-#  meal_date   :datetime
 #
 
 class Meal < ActiveRecord::Base
