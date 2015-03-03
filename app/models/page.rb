@@ -15,17 +15,17 @@ class Page
 
       if ( maxTempToday - maxTempMorrow ) > 3
         difference = (maxTempToday - maxTempMorrow).round(0).abs
-        print "This #{day} the maximum temperature is forecast to decrease by #{difference} degrees. "
+        print "This #{day} the maximum temperature is forecast to decrease by #{difference} degrees. ".pluralize
       elsif ( maxTempMorrow - maxTempToday ) > 3
         difference = (maxTempMorrow - maxTempToday).round(0).abs
-        print "This #{day} the maximum temperature is forecast to increase by #{difference} degrees. "
+        print "This #{day} the maximum temperature is forecast to increase by #{difference} degrees. ".pluralize
       end
       if ( minTempToday - minTempMorrow ) > 3
         difference = (maxTempToday - maxTempMorrow).round(0).abs
-        print "This #{day} the minimum temperature is forecast to decrease by #{difference} degrees. "
+        print "This #{day} the minimum temperature is forecast to decrease by #{difference} degrees. ".pluralize
       elsif ( maxTempMorrow - maxTempToday ) > 3
         difference = (maxTempMorrow - maxTempToday).round(0).abs
-        print "This #{day} the minimum temperature is forecast to increase by #{difference} degrees. "
+        print "This #{day} the minimum temperature is forecast to increase by #{difference} degrees. ".pluralize
       end
     end
   end
