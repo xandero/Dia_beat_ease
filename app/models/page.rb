@@ -3,7 +3,7 @@ class Page
   def self.check_weather(lat, long, location, name)
     @forecast = ForecastIO.forecast(lat, long)      
     
-    message = "Hi #{name}, just letting you know about some significant temperature changes this week in #{location}. Make sure that you adjust your insulin dosage in line with your doctor's recommendations."
+    message = "Hi #{name}, just letting you know about some significant temperature changes this week in #{location}. Make sure that you adjust your insulin dosage in line with your doctor's recommendations. \n"
     6.times do |i|
 
       maxTempToday = @forecast["daily"]["data"][(i-1)]["temperatureMax"]
@@ -15,20 +15,20 @@ class Page
 
       if ( maxTempToday - maxTempMorrow ) > 2
         difference = (maxTempToday - maxTempMorrow).round(0).abs
-        message += "\n This #{day}, the maximum temperature is forecast to decrease by #{difference} degrees. "
+        message += "\n On #{day}, the maximum temperature is forecast to decrease by #{difference} degrees. "
       elsif ( maxTempMorrow - maxTempToday ) > 2
         difference = (maxTempMorrow - maxTempToday).round(0).abs
-        message += "\n This #{day}, the maximum temperature is forecast to increase by #{difference} degrees. "
+        message += "\n On #{day}, the maximum temperature is forecast to increase by #{difference} degrees. "
       end
       if ( minTempToday - minTempMorrow ) > 2
         difference = (maxTempToday - maxTempMorrow).round(0).abs
-        message += "\n This #{day}, the minimum temperature is forecast to decrease by #{difference} degrees. "
+        message += "\n On #{day}, the minimum temperature is forecast to decrease by #{difference} degrees. "
       elsif ( maxTempMorrow - maxTempToday ) > 2
         difference = (maxTempMorrow - maxTempToday).round(0).abs
-        message += "\n This #{day}, the minimum temperature is forecast to increase by #{difference} degrees. "
+        message += "\n On #{day}, the minimum temperature is forecast to increase by #{difference} degrees. "
       end
     end
-    message
+    message + "\n - The Diabet-ease Team"
   end
 
   def self.notification(message, email, name)
