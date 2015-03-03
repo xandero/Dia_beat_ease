@@ -21,9 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find params[:id]
-    # @locate = request.remote_ip
- 
+    @user = User.find params[:id]   
   end
 
   def edit
