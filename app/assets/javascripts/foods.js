@@ -126,8 +126,9 @@ $(document).ready(function() {
       // calculates and displays required insulin dosage
       // maybe add in the unit?
       var userBolusInsulin = parseInt($('#insulin-required').data('bolus-insulin'));
-      var dosage = totalCarbCount * userBolusInsulin;
-      $('#insulin-required').text('Required Insulin Dose: ' + dosage);
+      var dosage = totalCarbCount / 15 * userBolusInsulin;
+      // Math.round magic makes JavaScript play nice and round to 1dp (sans .000000000007 freebie)
+      $('#insulin-required').text('Required Insulin Dose: ' + (Math.round( dosage * 10 ) / 10));
 
     });
 
@@ -177,8 +178,10 @@ $(document).ready(function() {
       $('#total-carbs').text('Total Carbs: ' + Math.round(totalCarbCount));
 
       var userBolusInsulin = parseInt($('#insulin-required').data('bolus-insulin'));
-      var dosage = totalCarbCount * userBolusInsulin;
-      $('#insulin-required').text('Required Insulin Dose: ' + Math.round(dosage));
+      var dosage = totalCarbCount / 15 * userBolusInsulin;
+      $('#insulin-required').text('Required Insulin Dose: ' + (Math.round( dosage * 10 ) / 10));
+
+      // total carbs /15 * bolus
 
       // removes the DOM element
       $li.remove();

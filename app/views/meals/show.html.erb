@@ -76,7 +76,7 @@
       <% @meal.foods.each_with_index do |v, i| %>
         <% sum += (@meal.foods[i].carbs * @meal.foods[i].quantity) %>
       <% end %>
-      <%= (sum * @current_user.bolus_insulin).round %>
+      <%= ((sum / 15) * @current_user.bolus_insulin).round(1) %>
     </span>
     <!--  -->
   </div>
