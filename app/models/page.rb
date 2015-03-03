@@ -17,17 +17,17 @@ class Page
 
       if ( maxTempToday - maxTempMorrow ) > 3
         difference = (maxTempToday - maxTempMorrow).round(0).abs
-        message += \n "This #{day}, the maximum temperature is forecast to decrease by #{difference} degrees. "
+        message += "\n This #{day}, the maximum temperature is forecast to decrease by #{difference} degrees. "
       elsif ( maxTempMorrow - maxTempToday ) > 3
         difference = (maxTempMorrow - maxTempToday).round(0).abs
-        message += \n "This #{day}, the maximum temperature is forecast to increase by #{difference} degrees. "
+        message += "\n This #{day}, the maximum temperature is forecast to increase by #{difference} degrees. "
       end
       if ( minTempToday - minTempMorrow ) > 3
         difference = (maxTempToday - maxTempMorrow).round(0).abs
-        message += \n "This #{day}, the minimum temperature is forecast to decrease by #{difference} degrees. "
+        message += "\n This #{day}, the minimum temperature is forecast to decrease by #{difference} degrees. "
       elsif ( maxTempMorrow - maxTempToday ) > 3
         difference = (maxTempMorrow - maxTempToday).round(0).abs
-        message += \n "This #{day}, the minimum temperature is forecast to increase by #{difference} degrees. "
+        message += "\n This #{day}, the minimum temperature is forecast to increase by #{difference} degrees. "
       end
     end
     message
