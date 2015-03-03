@@ -2,7 +2,8 @@ class Page
 
   def self.check_weather(lat, long)
     @forecast = ForecastIO.forecast(lat, long)
-
+    puts "Hi, just letting you know about some significant temperature changes this week. Make sure that you adjust your insulin dosage in line with your doctor's recommendations."      
+    
     6.times do |i|
 
       maxTempToday = @forecast["daily"]["data"][(i-1)]["temperatureMax"]
@@ -11,16 +12,20 @@ class Page
       minTempMorrow = @forecast["daily"]["data"][i]["temperatureMin"]
       time = @forecast['daily']['data'][0]['time']
       day = Time.at(time).strftime('%A')
-      puts "Hi, just letting you know about some significant temperature changes this week. Make sure that you adjust your insulin dosage in line with your doctor's recommendations."
+
       if ( maxTempToday - maxTempMorrow ) > 3
-        print "Just letting you know that on #{day} the maximum temperature is forecast to decrease by more than 3 degrees."
+        difference = (maxTempToday - maxTempMorrow).round(0)
+        print "This #{day} the maximum temperature is forecast to decrease by #{difference} degrees. "
       elsif ( maxTempMorrow - maxTempToday ) > 3
-        print "Just letting you know that on #{day} the maximum temperature is forecast to increase by more than 3 degrees."
+        difference = (maxTempMorrow - maxTempToday).round(0)
+        print "This #{day} the maximum temperature is forecast to increase by #{difference} degrees. "
       end
       if ( minTempToday - minTempMorrow ) > 3
-        print "Just letting you know that on #{day} the minimum temperature is forecast to decrease by more than 3 degrees."
+        difference = (maxTempToday - maxTempMorrow).round(0)
+        print "This #{day} the minimum temperature is forecast to decrease by #{difference} degrees. "
       elsif ( maxTempMorrow - maxTempToday ) > 3
-        print "Just letting you know that on #{day} the minimum temperature is forecast to increase by more than 3 degrees."
+        difference = (maxTempMorrow - maxTempToday).round(0)
+        print "This #{day} the minimum temperature is forecast to increase by #{difference} degrees. "
       end
     end
   end
