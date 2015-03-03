@@ -31,9 +31,9 @@ class User < ActiveRecord::Base
   validates :username, :uniqueness => true, :presence => true
   validates :email, :uniqueness => true, :presence => true
 
-  geocoded_by :ip_address,
-    :latitude => :lat, :longitude => :lon
-  after_validation :geocode
+  # geocoded_by :ip_address,
+    # :latitude => :lat, :longitude => :lon
+  # after_validation :geocode
 
   # def self.to_mandrill_to(users)
   #   users.map{|user| {:email => user.email}}
