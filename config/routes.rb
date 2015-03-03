@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   get '/readingdata/bslevel' => 'users#bslevel'
   get '/readingdata/readingtime' => 'users#readingtime'
 
+  get '/readingdata/foods' => 'foods#index'
+  get '/readingdata/carbs' => 'foods#carbs'
+  get '/readingdata/mealtime' => 'foods#mealtime'
+
 
   # get '/readingcharts' => 'bloodsugars#charts'
   # get '/weather' => 'bloodsugars#weather'
