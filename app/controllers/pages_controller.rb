@@ -27,6 +27,7 @@ class PagesController < ApplicationController
   end
 
   def testing
+
     @user = User.find_by :id => session[:user_id]    
     @ip_address = request.remote_ip
     @list = Geocoder.search @ip_address

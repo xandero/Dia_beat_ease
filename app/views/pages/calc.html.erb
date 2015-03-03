@@ -3,29 +3,30 @@
 
 
 <div class="row">
+  <div class="col-md-6 text-center">
+    <form class="form-inline">
+      <input type="text" id="single-calc" placeholder="Enter a food" class="form-control">
+      <a id="calculate" class="btn btn-default">Search</a>
+    </form>
+    <div id="search-results"></div>
+  </div>
 
-  <form class="form-inline col-md-6 text-center">
-    <input type="text" id="single-calc" placeholder="Enter a food" class="form-control">
-    <a id="calculate" class="btn btn-default">Search</a>
-  </form>
+  <div class="col-md-6">
+    <form>
+      <label for="calc-foodname">Name of food</label>
+      <input type="text" id="calc-foodname" name="calc-foodname" class="form-control" readonly="readonly" required>
 
-  <div id="search-results"></div>
+      <label for="calc-serving-size-qty">Serving size qty</label>
+      <input type="text" id="calc-serving-size-qty" name="calc-serving-size-qty" class="form-control" readonly="readonly" required>
 
-  <form class="col-md-6">
-    <label for="calc-foodname">Name of food</label>
-    <input type="text" id="calc-foodname" name="calc-foodname" class="form-control" readonly="readonly" required>
+      <label for="calc-serving-size-unit">Serving size unit</label>
+      <input type="text" id="calc-serving-size-unit" name="calc-serving-size-unit" class="form-control" readonly="readonly" required>
 
-    <label for="calc-serving-size-qty">Serving size qty</label>
-    <input type="text" id="calc-serving-size-qty" name="calc-serving-size-qty" class="form-control" readonly="readonly" required>
+      <label for="calc-serving-size-weight">Serving size weight</label>
+      <input type="text" id="calc-serving-size-weight" name="calc-serving-size-weight" class="form-control" readonly="readonly" required>
 
-    <label for="calc-serving-size-unit">Serving size unit</label>
-    <input type="text" id="calc-serving-size-unit" name="calc-serving-size-unit" class="form-control" readonly="readonly" required>
-
-    <label for="calc-serving-size-weight">Serving size weight</label>
-    <input type="text" id="calc-serving-size-weight" name="calc-serving-size-weight" class="form-control" readonly="readonly" required>
-
-    <label for="calc-carbs">Carbs</label>
-    <input type="text" id="calc-carbs" name="calc-carbs" class="form-control" readonly="readonly" required>
-  </form>
-
+      <label for="calc-carbs">Carbs</label>
+      <input type="text" id="calc-carbs" name="calc-carbs" class="form-control" readonly="readonly" required>
+    </form>
+  </div>
 </div>
