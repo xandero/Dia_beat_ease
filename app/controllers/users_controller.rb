@@ -46,6 +46,19 @@ class UsersController < ApplicationController
 
   end
 
+  def dashboard
+  end
+
+  def bslevel
+    @bslevels = Bloodsugar.pluck :bslevel
+    render :json => @bslevels
+  end
+
+  def readingtime
+    @readingtimes = Bloodsugar.pluck :readingtime
+    render :json => @readingtimes
+  end
+
 
 
   # def notification(message)

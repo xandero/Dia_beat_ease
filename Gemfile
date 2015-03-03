@@ -25,6 +25,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'rails_12factor'
 
+# Chart JS
+gem 'chart-js-rails'
+
 # gems for APIs
 
 gem 'geocoder'

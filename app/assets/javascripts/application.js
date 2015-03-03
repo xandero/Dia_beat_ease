@@ -16,7 +16,10 @@
 //= require underscore
 //= require handlebars
 //= require foods
+//= require pages
 //= require dropzone
+//= require Chart
+//= require dashboard
 //= require_tree .
 
 Dropzone.autoDiscover = false;
