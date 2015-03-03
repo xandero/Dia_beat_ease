@@ -52,16 +52,12 @@ class FoodsController < ApplicationController
   end
 
   def edit
-    # require 'pry'
-    # binding.pry
     @food = Food.find params[:id]
     @meal_id = params[:meal_id]
     @meal = Meal.find params[:meal_id]
   end
 
   def update
-    # require 'pry'
-    # binding.pry
     food = Food.find params[:id]
     food.update food_params
     redirect_to meal_path(food.meal_id)
@@ -78,8 +74,6 @@ class FoodsController < ApplicationController
       sum
     end
     @meal.update_attribute(:total_carbs, sum.round)
-    # require 'pry'
-    # binding.pry
     redirect_to "/meals/#{ params[:meal_id] }"
   end
 
