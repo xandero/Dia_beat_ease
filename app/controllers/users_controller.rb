@@ -9,6 +9,14 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+ def locate_user
+    @user = User.find_by username: params[:username]
+
+    @ip_address = request.remote_ip
+    @list = Geocoder.search @ip_address
+    @city = @list.first.city
+  end
+
   def create
     @user = User.create user_params
     if @user.save
@@ -28,6 +36,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find params[:id]
+
+    
+
+    @ip_address = request.remote_ip
+    @list = Geocoder.search @ip_address
+    @city = @list.first.city
   end
 
   def update
