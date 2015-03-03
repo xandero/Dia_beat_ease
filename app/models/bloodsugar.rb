@@ -22,7 +22,7 @@ class Bloodsugar < ActiveRecord::Base
     # Bloodsugar.create! new row and << csv data to database
     binding.pry
       if row['Date'] && row['Time']
-        # if we have this blood reading at this date, don't create this entry 
+        # if we have this blood reading at this date, don't create this entry
         Bloodsugar.create!(readingtime: (row['Date'] + 'T' + row['Time']), bslevel: row['Result'] )
         # Bloodsugar.create!(readingtime: (row['Date'] + 'T' + row['Time']), bslevel: row['Result'], user_id: @user.id )
       end
