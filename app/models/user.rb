@@ -47,28 +47,3 @@ class User < ActiveRecord::Base
     end
   end
 end
-
-  # def self.to_mandrill_to(users)
-  #   users.map{|user| {:email => user.email}}
-  # end
-
-  # def self.to_mandrill_merge_vars(users)
-  #   users.map{|user| {:rcpt => user.email, 
-  #   :vars => [{:name => 'first_name', 
-  #   :content => user.first_name}]}}
-  # end
-
-
-  # def notification(message)
-  #   @user = User.find params[:id]
-
-  #   m = Mandrill::API.new
-  #     message = {
-  #     :subject=> "Weather Alert!",
-  #     :from_name=> "Diabetease",
-  #     :from_email=>"alerts@diabetease.com",
-  #     :to=>User.to_mandrill_to(User),
-  #     :text=>"Hi #{@user.username}, " message,
-  #     }
-  #     sending = m.messages.send message
-  # end

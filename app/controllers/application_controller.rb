@@ -12,19 +12,4 @@ class ApplicationController < ActionController::Base
         end
         session[:user_id] = nil unless @current_user.present?
     end
-
-  # def notification(message)
-  #   @user = User.find params[:id]
-
-  #   m = Mandrill::API.new
-  #     message = {
-  #     :subject=> "Weather Alert!",
-  #     :from_name=> "Diabetease",
-  #     :from_email=>"alerts@diabetease.com",
-  #     :to=>User.to_mandrill_to(User),
-  #     :text=>"Hi #{@user.username}, " message,
-  #     }
-  #     sending = m.messages.send message
-  # end
-
 end
