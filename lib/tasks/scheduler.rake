@@ -1,18 +1,11 @@
 desc "Daily weather check"
-task :update_feed => :environment do
-  puts "Updating feed..."
-
+task :weather_forecast => :environment do
+  puts "Weather forecast"
   
     User.all.each do |i|
+      location = i.location
       latitude = i.lat
       longitude = i.long
-      Page.check_weather(latitude, longitude)
-
+      Page.check_weather(latitude, longitude, location)
     end
-
-
-end
-
-task :send_reminders => :environment do
-  User.send_reminders
 end
