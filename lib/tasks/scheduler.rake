@@ -6,6 +6,10 @@ task :weather_forecast => :environment do
       location = i.location
       latitude = i.lat
       longitude = i.long
-      Page.check_weather(latitude, longitude, location)
+      name = i.username
+      email = i.email
+      message = Page.check_weather(latitude, longitude, location, name)
+
+      Page.notification(message, email, name)
     end
 end
