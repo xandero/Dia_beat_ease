@@ -50,13 +50,13 @@ class UsersController < ApplicationController
   end
 
   def bslevel
-    @bslevels = Bloodsugar.pluck :bslevel
-    render :json => @bslevels
+    bslevels = Bloodsugar.pluck :bslevel
+    render :json => bslevels
   end
 
   def readingtime
-    @readingtimes = Bloodsugar.pluck :readingtime
-    render :json => @readingtimes
+    readingtimes = Bloodsugar.pluck :readingtime
+    render :json => readingtimes
   end
 
 

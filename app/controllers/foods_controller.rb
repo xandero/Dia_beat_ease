@@ -8,10 +8,22 @@ class FoodsController < ApplicationController
   end
 
   def index
-
+    render :json => Meal.where(:user_id => @current_user.id)
     # will need to show the foods that belong to a particular meal
-
   end
+
+  def carbs
+    carbs = Meal.pluck :total_carbs
+    render :json => carbs 
+  end
+
+  def mealtime
+    mealtime = Meal.pluck :meal_time
+    render :json => mealtime
+  end
+
+
+
 
   def new
     # binding.pry
