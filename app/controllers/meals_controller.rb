@@ -39,8 +39,14 @@ class MealsController < ApplicationController
   end
 
   def update
+    meal_time = DateTime.parse(meal_params[:meal_date] + ' ' + meal_params[:meal_time])
+
     meal = Meal.find params[:id]
-    meal.update meal_params
+    meal.update({
+      user_id: meal_params[:user_id],
+      total_carbs: meal_params[:total_carbs],
+      meal_time: meal_time
+    })
     redirect_to meal_path
   end
 
