@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def testing
-    @user = User.find params[:id]
+    @user = User.find @current_user.id
     @ip_address = request.remote_ip
     @list = Geocoder.search @ip_address
     @city = @list.first.city
