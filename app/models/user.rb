@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   # end
 
   def check_weather(lat, long)
-    @forecast = ForecastIO.forecast(-33.8600, 151.2094)
+    @forecast = ForecastIO.forecast(lat, long)
 
     6.times do |i|
       maxTempToday = @forecast["daily"]["data"][(i-1)]["temperatureMax"]
