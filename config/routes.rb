@@ -16,26 +16,36 @@ Rails.application.routes.draw do
     collection { post :import }
   end
 
+  # JSON ROUTES
   get '/dashboard' => 'users#dashboard'
   get '/weather' => 'pages#weather'
+  # BLOODSUGAR DATA JSON PAGE
   get '/readingdata' => 'bloodsugars#data'
   get '/readingdata/bslevel' => 'users#bslevel'
   get '/readingdata/readingtime' => 'users#readingtime'
   get '/readingdata/bslevel_lastthirty' => 'users#bslevel_lastthirty'
   get '/readingdata/readingtime_lastthirty' => 'users#readingtime_lastthirty'
+  # MEAL DATA JSON PAGE
   get '/readingdata/foods' => 'foods#index'
   get '/readingdata/carbs' => 'foods#carbs'
   get '/readingdata/mealtime' => 'foods#mealtime'
   get '/readingdata/carbs_lastthirty' => 'foods#carbs_lastthirty'
   get '/readingdata/mealtime_lastthirty' => 'foods#mealtime_lastthirty'
+  # ACTIVITY DATA JSON PAGE
+  get '/readingdata/duration' => 'activities#duration'
+  get '/readingdata/activity_time' => 'activities#activity_time'
+  get '/readingdata/duration_lastthirty' => 'activities#duration_lastthirty'
+  get '/readingdata/activity_time_lastthirty' => 'activities#activity_time_lastthirty'
 
+  # SESSION LOGIN PAGE
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
 
-  post '/whatever' => "foods#test"
-
+  # OPEN SINGLE CALC PAGE
   get '/singlecalculation' => 'pages#calc'
 
+  # TODO: DO WE NEED THESE?
+  post '/whatever' => "foods#test"
   get '/testing' => 'pages#testing'
 end
