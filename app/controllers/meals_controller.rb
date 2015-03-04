@@ -11,8 +11,6 @@ class MealsController < ApplicationController
   end
 
   def create
-    # binding.pry
-
     meal_time = DateTime.parse(meal_params[:meal_date] + ' ' + meal_params[:meal_time])
 
     meal = @current_user.meals.create({
@@ -28,12 +26,7 @@ class MealsController < ApplicationController
     @meal = Meal.find params[:id]
   end
 
-  # def complete
-  #   @meal = Meal.find params[:meal_id]
-  # end
-  # refer to meal model for calculate_total_carbs method to calculate total meal carbs.
 
-  # might not need this, as it is the foods themselves that will be edited
   def edit
     @meal = Meal.find params[:id]
   end

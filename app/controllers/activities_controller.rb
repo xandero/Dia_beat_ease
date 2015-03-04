@@ -8,7 +8,15 @@ class ActivitiesController < ApplicationController
     end
 
     def create
-        activity = Activity.create activity_params
+        activity_time = DateTime.parse(activity_params[:activity_date] + ' ' + activity_params[:activity_time])
+
+        activity = @current_user.activities.create({
+            user_id: @current_user.id,
+            activityname: activity_params[:activityname],
+            duration: activity_params[:duration],
+            intensity: activity_params[:intensity],
+            activity_time: activity_time
+        })
         redirect_to activity
     end
 
@@ -34,6 +42,6 @@ class ActivitiesController < ApplicationController
 
     private
     def activity_params
-        params.require(:activity).permit(:activityname, :duration, :intensity, :activity_time)
+        params.require(:activity).permit(:user_id, :activityname, :duration, :intensity, :activity_time, :activity_date)
     end
 end

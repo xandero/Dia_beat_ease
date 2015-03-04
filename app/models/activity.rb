@@ -10,6 +10,7 @@
 #  created_at    :datetime
 #  updated_at    :datetime
 #  user_id       :integer
+#  activity_date :datetime
 #
 
 class Activity < ActiveRecord::Base
