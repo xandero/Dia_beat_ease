@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get '/readingdata/bslevel' => 'users#bslevel'
   get '/readingdata/readingtime' => 'users#readingtime'
 
+  get '/readingdata/bslevel_lastthirty' => 'users#bslevel_lastthirty'
+  get '/readingdata/readingtime_lastthirty' => 'users#readingtime_lastthirty'
+
   get '/readingdata/foods' => 'foods#index'
   get '/readingdata/carbs' => 'foods#carbs'
   get '/readingdata/mealtime' => 'foods#mealtime'

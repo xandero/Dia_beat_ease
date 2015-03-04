@@ -21,14 +21,14 @@ class Page
         message += "\n On #{day}, the maximum temperature is forecast to increase by #{difference} degrees. "
       end
       if ( minTempToday - minTempMorrow ) > 2
-        difference = (maxTempToday - maxTempMorrow).round(0).abs
+        difference = (minTempToday - minTempMorrow).round(0).abs
         message += "\n On #{day}, the minimum temperature is forecast to decrease by #{difference} degrees. "
-      elsif ( maxTempMorrow - maxTempToday ) > 2
-        difference = (maxTempMorrow - maxTempToday).round(0).abs
+      elsif ( minTempMorrow - minTempToday ) > 2
+        difference = (minTempMorrow - minTempToday).round(0).abs
         message += "\n On #{day}, the minimum temperature is forecast to increase by #{difference} degrees. "
       end
     end
-    message + "\n - The Diabet-ease Team"
+    message + "\n\n - The Diabet-ease Team"
   end
 
   def self.notification(message, email, name)
