@@ -33,20 +33,20 @@ class Page
 
   def self.notification(message, email, name)
 
-  m = Mandrill::API.new
-    text = {
-    :subject=> "Weather Update",
-    :from_name=> "Diabet-ease",
-    :text=> "#{message}",
-    :to=>[
-    {
-    :email=> "#{email}",
-    :name=> "#{name}"
-    }
-    ],
-    :from_email=>"alerts@diabetease.com"
-    }
-    sending = m.messages.send text
+    m = Mandrill::API.new
+      text = {
+      :subject=> "Weather Update",
+      :from_name=> "Diabet-ease",
+      :text=> "#{message}",
+      :to=>[
+      {
+      :email=> "#{email}",
+      :name=> "#{name}"
+      }
+      ],
+      :from_email=>"alerts@diabetease.com"
+      }
+      sending = m.messages.send text
   end
 end
 
