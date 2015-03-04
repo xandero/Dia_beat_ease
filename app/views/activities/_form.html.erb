@@ -1,15 +1,15 @@
 <%= form_for @activity do |f| %>
-    <%= f.label :activityname, "Activity name" %>
-    <%= f.text_field :activityname %>
+    <%= f.label :activityname, "Activity name", :title => 'Describe the type of activity that you completed.' %>
+    <%= f.text_field :activityname, :autofocus => true, :required => true, :title => 'Describe the type of activity that you completed.' %>
 
-    <%= f.label :duration, "Duration" %>
-    <%= f.text_field :duration %>
+    <%= f.label :duration, "Duration (mins)", :title => 'How many minutes did you do this for?' %>
+    <%= f.number_field :duration, :title => 'How many minutes did you do this for?' %>
 
-    <%= f.label :intensity, "Intensity" %>
-    <%= f.number_field :intensity %>
+    <%= f.label :intensity, "Intensity (1-10)", :title => "On a scale of 1 to 10, how intense was this activity? For example, a casual walk would be 1 or 2. However, a sprint session where you achieve > 80% of your maximum heart rate would be around 8-10" %>
+    <%= f.number_field :intensity, :min => '1', :max => '10', :title => "On a scale of 1 to 10, how intense was this activity? For example, a casual walk would be 1 or 2. However, a sprint session where you achieve > 80% of your maximum heart rate would be around 8-10" %> %>
 
-    <%= f.label :activity_time, "Activity time" %>
-    <%= f.time_field :activity_time %>
+    <%= f.label :activity_time, "Activity end time", :title => 'What time did you finish this activity?' %>
+    <%= f.time_field :activity_time, :title => 'What time did you finish this activity?' %>
 
     <%= f.submit %>
 <% end %>
