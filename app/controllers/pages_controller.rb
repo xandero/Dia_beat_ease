@@ -1,5 +1,10 @@
 class PagesController < ApplicationController
 
+  after_action :allow_iframe, only: :embed
+
+  def embed
+  end
+
   def index
   end
   
@@ -13,6 +18,12 @@ class PagesController < ApplicationController
   end
 
   def calc
+  end
+
+private
+
+  def allow_iframe
+    response.headers.except! 'X-Frame-Options'
   end
 
 end

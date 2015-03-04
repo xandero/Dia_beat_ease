@@ -14,11 +14,6 @@ require 'csv'
 
 ForecastIO.default_params = {units: 'si'}
 
-# Enabling iframe support on heroku
-config.action_dispatch.default_headers = {
-    'X-Frame-Options' => 'ALLOWALL'
-}
-
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
