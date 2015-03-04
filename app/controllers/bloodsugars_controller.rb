@@ -13,7 +13,7 @@ class BloodsugarsController < ApplicationController
         csvreadingtime = Time.parse(row['Date'] + 'T' + row['Time'])
         # COMPARE CSV DATE WITH DATABASE
          if @current_user.bloodsugars.none? { |x| x.readingtime == csvreadingtime }
-            Bloodsugar.create!(readingtime: csvreadingtime, bslevel: row['Result'], user_id: @current_user.id )
+            @current_user.bloodsugars.create!(readingtime: csvreadingtime, bslevel: row['Result'], user_id: @current_user.id )
           else
             # TO DO - COVERT TO PROMPT FOR USER
             puts "this data has been duplicated"
