@@ -1,9 +1,6 @@
 class PagesController < ApplicationController
 
-  after_action :allow_iframe, only: :embed
-
-  def embed
-  end
+  after_action :allow_iframe, only: :weather
 
   def index
   end
@@ -18,6 +15,9 @@ class PagesController < ApplicationController
   end
 
   def calc
+  end
+
+  def weather
   end
 
 private
