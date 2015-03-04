@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root :to => 'pages#landing'
+  get '/uhoh' => 'pages#redirect'
 
   resources :users, :activities
 

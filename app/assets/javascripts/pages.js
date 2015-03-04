@@ -50,7 +50,7 @@ $(document).ready(function() {
   });
 
   $('#search-results').on('click', 'a', function() {
-    $('#calc-foodname').val($(this).data('foodname'));
+    // $('#calc-foodname').val($(this).data('foodname'));
     $(this).addClass('selected');
     var item_id = $(this).data('item_id');
 
@@ -73,10 +73,16 @@ $(document).ready(function() {
     }).done(function(result) {
       console.log(result);
 
+      $('#calc-foodname').val(result.item_name);
       $('#calc-serving-size-qty').val(result.nf_serving_size_qty);
       $('#calc-serving-size-weight').val(result.nf_serving_weight_grams);
       $('#calc-serving-size-unit').val(result.nf_serving_size_unit);
       $('#calc-carbs').val(result.nf_total_carbohydrate);
+    }).done(function () {
+      var userBolusInsulin = parseInt($('#single-calc-dosage').data('bolus-insulin'));
+      var carbCount = parseInt($('#calc-carbs').val());
+      var singleDosage = carbCount / 15 * userBolusInsulin;
+      $('#single-calc-dosage').text('Insulin Dosage: ' + (Math.round( singleDosage * 10 ) / 10));
     });
   });
 });

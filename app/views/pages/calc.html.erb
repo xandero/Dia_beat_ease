@@ -9,6 +9,8 @@
       <a id="calculate" class="btn btn-default">Search</a>
     </form>
     <div id="search-results"></div>
+    <!-- hide this div automatically and toggle the class when a search is made -->
+    <div id="insulin-amount" class="text-center"><span data-bolus-insulin="<%= @current_user.bolus_insulin %>" id="single-calc-dosage" class="badge">Insulin dosage: 0</span></div>
   </div>
 
   <div class="col-md-6">
