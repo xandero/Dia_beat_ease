@@ -111,7 +111,7 @@ $(document).ready(function() {
     // when the two requests are done then draw the chart
     $.when(mealtimeRequest, carbsRequest).then(function() {
         var myCarbChart = new Chart(ctx).Line(carbsData, {
-            datasetStrokeWidth : 10,
+            // datasetStrokeWidth : 10,
             pointDot : false
         });
     })
