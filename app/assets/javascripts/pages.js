@@ -33,6 +33,8 @@ var listResults = function (result) {
 
 
 $(document).ready(function() {
+  $('#single-calc').focus();
+
   $('#calculate').on('click', function (event) {
     event.preventDefault();
     $('#search-results').empty();
