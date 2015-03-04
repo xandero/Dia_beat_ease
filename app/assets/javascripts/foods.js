@@ -82,6 +82,12 @@ $(document).ready(function() {
 
   $('#form-submit').on('click', function (event) {
     event.preventDefault();
+
+    if (($('#form-foodname') == "") || ($('#form-quantity').val() <= 0)) {
+      console.log('error, bitch');
+      return;
+    }
+
     var mealId = $('#form-meal-id').val();
 
     $.post('/meals/' + mealId + '/foods', {
