@@ -23,7 +23,7 @@ class PagesController < ApplicationController
 private
 
   def allow_iframe
-    response.headers.except! 'X-Frame-Options'
+    response.headers.except! 'X-Xss-Protection'
   end
 
 end
