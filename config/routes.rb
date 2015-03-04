@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root :to => 'pages#landing'
   get '/uhoh' => 'pages#redirect'
 
+  get '/index' => 'pages#index'
+
   resources :users, :activities
 
   resources :bloodsugars, only: [:index] do
