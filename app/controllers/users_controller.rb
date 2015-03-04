@@ -53,6 +53,16 @@ class UsersController < ApplicationController
     render :json => readingtimes
   end
 
+  def bslevel_lastthirty
+    bslevels = Bloodsugar.limit(30).pluck(:bslevel).reverse 
+    render :json => bslevels
+  end
+
+  def readingtime_lastthirty
+    readingtimes = Bloodsugar.limit(30).pluck(:readingtime).reverse 
+    render :json => readingtimes
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :email, :dob, :gender, :weight, :height, :basal_insulin, :bolus_insulin, :diabetes_type, :password, :password_confirmation)

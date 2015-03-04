@@ -21,11 +21,11 @@ $(document).ready(function() {
               // this refers to the canvas (which is returned in an array when targeted)
     var ctx = $chart.get(0).getContext('2d');
 
-    var bslevelRequest = $.getJSON('/readingdata/bslevel').done(function (bslevels) {
+    var bslevelRequest = $.getJSON('/readingdata/bslevel_lastthirty').done(function (bslevels) {
         data.datasets[0].data = bslevels;
     });
 
-    var readingtimeRequest = $.getJSON('/readingdata/readingtime').done(function (readingtimes) {
+    var readingtimeRequest = $.getJSON('/readingdata/readingtime_lastthirty').done(function (readingtimes) {
         data.labels = readingtimes;
     });
 
@@ -39,4 +39,10 @@ $(document).ready(function() {
 
 });
 
+// EXAMPLE LINE DATA
+// var myLineChart = new Chart(ctx).Line(data, {
+//     labelsFilter: function (value, index) {
+//         return (index + 1) % 5 !== 0;
+//     }
+// });
 
