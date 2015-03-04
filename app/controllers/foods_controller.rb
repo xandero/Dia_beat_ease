@@ -22,7 +22,15 @@ class FoodsController < ApplicationController
     render :json => mealtime
   end
 
+  def carbs_lastthirty
+    carbs = Meal.limit(30).pluck(:total_carbs)
+    render :json => carbs   
+  end
 
+  def mealtime_lastthirty
+    mealtime = Meal.limit(30).pluck(:meal_time)
+    render :json => mealtime
+  end
 
 
   def new
