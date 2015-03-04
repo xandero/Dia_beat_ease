@@ -9,7 +9,7 @@ class SessionController < ApplicationController
         redirect_to '/dashboard'
     else
         flash[:error] = "Invalid login or password"
-        redirect_to(login_path)
+        redirect_to root_path
     end
   end
 
