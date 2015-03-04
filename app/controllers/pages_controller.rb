@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
+
+  def index
+  end
+  
   def landing
-    
   end
 
   def about
@@ -16,6 +19,4 @@ class PagesController < ApplicationController
 
   def calc
   end
-
-  
 end

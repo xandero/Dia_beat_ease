@@ -8,7 +8,7 @@ class SessionController < ApplicationController
         session[:user_id] = @user.id
         redirect_to '/dashboard'
     else
-        flash[:error] ="Invalid login or password"
+        flash[:error] = "Invalid login or password"
         redirect_to(login_path)
     end
   end

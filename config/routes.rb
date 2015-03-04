@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get '/uhoh' => 'pages#redirect'
 
+  get '/index' => 'pages#index'
+
   resources :users, :activities
 
   resources :bloodsugars, only: [:index] do
