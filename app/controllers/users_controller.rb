@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   require 'mandrill'
+  before_action :check_if_logged_in, :only => [:index]
 
   def index
     @users = User.all
@@ -41,6 +42,11 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @user = User.find_by :id => session[:user_id]    
+    @ip_address = request.remote_ip
+    @list = Geocoder.search @ip_address
+    @city = @list.first.city
+    @user.update(:lat => @list[0].latitude, :long => @list[0].longitude, :location => @city)  
   end
 
   def readingtime
@@ -54,13 +60,13 @@ class UsersController < ApplicationController
   end
 
   def bslevel_lastthirty
-    bslevels = Bloodsugar.limit(30).pluck(:bslevel).reverse 
+    bslevels = Bloodsugar.where(:user_id => @current_user.id).limit(30).pluck(:bslevel).reverse 
     render :json => bslevels
   end
 
   def readingtime_lastthirty
     readingtimeStrf = []
-    readingtimes = Bloodsugar.limit(30).pluck(:readingtime).reverse
+    readingtimes = Bloodsugar.where(:user_id => @current_user.id).limit(30).pluck(:readingtime).reverse
       readingtimes.each do |readingtime|
         readingtimeStrf << readingtime.strftime("%R, %d/%m")
       end
@@ -72,4 +78,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :email, :dob, :gender, :weight, :height, :basal_insulin, :bolus_insulin, :diabetes_type, :password, :password_confirmation)
   end
+
+  def check_if_logged_in
+    redirect_to(root_path) unless @current_user.present?
+  end
+
 end

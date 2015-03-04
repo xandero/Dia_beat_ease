@@ -5,17 +5,11 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate
 
-  # def restrictaccess
-  #   if @current_user == nil
-  #     redirect_to '/uhoh'
-  #   end
-  # end
-
-    private
-    def authenticate
-        if session[:user_id].present?
-            @current_user = User.find_by :id =>session[:user_id]
-        end
-        session[:user_id] = nil unless @current_user.present?
-    end
+  private
+  def authenticate
+      if session[:user_id].present?
+          @current_user = User.find_by :id =>session[:user_id]
+      end
+      session[:user_id] = nil unless @current_user.present?
+  end
 end
