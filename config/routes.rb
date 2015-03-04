@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
-  root :to => 'pages#landing'
+  root :to => 'pages#index'
 
   get '/uhoh' => 'pages#redirect'
 
   get '/index' => 'pages#index'
+  get '/gridcode' => 'pages#gridcode'
 
   resources :users, :activities
 
@@ -18,8 +19,8 @@ Rails.application.routes.draw do
 
   get '/dashboard' => 'users#dashboard'
   get '/weather' => 'pages#weather'
-  get '/readingdata' => 'bloodsugars#data'
   get '/readingdata/bslevel' => 'users#bslevel'
+  get '/readingdata' => 'bloodsugars#data'
   get '/readingdata/readingtime' => 'users#readingtime'
   get '/readingdata/bslevel_lastthirty' => 'users#bslevel_lastthirty'
   get '/readingdata/readingtime_lastthirty' => 'users#readingtime_lastthirty'
