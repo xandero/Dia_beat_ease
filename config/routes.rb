@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   get '/dashboard' => 'users#dashboard'
-  
+  get '/weather' => 'pages#weather'
   get '/readingdata' => 'bloodsugars#data'
   get '/readingdata/bslevel' => 'users#bslevel'
   get '/readingdata/readingtime' => 'users#readingtime'

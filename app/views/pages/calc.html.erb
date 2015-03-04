@@ -8,7 +8,7 @@
     </form>
     <div id="search-results"></div>
     <!-- hide this div automatically and toggle the class when a search is made -->
-    <div id="insulin-amount" class="text-center"><span data-bolus-insulin="<%= @current_user.bolus_insulin %>" id="single-calc-dosage" class="badge">Insulin dosage: 0</span></div>
+    <div id="insulin-amount" class="text-center"><span id="single-calc-dosage" class="badge">Insulin dosage: 0</span></div>
   </div>
 
   <div class="col-md-6">
@@ -17,7 +17,7 @@
       <input type="text" id="calc-foodname" name="calc-foodname" class="form-control" readonly="readonly" required>
 
       <label for="calc-quantity">Quantity</label>
-          <input type="number" id="calc-quantity" name="calc-quantity" class="form-control" min="0.1" step="0.1">
+      <input type="number" id="calc-quantity" name="calc-quantity" class="form-control" min="0.1" step="0.1" required>
 
       <label for="calc-serving-size-qty">Serving size qty</label>
       <input type="text" id="calc-serving-size-qty" name="calc-serving-size-qty" class="form-control" readonly="readonly" required>
@@ -30,6 +30,11 @@
 
       <label for="calc-carbs">Carbs</label>
       <input type="text" id="calc-carbs" name="calc-carbs" class="form-control" readonly="readonly" required>
+
+      <label for="calc-bolus">Bolus Insulin</label>
+      <input type="text" id="calc-bolus" name="calc-bolus" class="form-control" required>
+
+      <button id="calc-it">Calculate Dosage</button>
     </form>
   </div>
 </div>

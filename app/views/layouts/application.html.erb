@@ -168,6 +168,9 @@
                         <li>
                             <a href="/activities"><i class="fa fa-fw fa-heartbeat"></i> Add Activity Data</a>
                         </li>
+                         <li>
+                            <a href="/weather"><i class="fa fa-fw fa-cloud"></i> Weather Forecast</a>
+                        </li>
                     </ul>
                 </div>
             <% end %>
@@ -177,7 +180,8 @@
         <div id="page-wrapper">
         <!-- RENDER OTHER VIEW AREA -->
 
-        <%= yield %>
+            <%= yield %>
+
         </div>
         <!-- /#page-wrapper -->
 
@@ -190,7 +194,7 @@
                 <td align="right">{{bslevel}}</td>
             </tr>
 </script>
-
 </body>
-<div id="footer">DISCLAIMER: The content of this web site is not intended to be a substitute for professional medical advice, diagnosis or treatment. Do not disregard your doctor's advice or delay in seeking it because of something you have read on this website.</div>
+<div id="footer">
+DISCLAIMER: The content of this web site is not intended to be a substitute for professional medical advice, diagnosis or treatment. Do not disregard your doctor's advice or delay in seeking it because of something you have read on this website.</div>
 </html>
