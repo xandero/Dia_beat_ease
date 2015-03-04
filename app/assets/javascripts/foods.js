@@ -48,7 +48,7 @@ $(document).ready(function() {
   });
 
   $('#search-results').on('click', 'a', function() {
-    $('#form-foodname').val($(this).data('foodname'));
+    // $('#form-foodname').val($(this).data('foodname'));
     $(this).addClass('selected');
     $('#form-quantity').focus();
     var item_id = $(this).data('item_id');
@@ -72,6 +72,7 @@ $(document).ready(function() {
     }).done(function(result) {
       console.log(result);
 
+      $('#form-foodname').val(result.item_name);
       $('#form-serving-size-qty').val(result.nf_serving_size_qty);
       $('#form-serving-size-weight').val(result.nf_serving_weight_grams);
       $('#form-serving-size-unit').val(result.nf_serving_size_unit);
