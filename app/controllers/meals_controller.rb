@@ -53,7 +53,7 @@ class MealsController < ApplicationController
   def destroy
     meal = Meal.find params[:id]
     meal.destroy
-    redirect_to meal_path
+    redirect_to meals_path
   end
 
   private

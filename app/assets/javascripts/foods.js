@@ -16,7 +16,6 @@ var listResults = function (result) {
   _(foods).each(function (food) {
     var $link = $('<a>').text(food.fields.item_name);
 
-    // can't seem to attach .data() k/v pairs
     $link.attr('data-foodname', food.fields.item_name)
     $link.attr('data-item_id', food.fields.item_id);
 
@@ -51,6 +50,7 @@ $(document).ready(function() {
   $('#search-results').on('click', 'a', function() {
     $('#form-foodname').val($(this).data('foodname'));
     $(this).addClass('selected');
+    $('#form-quantity').focus();
     var item_id = $(this).data('item_id');
 
     // get rid of other results
@@ -137,6 +137,7 @@ $(document).ready(function() {
   // empties everything when the food is added to the meal
   $('#form-submit').on('click', function () {
     // $('#added-foods').empty();
+    $('#query').focus();
     $('#search-results').empty();
     $('#query').val('');
     $('#form-foodname').val('');
