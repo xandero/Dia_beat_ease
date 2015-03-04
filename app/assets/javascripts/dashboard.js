@@ -2,14 +2,26 @@ var data = {
     labels: [],
     datasets: [
         {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.5)",
+            label: "Blood Sugar Level",
+            fillColor: "rgba(220,0,0,0.5)",
             strokeColor: "rgba(220,220,220,0.8)",
             highlightFill: "rgba(220,220,220,0.75)",
             highlightStroke: "rgba(220,220,220,1)",
             data: []
+        },
+
+// DRAW OPTIMAL LINE
+    {
+            label: "Average Blood Sugar Level",
+            fillColor: "rgba(220,0,0,0.5)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            data: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
         }
     ]
+
+// DRAW ACTIVITY DATA
 };
 
 $(document).ready(function() {
@@ -29,20 +41,20 @@ $(document).ready(function() {
         data.labels = readingtimes;
     });
 
-    
-
     // the above two requests return promises
     // when the two requests are done then draw the chart
     $.when(readingtimeRequest, bslevelRequest).then(function() {
-        var myLineChart = new Chart(ctx).Line(data);
+        var myLineChart = new Chart(ctx).Line(data, {
+            datasetStrokeWidth : 10, 
+            pointDot : false
+        });
     })
 
 });
 
-// EXAMPLE LINE DATA
+// EXAMPLE LINE STEP
 // var myLineChart = new Chart(ctx).Line(data, {
 //     labelsFilter: function (value, index) {
 //         return (index + 1) % 5 !== 0;
 //     }
 // });
-

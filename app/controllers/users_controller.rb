@@ -62,7 +62,7 @@ class UsersController < ApplicationController
     readingtimeStrf = []
     readingtimes = Bloodsugar.limit(30).pluck(:readingtime).reverse
       readingtimes.each do |readingtime|
-        readingtimeStrf << readingtime.strftime("%R, %e %B")
+        readingtimeStrf << readingtime.strftime("%R, %d/%m")
       end
     render :json => readingtimeStrf
   end
