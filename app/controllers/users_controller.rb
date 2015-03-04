@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   require 'mandrill'
+  before_action :check_if_logged_in, :only => [:index]
 
   def index
     @users = User.all
@@ -77,4 +78,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :email, :dob, :gender, :weight, :height, :basal_insulin, :bolus_insulin, :diabetes_type, :password, :password_confirmation)
   end
+
+  def check_if_logged_in
+    redirect_to(root_path) unless @current_user.present?
+  end
+
 end

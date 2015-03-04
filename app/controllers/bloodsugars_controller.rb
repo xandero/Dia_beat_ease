@@ -1,5 +1,8 @@
 class BloodsugarsController < ApplicationController
 
+  before_action :check_if_logged_in, :only => [:index]
+
+
   def index
     @bloodsugars = Bloodsugar.where(:user_id => @current_user.id)
   end
@@ -25,6 +28,11 @@ class BloodsugarsController < ApplicationController
   def data
     render :json => Bloodsugar.where(:user_id => @current_user.id)
     # binding.pry
+  end
+
+  private
+  def check_if_logged_in
+    redirect_to(root_path) unless @current_user.present?
   end
 
 end

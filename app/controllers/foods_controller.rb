@@ -1,5 +1,7 @@
 class FoodsController < ApplicationController
 
+  before_action :check_if_logged_in, :only => [:index]
+
   # all action logic below will have to be changed around when working properly
   # needs to be related to the meal in question
   # some might not even be needed as they will be accessed via the meal's food array
