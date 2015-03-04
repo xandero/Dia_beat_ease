@@ -43,14 +43,14 @@ class UsersController < ApplicationController
   def dashboard
   end
 
-  def bslevel
-    bslevels = Bloodsugar.pluck :bslevel
-    render :json => bslevels
-  end
-
   def readingtime
     readingtimes = Bloodsugar.pluck :readingtime
     render :json => readingtimes
+  end
+
+  def bslevel
+    bslevels = Bloodsugar.pluck :bslevel
+    render :json => bslevels
   end
 
   def bslevel_lastthirty
@@ -59,9 +59,14 @@ class UsersController < ApplicationController
   end
 
   def readingtime_lastthirty
-    readingtimes = Bloodsugar.limit(30).pluck(:readingtime).reverse 
-    render :json => readingtimes
+    readingtimeStrf = []
+    readingtimes = Bloodsugar.limit(30).pluck(:readingtime).reverse
+      readingtimes.each do |readingtime|
+        readingtimeStrf << readingtime.strftime("%R, %e %B")
+      end
+    render :json => readingtimeStrf
   end
+
 
   private
   def user_params
