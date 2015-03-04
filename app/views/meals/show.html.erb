@@ -19,22 +19,22 @@
       <div id="ajax-form">
         <form>
           <label for="form-foodname">Name of food</label>
-          <input type="text" id="form-foodname" name="form-foodname" class="form-control" readonly="readonly" required>
+          <input type="text" id="form-foodname" name="form-foodname" class="form-control" readonly="readonly">
 
           <label for="form-quantity">Quantity</label>
-          <input type="text" id="form-quantity" name="form-quantity" class="form-control" min="0.1" step="0.1" required>
+          <input type="number" id="form-quantity" name="form-quantity" class="form-control" min="0.1" step="0.1">
 
           <label for="form-serving-size-qty">Serving size qty</label>
-          <input type="text" id="form-serving-size-qty" name="form-serving-size-qty" class="form-control" readonly="readonly" required>
+          <input type="text" id="form-serving-size-qty" name="form-serving-size-qty" class="form-control" readonly="readonly">
 
           <label for="form-serving-size-unit">Serving size unit</label>
-          <input type="text" id="form-serving-size-unit" name="form-serving-size-unit" class="form-control" readonly="readonly" required>
+          <input type="text" id="form-serving-size-unit" name="form-serving-size-unit" class="form-control" readonly="readonly">
 
           <label for="form-serving-size-weight">Serving size weight</label>
-          <input type="text" id="form-serving-size-weight" name="form-serving-size-weight" class="form-control" readonly="readonly" required>
+          <input type="text" id="form-serving-size-weight" name="form-serving-size-weight" class="form-control" readonly="readonly">
 
           <label for="form-carbs">Carbs</label>
-          <input type="text" id="form-carbs" name="form-carbs" class="form-control" readonly="readonly" required>
+          <input type="text" id="form-carbs" name="form-carbs" class="form-control" readonly="readonly">
 
           <input type="hidden" name="form-meal-id" id="form-meal-id" value="<%= @meal.id %>">
           <br>
