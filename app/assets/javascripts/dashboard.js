@@ -58,7 +58,7 @@ $(document).ready(function() {
     // when the two requests are done then draw the chart
     $.when(readingtimeRequest, bslevelRequest).then(function() {
         var myLineChart = new Chart(ctx).Line(data, {
-            datasetStrokeWidth : 10,
+            // datasetStrokeWidth : 10,
             pointDot : false
         });
     })
@@ -111,8 +111,8 @@ $(document).ready(function() {
     // when the two requests are done then draw the chart
     $.when(mealtimeRequest, carbsRequest).then(function() {
         var myCarbChart = new Chart(ctx).Line(carbsData, {
-            // datasetStrokeWidth : 10,
-            pointDot : false
+            datasetStrokeWidth : false,
+            pointDot : true
         });
     })
 
