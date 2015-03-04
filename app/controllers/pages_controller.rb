@@ -1,7 +1,5 @@
 class PagesController < ApplicationController
 
-  after_action :allow_iframe
-
   def index
   end
   
@@ -19,12 +17,5 @@ class PagesController < ApplicationController
 
   def weather
   end
-
-private
-
-  def allow_iframe
-    response.headers.except! 'X-Xss-Protection'
-  end
-
 end
 
