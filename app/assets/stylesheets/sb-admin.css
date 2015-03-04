@@ -223,5 +223,15 @@ ul.alert-dropdown {
     color: #df8a13;
 }
 
+.features .col-lg-4:first-child .icon-stack-base {
+    color: #337ab7;
+}
 
+.features .col-lg-4:nth-child(2) .icon-stack-base {
+    color: #337ab7;
+}
+
+.features .col-lg-4:nth-child(3) .icon-stack-base {
+    color: #337ab7;
+}
 
