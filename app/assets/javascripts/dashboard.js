@@ -13,12 +13,21 @@ var data = {
         },
 
 // DRAW OPTIMAL LINE
-    {
-            label: "Average Blood Sugar Level",
+        {
+            label: "Optimal Blood Sugar Level",
+            fillColor: "rgba(0,220,0,0.5)",
+            // strokeColor: "rgba(220,220,220,0.5)",
+            // highlightFill: "rgba(220,220,220,0.75)",
+            // highlightStroke: "rgba(220,220,220,1)",
+            data: [8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8]
+        },
+
+        {
+            label: "Danger Blood Sugar Level",
             fillColor: "rgba(220,0,0,0.5)",
-            strokeColor: "rgba(220,220,220,0.8)",
-            highlightFill: "rgba(220,220,220,0.75)",
-            highlightStroke: "rgba(220,220,220,1)",
+            // strokeColor: "rgba(220,220,220,0.5)",
+            // highlightFill: "rgba(220,220,220,0.75)",
+            // highlightStroke: "rgba(220,220,220,1)",
             data: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
         }
     ]
@@ -27,6 +36,7 @@ var data = {
 };
 
 $(document).ready(function() {
+
     Chart.defaults.global.responsive = true;
     // if this chart doesn't exist then don't run the rest of the code in doc ready, just return and 'break'
     var $chart = $('#myChart');
