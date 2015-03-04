@@ -9,10 +9,10 @@ class SessionController < ApplicationController
         session[:user_id] = @user.id
 
         # just put in for testing purposes, default page after login can be decided later
-        redirect_to root_path #'/testing'
+        redirect_to '/testing'
         #redirect_to(user_path(@user))
     else
-        flash[:error] ="Invalid login or password"
+        flash[:error] = "Invalid login or password"
         redirect_to(login_path)
     end
   end
