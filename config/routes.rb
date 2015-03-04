@@ -17,9 +17,15 @@ Rails.application.routes.draw do
   get '/readingdata/bslevel_lastthirty' => 'users#bslevel_lastthirty'
   get '/readingdata/readingtime_lastthirty' => 'users#readingtime_lastthirty'
 
+
   get '/readingdata/foods' => 'foods#index'
+
   get '/readingdata/carbs' => 'foods#carbs'
   get '/readingdata/mealtime' => 'foods#mealtime'
+
+  get '/readingdata/carbs_lastthirty' => 'foods#carbs_lastthirty'
+  get '/readingdata/mealtime_lastthirty' => 'foods#mealtime_lastthirty'
+
 
 
   # get '/readingcharts' => 'bloodsugars#charts'
