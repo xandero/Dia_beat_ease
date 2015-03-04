@@ -86,7 +86,7 @@ $(document).ready(function() {
   $('#calc-it').on('click', function (event) {
     event.preventDefault();
     var userBolusInsulin = parseInt($('#calc-bolus').val());
-    var carbCount = parseInt($('#calc-carbs').val());
+    var carbCount = parseInt($('#calc-carbs').val()) * parseFloat($('#calc-quantity').val());
     var singleDosage = carbCount / 15 * userBolusInsulin;
     $('#single-calc-dosage').text('Insulin Dosage: ' + (Math.round( singleDosage * 10 ) / 10));
   });
