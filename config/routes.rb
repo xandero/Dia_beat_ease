@@ -28,11 +28,6 @@ Rails.application.routes.draw do
   get '/readingdata/carbs_lastthirty' => 'foods#carbs_lastthirty'
   get '/readingdata/mealtime_lastthirty' => 'foods#mealtime_lastthirty'
 
-<<<<<<< HEAD
-=======
-  # get '/readingcharts' => 'bloodsugars#charts'
-
->>>>>>> 9ddf17e99f9e320280ea924d2b4f4ea6be7848f6
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
