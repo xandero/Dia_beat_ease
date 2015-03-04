@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-  after_action :allow_iframe, only: :weather
+  after_action :allow_iframe
 
   def index
   end
