@@ -1,5 +1,4 @@
 // BLOODSUGAR CHART
-
 var data = {
     labels: [],
     datasets: [
@@ -12,7 +11,7 @@ var data = {
             data: []
         },
 
-// DRAW OPTIMAL LINE
+// DRAW OPTIMAL LINE [5..8]
         {
             label: "Optimal Blood Sugar Level",
             fillColor: "rgba(0,220,0,0.5)",
@@ -21,18 +20,16 @@ var data = {
             // highlightStroke: "rgba(220,220,220,1)",
             data: [8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8]
         },
-
+// DRAW DANGER LINE
         {
             label: "Danger Blood Sugar Level",
             fillColor: "rgba(220,0,0,0.5)",
             // strokeColor: "rgba(220,220,220,0.5)",
             // highlightFill: "rgba(220,220,220,0.75)",
             // highlightStroke: "rgba(220,220,220,1)",
-            data: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+            data: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
         }
     ]
-
-// DRAW ACTIVITY DATA
 };
 
 $(document).ready(function() {
