@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   resources :users, :activities
 
+  resources :meals do
+    resources :foods
+  end
+
   resources :bloodsugars, only: [:index] do
     collection { post :import }
   end
@@ -13,23 +17,15 @@ Rails.application.routes.draw do
   get '/readingdata' => 'bloodsugars#data'
   get '/readingdata/bslevel' => 'users#bslevel'
   get '/readingdata/readingtime' => 'users#readingtime'
-
   get '/readingdata/bslevel_lastthirty' => 'users#bslevel_lastthirty'
   get '/readingdata/readingtime_lastthirty' => 'users#readingtime_lastthirty'
-
-
   get '/readingdata/foods' => 'foods#index'
-
   get '/readingdata/carbs' => 'foods#carbs'
   get '/readingdata/mealtime' => 'foods#mealtime'
-
   get '/readingdata/carbs_lastthirty' => 'foods#carbs_lastthirty'
   get '/readingdata/mealtime_lastthirty' => 'foods#mealtime_lastthirty'
 
-
-
   # get '/readingcharts' => 'bloodsugars#charts'
-  # get '/weather' => 'bloodsugars#weather'
 
   get '/login' => 'session#new'
   post '/login' => 'session#create'
@@ -40,9 +36,4 @@ Rails.application.routes.draw do
   get '/singlecalculation' => 'pages#calc'
 
   get '/testing' => 'pages#testing'
-
-  resources :meals do
-    resources :foods
-  end
-
 end
