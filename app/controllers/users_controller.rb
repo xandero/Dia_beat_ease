@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-     @user = User.find_by :id => session[:user_id]    
+    @user = User.find_by :id => session[:user_id]    
     @ip_address = request.remote_ip
     @list = Geocoder.search @ip_address
     @city = @list.first.city
@@ -59,13 +59,13 @@ class UsersController < ApplicationController
   end
 
   def bslevel_lastthirty
-    bslevels = Bloodsugar.limit(30).pluck(:bslevel).reverse 
+    bslevels = Bloodsugar.where(:user_id => @current_user.id).limit(30).pluck(:bslevel).reverse 
     render :json => bslevels
   end
 
   def readingtime_lastthirty
     readingtimeStrf = []
-    readingtimes = Bloodsugar.limit(30).pluck(:readingtime).reverse
+    readingtimes = Bloodsugar.where(:user_id => @current_user.id).limit(30).pluck(:readingtime).reverse
       readingtimes.each do |readingtime|
         readingtimeStrf << readingtime.strftime("%R, %d/%m")
       end

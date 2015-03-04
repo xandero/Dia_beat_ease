@@ -1,8 +1,7 @@
 class BloodsugarsController < ApplicationController
 
   def index
-    @bloodsugars = Bloodsugar.all
-
+    @bloodsugars = Bloodsugar.where(:user_id => @current_user.id)
   end
 
   def import
@@ -20,7 +19,7 @@ class BloodsugarsController < ApplicationController
          end
       end
     end
-     render :json => Bloodsugar.all
+     render :json => Bloodsugar.where(:user_id => @current_user.id)
   end
 
   def data

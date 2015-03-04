@@ -23,12 +23,12 @@ class FoodsController < ApplicationController
   end
 
   def carbs_lastthirty
-    carbs = Meal.limit(30).pluck(:total_carbs)
+    carbs = Meal.where(:user_id => @current_user.id).limit(30).pluck(:total_carbs)
     render :json => carbs   
   end
 
   def mealtime_lastthirty
-    mealtime = Meal.limit(30).pluck(:meal_time)
+    mealtime = Meal.where(:user_id => @current_user.id).limit(30).pluck(:meal_time)
     render :json => mealtime
   end
 
