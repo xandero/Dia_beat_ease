@@ -1,5 +1,7 @@
 class FoodsController < ApplicationController
 
+  before_action :check_if_logged_in, :only => [:index]
+
   # all action logic below will have to be changed around when working properly
   # needs to be related to the meal in question
   # some might not even be needed as they will be accessed via the meal's food array
@@ -23,12 +25,12 @@ class FoodsController < ApplicationController
   end
 
   def carbs_lastthirty
-    carbs = Meal.limit(30).pluck(:total_carbs)
+    carbs = Meal.where(:user_id => @current_user.id).limit(30).pluck(:total_carbs)
     render :json => carbs   
   end
 
   def mealtime_lastthirty
-    mealtime = Meal.limit(30).pluck(:meal_time)
+    mealtime = Meal.where(:user_id => @current_user.id).limit(30).pluck(:meal_time)
     render :json => mealtime
   end
 

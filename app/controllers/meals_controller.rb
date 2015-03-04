@@ -1,4 +1,8 @@
+
 class MealsController < ApplicationController
+
+  before_action :check_if_logged_in, :only => [:index]
+
 
   def index
     @meals = @current_user.meals
@@ -52,6 +56,10 @@ class MealsController < ApplicationController
   private
   def meal_params
     params.require(:meal).permit(:meal_time, :meal_date, :user_id, :total_carbs)
+  end
+
+  def check_if_logged_in
+    redirect_to(root_path) unless @current_user.present?
   end
 
 end
