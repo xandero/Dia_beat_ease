@@ -80,11 +80,14 @@ $(document).ready(function() {
       $('#calc-serving-size-weight').val(result.nf_serving_weight_grams);
       $('#calc-serving-size-unit').val(result.nf_serving_size_unit);
       $('#calc-carbs').val(result.nf_total_carbohydrate);
-    }).done(function () {
-      var userBolusInsulin = parseInt($('#single-calc-dosage').data('bolus-insulin'));
-      var carbCount = parseInt($('#calc-carbs').val());
-      var singleDosage = carbCount / 15 * userBolusInsulin;
-      $('#single-calc-dosage').text('Insulin Dosage: ' + (Math.round( singleDosage * 10 ) / 10));
     });
+  });
+
+  $('#calc-it').on('click', function (event) {
+    event.preventDefault();
+    var userBolusInsulin = parseInt($('#calc-bolus').val());
+    var carbCount = parseInt($('#calc-carbs').val());
+    var singleDosage = carbCount / 15 * userBolusInsulin;
+    $('#single-calc-dosage').text('Insulin Dosage: ' + (Math.round( singleDosage * 10 ) / 10));
   });
 });
