@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root :to => 'pages#landing'
+
   get '/uhoh' => 'pages#redirect'
 
   resources :users, :activities
@@ -25,11 +26,6 @@ Rails.application.routes.draw do
 
   get '/readingdata/carbs_lastthirty' => 'foods#carbs_lastthirty'
   get '/readingdata/mealtime_lastthirty' => 'foods#mealtime_lastthirty'
-
-
-
-  # get '/readingcharts' => 'bloodsugars#charts'
-  # get '/weather' => 'bloodsugars#weather'
 
   get '/login' => 'session#new'
   post '/login' => 'session#create'
