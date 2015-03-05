@@ -1,5 +1,5 @@
 var validateBolus = function() {
-  var bolus_insulin = $('#bolus-value').val();
+  var bolus_insulin = parseInt($('#bolus-value').val());
   if ( bolus_insulin < 10 || bolus_insulin > 24 ) {
 
     var retVal = confirm("Are you sure that's correct? That number is outside the standard range for Bolus Insulin.");
@@ -14,8 +14,8 @@ var validateBolus = function() {
 };
 
 var validateBasal = function() {
-  var basal_insulin = $('#basal-value').val();
-  var weight = $('#user-weight').val();
+  var basal_insulin = parseInt($('#basal-value').val());
+  var weight = parseInt($('#user-weight').val());
   var target_basal = weight * 0.55;
 
   if ( basal_insulin > 1.2 * (target_basal) || basal_insulin < 0.8 * (target_basal)) {
