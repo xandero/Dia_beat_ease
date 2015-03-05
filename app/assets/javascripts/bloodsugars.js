@@ -32,3 +32,5 @@ $(document).ready(function() {
     bloodsugarsCalc.loadBloodsugars()
   });
 });
+
+
