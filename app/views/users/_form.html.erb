@@ -1,15 +1,25 @@
 <%= form_for @user do |f| %>
-  <%= f.label :username, :title => 'Enter your desired username.' %>
-  <%= f.text_field :username, :autofocus => true, :required => true, :title => 'Enter your desired username.' %>
+    <div class="form-group">
+      <%= f.label :username, :title => 'Enter your desired username.' %>
+      <%= f.text_field :username, :autofocus => true, :required => true, :title => 'Enter your desired username.', :class => 'form-control' %>
+    </div>
 
-  <%= f.label :email, :title => 'Please enter the email address where we can contact you for important alerts and notifications.' %>
-  <%= f.text_field :email, :required => true, :title => 'Please enter the email address where we can contact you for important alerts and notifications.'  %>
+    <div class="form-group">
+      <%= f.label :email, :title => 'Please enter the email address where we can contact you for important alerts and notifications.' %>
+      <%= f.email_field :email, :required => true, :title => 'Please enter the email address where we can contact you for important alerts and notifications.', :class => 'form-control'  %>
+    </div>
 
-  <%= f.label :password, :title => 'Enter a password for your account.' %>
-  <%= f.password_field :password, :title => 'Enter a password for your account.' %>
+    <div class="form-group">
+      <%= f.label :password, :title => 'Enter a password for your account.' %>
+      <%= f.password_field :password, :title => 'Enter a password for your account.', :class => 'form-control', :required => true %>
+    </div>
 
-  <%= f.label :password_confirmation, :title => 'Re-enter your password.' %>
-  <%= f.password_field :password_confirmation, :title => 'Re-enter your password.' %>
+    <div class="form-group">
+      <%= f.label :password_confirmation, :title => 'Re-enter your password.' %>
+      <%= f.password_field :password_confirmation, :title => 'Re-enter your password.', :class => 'form-control', :required => true %>
+    </div>
 
-  <%= button_tag %>
+    <div class="text-right">
+      <%= button_tag 'Create account', :class => 'btn btn-primary' %>
+    </div>
 <% end %>
