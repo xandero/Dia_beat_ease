@@ -260,10 +260,10 @@ html, body {
     padding: 20px;
 }
 
-.dropzone {
+/*.dropzone {
     background-image: asset-url('http://i.imgur.com/dQ9bcU2.png?1');
     border: 1px solid #c3bbbb;
-}
+}*/
  .result {
     cursor: pointer;
  }
