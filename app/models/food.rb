@@ -37,5 +37,9 @@ class Food < ActiveRecord::Base
     @food_data = parsed_data
     @meal = params[:meal_id]
   end
+
+  def total_carbs
+    self.carbs * self.quantity
+  end
 end
 
