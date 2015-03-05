@@ -17,6 +17,7 @@
 //= require handlebars
 //= require foods
 //= require pages
+//= require navigation
 //= require dropzone
 //= require Chart
 //= require dashboard
