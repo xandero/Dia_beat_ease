@@ -19,7 +19,6 @@
 //= require pages
 //= require navigation
 //= require dropzone
-//= require Chart
 //= require dashboard
 //= require_tree .
 
