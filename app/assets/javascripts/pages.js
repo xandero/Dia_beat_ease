@@ -1,4 +1,4 @@
-// JS for the throwaway calc
+// JS for the single dosage calculator
 
 var searchSingleFoods = function () {
   var query = $('#single-calc').val();
@@ -26,9 +26,6 @@ var listResults = function (result) {
   });
 };
 
-// currently fucking up because it's not getting the value from the form input
-
-
 $(document).ready(function() {
   $('#single-calc').focus();
 
@@ -38,9 +35,9 @@ $(document).ready(function() {
     searchSingleFoods();
   });
 
+  // Makes the search work when enter is pressed. Take that, Bootstrap.
   $('#single-calc').keydown(function(event){
     if(event.keyCode == 13) {
-      // event.preventDefault();
       $('#search-results').empty();
       $(this).blur();
       searchSingleFoods();
@@ -49,19 +46,11 @@ $(document).ready(function() {
   });
 
   $('#search-results').on('click', 'a', function() {
-    // $('#calc-foodname').val($(this).data('foodname'));
     $(this).addClass('selected');
     var item_id = $(this).data('item_id');
 
-    // get rid of other results
-    var searchResults = $('#search-results a');
-
-    _(searchResults).each(function (result) {
-      if (result.classList.contains('selected') === false) {
-        // delete it!
-        result.parentNode.remove();
-      }
-    });
+    // Get rid of other results (parent here is the <li>, so we don't get left with random bullet points)
+    $('#search-results a').not('.selected').parent().remove();
 
     var nutritionixUrl = 'https://api.nutritionix.com/v1_1/item';
 

@@ -1,4 +1,5 @@
-// brings back a JSON object with the specified number of results (based on the user's search query, e.g. banana)
+// JS for single-page food CRUD
+
 var searchFoods = function () {
   var query = $('#query').val();
   var nutritionixUrl = 'https://api.nutritionix.com/v1_1/search/' + query;
@@ -14,11 +15,6 @@ var listResults = function (result) {
   var foods = result.hits
 
   _(foods).each(function (food) {
-    // var $link = $('<a>').text(food.fields.item_name);
-    // $link.attr('data-foodname', food.fields.item_name)
-    // $link.attr('data-item_id', food.fields.item_id);
-    // $link.addClass('result');
-
     var $link = $('<a>')
       .text(food.field.item_name)
       .attr('data-foodname', food.fields.item_name)
@@ -31,7 +27,6 @@ var listResults = function (result) {
   });
 };
 
-
 $(document).ready(function() {
 
   $('#search').on('click', function (event) {
@@ -40,10 +35,9 @@ $(document).ready(function() {
     searchFoods();
   });
 
-  // makes the search work when enter is pressed. Take that, bootstrap.
+  // Makes the search work when enter is pressed. Take that, Bootstrap.
   $('#query').keydown(function(event){
     if(event.keyCode == 13) {
-      // event.preventDefault();
       $('#search-results').empty();
       $(this).blur();
       searchFoods();
@@ -52,20 +46,12 @@ $(document).ready(function() {
   });
 
   $('#search-results').on('click', 'a', function() {
-    // $('#form-foodname').val($(this).data('foodname'));
     $(this).addClass('selected');
     $('#form-quantity').focus();
     var item_id = $(this).data('item_id');
 
-    // get rid of other results
-    var searchResults = $('#search-results a');
-
-    _(searchResults).each(function (result) {
-      if (result.classList.contains('selected') === false) {
-        // delete it!
-        result.parentNode.remove();
-      }
-    });
+    // Get rid of other results (parent here is the <li>, so we don't get left with random bullet points)
+    $('#search-results a').not('.selected').parent().remove();
 
     var nutritionixUrl = 'https://api.nutritionix.com/v1_1/item';
 
@@ -87,8 +73,8 @@ $(document).ready(function() {
   $('#form-submit').on('click', function (event) {
     event.preventDefault();
 
-    if (($('#form-foodname') == "") || ($('#form-quantity').val() <= 0)) {
-      // maybe this should flash an error of some kind?
+    if (($('#form-foodname').val() == "") || ($('#form-quantity').val() <= 0)) {
+      // Maybe this should flash an error of some kind?
       return;
     }
 
@@ -106,8 +92,6 @@ $(document).ready(function() {
       }
     }).done(function (result) {
       var totalCarbCount = 0;
-      // need to sum up the carb values of each
-
 
       $('#added-foods').empty();
       for (var i = 0; i < result.length; i++) {
@@ -122,31 +106,26 @@ $(document).ready(function() {
         $li.prepend($('<span class="badge food-badge">Carbs: ' + Math.round(result[i].quantity * result[i].carbs) + '</span> '));
         $li.prepend($('<span class="badge food-badge">Qty: ' + result[i].quantity + '</span> '));
         $li.append($(' <span class="glyphicon glyphicon-trash delete">'));
-        $li.attr('data-food-id', result[i].id);
-        $li.attr('data-meal-id', result[i].meal_id);
-        $li.attr('data-carbs', result[i].carbs);
-        $li.attr('data-quantity', result[i].quantity);
+        $li.attr('data-food-id', result[i].id)
+          .attr('data-meal-id', result[i].meal_id)
+          .attr('data-carbs', result[i].carbs)
+          .attr('data-quantity', result[i].quantity);
 
         $('#added-foods').append($li);
-        console.log(result[i].foodname);
       }
 
       $('#total-carbs').text('Total Carbs: ' + totalCarbCount);
 
-      // calculates and displays required insulin dosage
-      // maybe add in the unit?
+      // Insulin dosage
       var userBolusInsulin = parseInt($('#insulin-required').data('bolus-insulin'));
       var dosage = totalCarbCount / 15 * userBolusInsulin;
       // Math.round magic makes JavaScript play nice and round to 1dp (sans .000000000007 freebie)
       $('#insulin-required').text('Required Insulin Dose: ' + (Math.round( dosage * 10 ) / 10));
-
     });
-
   });
 
-  // empties everything when the food is added to the meal
+  // Empties form fields when a food is added to the meal
   $('#form-submit').on('click', function () {
-    // $('#added-foods').empty();
     $('#query').focus();
     $('#search-results').empty();
     $('#query').val('');
@@ -180,7 +159,7 @@ $(document).ready(function() {
         _method: 'DELETE'
       }
     }).done(function () {
-      // does the maths with for total carbs
+      // Updates the maths when a food is removed
       var carbs = $li.data('carbs');
       var quantity = $li.data('quantity');
       var minusCarbs = carbs * quantity;
@@ -193,11 +172,7 @@ $(document).ready(function() {
       var dosage = totalCarbCount / 15 * userBolusInsulin;
       $('#insulin-required').text('Required Insulin Dose: ' + (Math.round( dosage * 10 ) / 10));
 
-      // total carbs /15 * bolus
-
-      // removes the DOM element
       $li.remove();
     });
-
   });
 });
