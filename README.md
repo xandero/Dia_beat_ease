@@ -42,4 +42,4 @@ application up and running.
 
 <h3>Thanks and Acknowledgements</h3>
 
-As always, the team would like to thank Joel and Jack for the blood, sweat and tears they gave during project week. You guys were instrumental in helping us achieve our goal and making the site a success. Naturally, huge thanks and applause must go to Bishin, Sox, Tom and Xander, who sacrificed sleep and put their lives on hold for a week to make that the project was delivered on time. Good work team!!
+As always, the team would like to thank Joel and Jack for the blood, sweat and tears they gave during project week. You guys were instrumental in helping us achieve our goal and making the site a success. Special mention to James Gregory of ThoughtWorks, who so generously provided his extremely valuable time, thoughts and guidance throughout the project. Naturally, huge thanks and applause must go to Bishin, Sox, Tom and Xander, who sacrificed sleep and put their lives on hold for a week to make that the project was delivered on time. Good work team!!
