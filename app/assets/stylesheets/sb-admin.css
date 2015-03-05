@@ -9,6 +9,7 @@
 body {
     margin-top: 100px;
     background-color: #222;
+    font-family: 'Lato', sans-serif;
 }
 
 @media(min-width:768px) {
@@ -257,4 +258,9 @@ html, body {
 .badge.dose {
     font-size: 1.2em;
     padding: 20px;
+}
+
+.dropzone {
+    background-image: asset-url('honey_im_subtle.png');
+    border: 1px solid #c3bbbb;
 }
