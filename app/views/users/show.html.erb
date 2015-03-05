@@ -1,10 +1,19 @@
-<h1><%= @user.username %>'s page</h1>
+<h2>Hi, <%= @user.username %>!</h2><h3>Welcome to your profile page.</h3>
+<h5>In order to provide you with the most accurate calculations, please ensure that the details below are correct. If you see something that's not quite right, click on the 'Edit' button to update your details.</h5>
 
-<p><%= @user.email %></p>
+<p>Email: <%= @user.email %></p>
 
-<p><%= @user.height %>cm</p>
+<p>Date of Birth: <%= @user.dob %></p>
 
-<%#= @locate %>
+<p>Height: <%= @user.height %>cm</p>
+
+<p>Weight: <%= @user.weight %>kg</p>
+
+<p>Diabetes Type: <%= @user.diabetes_type %></p>
+
+<p>Bolus Insulin: <%= @user.bolus_insulin %> carb grams per unit of insulin</p>
+
+<p>Basal Insulin: <%= @user.basal_insulin %> units of insulin</p>
 
 <%= link_to 'Edit', edit_user_path %>
 <%= button_to 'Delete', @user, :method => 'delete', :data => {:confirm => 'Are you sure?'}  %>
