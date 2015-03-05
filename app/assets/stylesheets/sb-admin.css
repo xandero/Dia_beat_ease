@@ -9,6 +9,7 @@
 body {
     margin-top: 100px;
     background-color: #222;
+    font-family: 'Lato', sans-serif;
 }
 
 @media(min-width:768px) {
