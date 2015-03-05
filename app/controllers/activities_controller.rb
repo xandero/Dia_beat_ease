@@ -43,6 +43,28 @@ class ActivitiesController < ApplicationController
         redirect_to activities_path
     end
 
+    # ACTIVITY CHART ACTIONS
+
+    def duration
+        activity = Activity.pluck :duration
+        render :json => activity
+    end
+
+    def activity_time
+        activity_time = Activity.pluck :activity_time
+        render :json => activity_time
+    end
+
+    def duration_lastthirty
+        activities = Activity.where(:user_id => @current_user.id).limit(30).pluck(:duration)
+        render :json => activities   
+    end
+
+    def activity_time_lastthirty
+        activity_time = Activity.where(:user_id => @current_user.id).limit(30).pluck(:activity_time)
+        render :json => activity_time
+    end
+
     private
     def activity_params
         params.require(:activity).permit(:user_id, :activityname, :duration, :intensity, :activity_time, :activity_date)
