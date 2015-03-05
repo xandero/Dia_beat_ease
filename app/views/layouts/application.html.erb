@@ -8,7 +8,7 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 
 </head>
-<body>
+<body class="<%= params[:controller] %>-<%= params[:action] %>">
 
 <div id="wrapper" 
     <% if @current_user == nil %>
@@ -72,23 +72,23 @@
             <% if @current_user.present? %>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <li>
-                            <a href="/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                            <li class="active">
+                            <a href="/dashboard" class="dashboard-link"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="/singlecalculation"><i class="fa fa-fw fa-calculator"></i> Calculator</a>
+                            <a href="/singlecalculation" class="calculator-link"><i class="fa fa-fw fa-calculator"></i> Calculator</a>
                         </li>
                         <li>
-                            <a href="/bloodsugars"><i class="fa fa-fw fa-cloud-upload"></i> Import Glucose Data</a>
+                            <a href="/bloodsugars" class="import-link"><i class="fa fa-fw fa-cloud-upload"></i> Import Glucose Data</a>
                         </li>
                         <li>
-                            <a href="/meals"><i class="fa fa-fw fa-cutlery"></i> Add Meal Data</a>
+                            <a href="/meals" class="addmeal-link"><i class="fa fa-fw fa-cutlery"></i> Add Meal Data</a>
                         </li>
                         <li>
-                            <a href="/activities"><i class="fa fa-fw fa-heartbeat"></i> Add Activity Data</a>
+                            <a href="/activities" class="addactivity-link"><i class="fa fa-fw fa-heartbeat"></i> Add Activity Data</a>
                         </li>
                          <li>
-                            <a href="/weather"><i class="fa fa-fw fa-cloud"></i> Weather Forecast</a>
+                            <a href="/weather" class="weather-link"><i class="fa fa-fw fa-cloud"></i> Weather Forecast</a>
                         </li>
                     </ul>
                 </div>
@@ -97,6 +97,7 @@
         </nav>
 
         <div id="page-wrapper">
+
         <!-- RENDER OTHER VIEW AREA -->
 
             <%= yield %>
