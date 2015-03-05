@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if @user.save
       # logs user in automatically upon signup
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to edit_user_path(@user)
     else
       render :new
     end
