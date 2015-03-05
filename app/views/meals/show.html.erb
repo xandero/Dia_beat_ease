@@ -1,4 +1,4 @@
-<h3><%= @meal.meal_time.strftime('%R, %e %B %Y') %></h3>
+<h3>Here's your meal from <%= @meal.meal_time.strftime('%I:%M %P, %e %B %Y') %></h3>
 
 <div class="row">
 
@@ -78,8 +78,6 @@
 </div>
 
 <br>
-<%= link_to 'Delete meal', meal_path, :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
-<br>
-<%= link_to 'Edit meal', edit_meal_path %>
-<br>
-<%= link_to 'Back to index', meals_path %>
+<%= button_to 'Delete Meal', meal_path, :method => 'delete', :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-danger btn-md col-md-1'  %>
+<%= button_to 'Edit Meal', edit_meal_path, :class => 'btn btn-primary btn-md col-md-1' %>
+<%= button_to 'Meal List', meals_path, :class => 'btn btn-primary btn-md col-md-1'  %>
