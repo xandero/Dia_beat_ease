@@ -74,10 +74,19 @@
     <span class="badge" id="insulin-required" data-bolus-insulin="<%= @current_user.bolus_insulin %>">Required Insulin Dose:
     <%= ((sum / 15) * @current_user.bolus_insulin).round(1) %>
     </span>
+
+    <div class="meal-controls">
+      <br>
+      <%= button_to 'Meal List', meals_path, :class => 'btn btn-primary'  %>
+      <%= button_to 'Edit Meal', edit_meal_path, :class => 'btn btn-warning' %>
+      <%= button_to 'Delete Meal', meal_path, :method => 'delete', :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-danger' %>
+    </div>
+
   </div>
+
 </div>
 
-<br>
-<%= button_to 'Delete Meal', meal_path, :method => 'delete', :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-danger btn-md col-md-2'  %>
-<%= button_to 'Edit Meal', edit_meal_path, :class => 'btn btn-primary btn-md col-md-2' %>
-<%= button_to 'Meal List', meals_path, :class => 'btn btn-primary btn-md col-md-2'  %>
+
+<div class="row">
+
+</div>

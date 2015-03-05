@@ -234,3 +234,7 @@ ul.alert-dropdown {
 .features .col-lg-4:nth-child(3) .icon-stack-base {
     color: #337ab7;
 }
+
+form.button_to {
+    display: inline;
+}
