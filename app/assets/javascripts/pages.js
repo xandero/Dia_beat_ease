@@ -66,6 +66,7 @@ $(document).ready(function() {
       $('#calc-serving-size-weight').val(result.nf_serving_weight_grams);
       $('#calc-serving-size-unit').val(result.nf_serving_size_unit);
       $('#calc-carbs').val(result.nf_total_carbohydrate);
+      $('#calc-quantity').focus();
     });
   });
 
@@ -75,5 +76,9 @@ $(document).ready(function() {
     var carbCount = parseInt($('#calc-carbs').val()) * parseFloat($('#calc-quantity').val());
     var singleDosage = carbCount / 15 * userBolusInsulin;
     $('#single-calc-dosage').text('Insulin Dosage: ' + (Math.round( singleDosage * 10 ) / 10));
+    $('#single-calc-dosage').css('background-color', '#5CB85C');
+    $('#search-results').empty();
+    $('#single-calc').val('').focus();
   });
+
 });

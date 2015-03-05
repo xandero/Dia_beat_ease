@@ -10,7 +10,7 @@
 </head>
 <body class="<%= params[:controller] %>-<%= params[:action] %>">
 
-<div id="wrapper" 
+<div id="wrapper"
     <% if @current_user == nil %>
     style='padding-left:0'
     <% end %>>
@@ -31,7 +31,7 @@
                 <% else %>
                     <%= link_to "Glucosy", root_path, :class => "navbar-brand" %>
                 <% end %>
-                
+
             </div>
             <!-- Top Menu Items -->
             <% if @current_user.present? %>
@@ -116,14 +116,15 @@
     </tr>
 </script>
 
-<div class="container footer col-md-offset-2 col-md-10" style="color:white">
-    DISCLAIMER: The content of this web site is not intended to be a substitute for professional medical advice, diagnosis or treatment. Do not disregard your doctor's advice or delay in seeking it because of something you have read on this website.
+<div class="container footer col-md-offset-2 col-md-8 text-center" style="color:white">
+    <p>DISCLAIMER: The content of this web site is not intended to be a substitute for professional medical advice, diagnosis or treatment.</p>
+    <p>Do not disregard your doctor's advice or delay in seeking it because of something you have read on this website.</p>
 </div>
 </body>
 
 <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.5/css/jquery.dataTables.css">
-  
+
 <!-- DataTables -->
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js"></script>
 
