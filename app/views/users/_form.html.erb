@@ -1,3 +1,19 @@
+<% if @user.errors.any? %>
+  <ol>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li>
+        <%= msg %>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
+
+<div class="alert alert-success" role="alert">
+  <%= flash[:error] if flash[:error].present? %>
+  <p>Not yet a user? Sign up below</p>
+</div>
+
+
 <%= form_for @user do |f| %>
     <div class="form-group">
       <%= f.label :username, :title => 'Enter your desired username.' %>
