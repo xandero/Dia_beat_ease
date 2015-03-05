@@ -114,11 +114,19 @@
                 <td>{{readingtime}}</td>
                 <td align="right">{{bslevel}}</td>
             </tr>
+            $(document).ready( function () {
+                $('#bloodsugar-table').DataTable();
+            } );
 </script>
 
 <div class="container footer col-md-offset-2 col-md-10" style="color:white">
     DISCLAIMER: The content of this web site is not intended to be a substitute for professional medical advice, diagnosis or treatment. Do not disregard your doctor's advice or delay in seeking it because of something you have read on this website.
 </div>
 </body>
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.5/css/jquery.dataTables.css">
+  
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js"></script>
 
 </html>

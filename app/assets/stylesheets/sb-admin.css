@@ -253,3 +253,8 @@ html, body {
 .footer, .push {
     height: 25px;
 }
+
+.badge.dose {
+    font-size: 1.2em;
+    padding: 20px;
+}
