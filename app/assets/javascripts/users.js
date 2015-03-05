@@ -1,4 +1,5 @@
 var validateBolus = function() {
+  console.log('validating bolus');
   var bolus_insulin = parseInt($('#bolus-value').val());
   if ( bolus_insulin < 10 || bolus_insulin > 24 ) {
 
@@ -14,6 +15,7 @@ var validateBolus = function() {
 };
 
 var validateBasal = function() {
+  console.log('validating basal');
   var basal_insulin = parseInt($('#basal-value').val());
   var weight = parseInt($('#user-weight').val());
   var target_basal = weight * 0.55;
