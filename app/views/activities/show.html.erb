@@ -1,5 +1,16 @@
-<h2>Show us your activities</h2>
+<h2><%= @activity.activityname %> - <%= @activity.activity_time.strftime('%e %B %Y, %R') %></h2>
 
-<%= @activity.activityname %>
-<%= link_to 'Delete activity', activity_path, :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
-<%= link_to 'Edit activity', edit_activity_path %>
+<ul class="list-group">
+  <li class="list-group-item">
+    <strong>Duration:</strong> <%= @activity.duration.to_i %> minutes
+  </li>
+    <li class="list-group-item">
+    <strong>Intensity:</strong> <%= @activity.intensity %> out of 10
+  </li>
+</ul>
+  <%= link_to 'Back', activities_path %>
+
+    <div class="text-right">
+    <%= link_to 'Delete activity', activity_path, :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
+    <%= link_to 'Edit activity', edit_activity_path %>
+    </div>

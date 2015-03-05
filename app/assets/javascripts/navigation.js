@@ -1,4 +1,3 @@
-console.log('included')
 $(document).ready(function() {
   $('.active').removeClass('active');
   var page = $('body').attr('class');

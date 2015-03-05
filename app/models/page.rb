@@ -28,7 +28,7 @@ class Page
         message += "\n On #{day}, the minimum temperature is forecast to increase by #{difference} degrees. "
       end
     end
-    message + "\n\n - The Diabet-ease Team"
+    message + "\n\n - The Glucosy Team"
   end
 
   def self.notification(message, email, name)
@@ -36,7 +36,7 @@ class Page
     m = Mandrill::API.new
       text = {
       :subject=> "Weather Update",
-      :from_name=> "Diabet-ease",
+      :from_name=> "Glucosy",
       :text=> "#{message}",
       :to=>[
       {
@@ -44,7 +44,7 @@ class Page
       :name=> "#{name}"
       }
       ],
-      :from_email=>"alerts@diabetease.com"
+      :from_email=>"alerts@glucosy.com"
       }
       sending = m.messages.send text
   end

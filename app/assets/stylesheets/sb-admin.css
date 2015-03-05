@@ -235,6 +235,7 @@ ul.alert-dropdown {
     color: #337ab7;
 }
 
+<<<<<<< HEAD
 * {
     margin:0;
 }
@@ -254,5 +255,7 @@ html, body {
     height: 25px;
 }
 
-
+form.button_to {
+    display: inline;
+}
 
