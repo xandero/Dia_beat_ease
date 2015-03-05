@@ -7,7 +7,7 @@ var searchSingleFoods = function () {
   $.getJSON(nutritionixUrl, {
     appId: "92a57023",
     appKey: "5a11032e7168104fdfa242bd3b62e636",
-    results: "0:2"
+    results: "0:10"
   }).done(listResults);
 };
 

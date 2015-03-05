@@ -7,7 +7,7 @@ var searchFoods = function () {
   $.getJSON(nutritionixUrl, {
     appId: "92a57023",
     appKey: "5a11032e7168104fdfa242bd3b62e636",
-    results: "0:2"
+    results: "0:10"
   }).done(listResults);
 };
 
@@ -137,16 +137,10 @@ $(document).ready(function() {
     $('#form-carbs').val('');
   });
 
-  $('#complete-meal-button').on('click', function () {
-    console.log('clicked');
+  $('#add-foods-to-meal-button').on('click', function () {
     $('#construct-meal-forms').slideToggle(600);
     $('#construct-meal-forms').toggleClass('hide-meal-construction');
-    $(this).blur();
-    if ($('#construct-meal-forms').hasClass('hide-meal-construction')) {
-      $(this).text('Add foods to meal');
-    } else {
-      $(this).text('Complete meal');
-    }
+    $(this).remove();
   });
 
   $('#added-foods').on('click', '.delete', function () {

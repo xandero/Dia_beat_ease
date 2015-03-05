@@ -267,3 +267,7 @@ html, body {
  .result {
     cursor: pointer;
  }
+
+ .meal-carbs-badge, .meal-insulin-badge {
+    padding: 1em;
+ }

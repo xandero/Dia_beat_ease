@@ -2,8 +2,8 @@ var validateBolus = function() {
   
   var bolus_insulin = parseInt( $('#bolus-value').val() );
   var result = true;
-  if ( bolus_insulin < 10 || bolus_insulin > 24 ) {
 
+  if ( bolus_insulin < 10 || bolus_insulin > 24 ) {
     var retVal = confirm("Are you sure that's correct? That number is outside the standard range for Bolus Insulin.");
     if( retVal === true ){
       alert("You have confirmed that the Bolus Insulin value you entered is correct.");
@@ -13,7 +13,6 @@ var validateBolus = function() {
     result = false;
     }
   }
-  // debugger;
   return result;
 };
 
@@ -34,7 +33,6 @@ var validateBasal = function() {
       result_basal = false;
     }
   }
-
   return result_basal;
 };
 
@@ -49,7 +47,6 @@ $(document).ready(function() {
       event.preventDefault();
     }
   });
-  // $('.edit_user').on('submit', validateBasal);
 });
 
 

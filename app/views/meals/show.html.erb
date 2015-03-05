@@ -39,13 +39,15 @@
           <input type="hidden" name="form-meal-id" id="form-meal-id" value="<%= @meal.id %>">
           <br>
           <button id="form-submit" class="btn btn-primary">Add to meal</button>
+          <a href="/meals" class="btn btn-success">Complete meal</a>
         </form>
+
       </div>
     </div>
 
-    <div id="complete-meal">
+    <div id="add-foods-to-meal">
       <br>
-      <button class="btn btn-success btn-md" id="complete-meal-button">Add foods to meal</button>
+      <button class="btn btn-success btn-md" id="add-foods-to-meal-button">Add foods to meal</button>
     </div>
   </div>
 
@@ -64,14 +66,14 @@
     </ul>
 
     <!-- Updated in foods.js as foods are added/deleted from list -->
-    <span class="badge" id="total-carbs">Total Carbs:
+    <span class="badge meal-carbs-badge" id="total-carbs">Total Carbs:
       <% sum = 0 %>
       <% @meal.foods.each_with_index do |v, i| %>
         <% sum += (@meal.foods[i].total_carbs) %>
       <% end %>
       <%= sum.round %>
     </span>
-    <span class="badge" id="insulin-required" data-bolus-insulin="<%= @current_user.bolus_insulin %>">Required Insulin Dose:
+    <span class="badge meal-insulin-badge" id="insulin-required" data-bolus-insulin="<%= @current_user.bolus_insulin %>">Required Insulin Dose:
     <%= ((sum / 15) * @current_user.bolus_insulin).round(1) %>
     </span>
   </div>

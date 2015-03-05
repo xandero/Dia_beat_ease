@@ -1,4 +1,5 @@
-<h2>Edit meal</h2>
-<p>Allow the user to change date of meal in case they messed up? Saves the deleting the whole meal and adding all the foods again at least...</p>
 
+<h2>Edit meal - <%= @meal.meal_time.strftime('%e %B %Y, %R') %></h2>
+<p>Edit time and date of this meal below</p>
 <%= render :partial => 'form' %>
+
