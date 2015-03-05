@@ -12,6 +12,7 @@ Gems, Libraries and Add-ons
 - Heroku scheduler (background task scheduling)
 - Mandrill (automatic emailing)
 - Nutritionix (nutrition information API)
+- Geocoder (API)
 - Dropzone (upload files via drag 'n' drop in browser)
 - Chartjs (charts)
 - Carrierwave (file upload)
