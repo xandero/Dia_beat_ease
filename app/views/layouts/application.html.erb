@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DiaBeatEase</title>
+  <title>Glucosy</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -33,7 +33,6 @@
                 <% if @current_user.present? %>
                     <%= link_to '<img src="http://i.imgur.com/zGYsajo.png" width="30px" style="display:inline"> Glucosy'.html_safe, "/dashboard", :class => "navbar-brand" %>
                 <% else %>
-                    <%= link_to '<img src="http://i.imgur.com/zGYsajo.png" width="30px" style="display:inline"> Glucosy'.html_safe, root_path, :class => "navbar-brand" %>
                     <%= link_to '<img src="http://i.imgur.com/zGYsajo.png" width="30px" style="display:inline"> Glucosy'.html_safe, root_path, :class => "navbar-brand" %>
                 <% end %>
 
