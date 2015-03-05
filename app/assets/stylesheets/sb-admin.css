@@ -238,3 +238,8 @@ ul.alert-dropdown {
 form.button_to {
     display: inline;
 }
+
+.badge.dose {
+    font-size: 1.2em;
+    padding: 20px;
+}
