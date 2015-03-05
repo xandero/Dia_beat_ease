@@ -57,12 +57,16 @@ class ActivitiesController < ApplicationController
 
     def duration_lastthirty
         activities = Activity.where(:user_id => @current_user.id).limit(30).pluck(:duration)
-        render :json => activities   
+        render :json => activities  
     end
 
     def activity_time_lastthirty
+        activity_timeStrf =[]
         activity_time = Activity.where(:user_id => @current_user.id).limit(30).pluck(:activity_time)
-        render :json => activity_time
+            activity_time.each do |time|
+                activity_timeStrf<< time.strftime("%R, %d/%m")
+            end
+        render :json => activity_timeStrf
     end
 
     private

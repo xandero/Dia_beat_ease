@@ -234,3 +234,22 @@ ul.alert-dropdown {
 .features .col-lg-4:nth-child(3) .icon-stack-base {
     color: #337ab7;
 }
+
+* {
+    margin:0;
+}
+
+html, body {
+    height: 100%;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -155px;
+}
+
+.footer, .push {
+    height: 25px;
+}

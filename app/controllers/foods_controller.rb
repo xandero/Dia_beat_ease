@@ -30,8 +30,12 @@ class FoodsController < ApplicationController
   end
 
   def mealtime_lastthirty
+    mealtimeStrf =[]
     mealtime = Meal.where(:user_id => @current_user.id).limit(30).pluck(:meal_time)
-    render :json => mealtime
+      mealtime.each do |time|
+        mealtimeStrf << time.strftime("%R, %d/%m")
+      end
+    render :json => mealtimeStrf
   end
 
 
