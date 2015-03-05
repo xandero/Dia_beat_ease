@@ -253,8 +253,3 @@ html, body {
 .footer, .push {
     height: 25px;
 }
-
-form.button_to {
-    display: inline;
-}
-
