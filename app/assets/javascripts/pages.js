@@ -15,15 +15,12 @@ var listResults = function (result) {
   var foods = result.hits
 
   _(foods).each(function (food) {
-    var $link = $('<a>').text(food.fields.item_name);
+    var $link = $('<a>').text(food.fields.item_name)
+      .attr('data-foodname', food.fields.item_name)
+      .attr('data-item_id', food.fields.item_id)
+      .addClass('result');
 
-    // can't seem to attach .data() k/v pairs
-    $link.attr('data-foodname', food.fields.item_name)
-    $link.attr('data-item_id', food.fields.item_id);
-
-    $link.addClass('result');
     var $li = $('<li>');
-    $li.addClass('li');
     $li.append($link);
     $('#search-results').append($li);
   });
