@@ -27,10 +27,12 @@ $(document).ready(function() {
   bloodsugarsCalc.loadBloodsugars();
   // DROPZONE UPLOAD ON SUCCESS
   var bloodsugarDropzone;
-  bloodsugarDropzone = new Dropzone("#bloodsugar-dropzone");
-  return bloodsugarDropzone.on("success", function() {
-    bloodsugarsCalc.loadBloodsugars();
-  });
+  if ( $("#bloodsugar-dropzone").length !== 0 ) {
+    bloodsugarDropzone = new Dropzone("#bloodsugar-dropzone");
+    return bloodsugarDropzone.on("success", function() {
+      bloodsugarsCalc.loadBloodsugars();
+    });
+  }
 });
 
 
