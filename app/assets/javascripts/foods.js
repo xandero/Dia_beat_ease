@@ -12,7 +12,7 @@ var searchFoods = function () {
 };
 
 var listResults = function (result) {
-  var foods = result.hits
+  var foods = result.hits;
 
   _(foods).each(function (food) {
     var $link = $('<a>')
@@ -73,7 +73,7 @@ $(document).ready(function() {
   $('#form-submit').on('click', function (event) {
     event.preventDefault();
 
-    if (($('#form-foodname').val() == "") || ($('#form-quantity').val() <= 0)) {
+    if (($('#form-foodname').val() === "") || ($('#form-quantity').val() <= 0)) {
       // Maybe this should flash an error of some kind?
       return;
     }

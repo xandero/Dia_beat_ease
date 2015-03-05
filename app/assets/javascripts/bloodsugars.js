@@ -9,17 +9,17 @@ var bloodsugarsCalc = {
             });
         },
         renderBloodsugars: function(){
-          $('#bloodsugar-table tr.readings-row').remove()
+          $('#bloodsugar-table tr.readings-row').remove();
             for (var i = 0; i < this.readings.length; i++) {
                 var reading = bloodsugarsCalc.readings[i];
-                bloodsugarsCalc.insertRow(reading)
-            };
+                bloodsugarsCalc.insertRow(reading);
+            }
         },
         insertRow: function(reading) {
-            var row = Handlebars.compile($('#bloodsugarTemplate').html())
-                        $('#data-table').append(row(reading))
+            var row = Handlebars.compile($('#bloodsugarTemplate').html());
+                        $('#data-table').append(row(reading));
         }
-    }
+    };
 
 $(document).ready(function() {
 
@@ -29,7 +29,7 @@ $(document).ready(function() {
   var bloodsugarDropzone;
   bloodsugarDropzone = new Dropzone("#bloodsugar-dropzone");
   return bloodsugarDropzone.on("success", function() {
-    bloodsugarsCalc.loadBloodsugars()
+    bloodsugarsCalc.loadBloodsugars();
   });
 });
 

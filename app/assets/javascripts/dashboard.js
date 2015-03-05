@@ -68,7 +68,7 @@ $(document).ready(function() {
             pointDot : false,
             showTooltips: false
         });
-    })
+    });
 
 });
 
@@ -112,7 +112,7 @@ $(document).ready(function() {
             datasetStrokeWidth : false,
             pointDot : true,
         });
-    })
+    });
 });
 
 // DRAW ACTIVITY DATA
@@ -155,5 +155,5 @@ $(document).ready(function() {
             datasetStrokeWidth : false,
             pointDot : true
         });
-    })
+    });
 });

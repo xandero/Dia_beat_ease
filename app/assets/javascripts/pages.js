@@ -12,7 +12,7 @@ var searchSingleFoods = function () {
 };
 
 var listResults = function (result) {
-  var foods = result.hits
+  var foods = result.hits;
 
   _(foods).each(function (food) {
     var $link = $('<a>').text(food.fields.item_name)
