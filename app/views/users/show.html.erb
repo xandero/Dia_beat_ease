@@ -38,5 +38,32 @@
     </tbody>
       <%= button_to 'Edit', edit_user_path, :class => 'btn btn-primary btn-md col-md-2' %>
       <%= button_to 'Delete', @user, :method => 'delete', :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-danger btn-md col-md-2'  %>
+ <div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2><%= @user.username %>'s profile page</h2>
+      <div class="alert alert-warning" role="alert">
+        <p><strong>Recommendation:</strong><br>Consult your healthcare professional for an individualised plan to complete your profile accurately.</p>
+      </div>
+      <%= link_to 'Edit', edit_user_path, :class => "btn btn-primary" %>
+      <h4>Personal Details</h4>
+      <ul class="list-group">
+        <li class="list-group-item"><strong>Email:</strong> <%= @user.email %></li>
+        <li class="list-group-item"><strong>Date of Birth:</strong> <%= @user.dob %></li>
+        <li class="list-group-item"><strong>Height:</strong> <%= @user.height %>cm</li>
+        <li class="list-group-item"><strong>Weight:</strong> <%= @user.weight %>kg</li>
+      </ul>
+
+      <h4>Medical Details</h4>
+      <ul class="list-group">
+        <li class="list-group-item"><strong>Diabetes Type:</strong> <%= @user.diabetes_type %></li>
+        <li class="list-group-item"><strong>Bolus Insulin:</strong> <%= @user.bolus_insulin %> carb grams per unit of insulin</li>
+        <li class="list-group-item"><strong>Basal Insulin:</strong> <%= @user.basal_insulin %> units of insulin</li>
+      </ul>
+
+        <div class="text-right">
+          <%= button_to 'Delete', @user, :class => "btn btn-danger", :method => 'delete', :data => {:confirm => 'Are you sure?'}  %>
+        </div>
+    </div>
   </div>
 </div>
