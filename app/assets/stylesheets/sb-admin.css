@@ -259,3 +259,8 @@ html, body {
     font-size: 1.2em;
     padding: 20px;
 }
+
+.dropzone {
+    background-image: asset-url('honey_im_subtle.png');
+    border: 1px solid #c3bbbb;
+}
