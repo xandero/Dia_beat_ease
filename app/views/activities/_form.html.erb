@@ -1,18 +1,24 @@
 <%= form_for @activity do |f| %>
+    <div class="form-group">
     <%= f.label :activityname, "Activity name", :title => 'Describe the type of activity that you completed.' %>
-    <%= f.text_field :activityname, :autofocus => true, :required => true, :title => 'Describe the type of activity that you completed.' %>
-
+    <%= f.text_field :activityname, :autofocus => true, :required => true, :title => 'Describe the type of activity that you completed.', :class => 'form-control', :placeholder => 'eg. 5k run'  %>
+    </div>
+    <div class="form-group">
     <%= f.label :duration, "Duration (mins)", :title => 'How many minutes did you do this for?' %>
-    <%= f.number_field :duration, :title => 'How many minutes did you do this for?' %>
-
+    <%= f.number_field :duration, :title => 'How many minutes did you do this for?', :class => 'form-control'  %>
+    </div>
+    <div class="form-group">
     <%= f.label :intensity, "Intensity (1-10)", :title => "On a scale of 1 to 10, how intense was this activity? For example, a casual walk would be 1 or 2. However, a sprint session where you achieve > 80% of your maximum heart rate would be around 8-10" %>
-    <%= f.number_field :intensity, :min => '1', :max => '10', :title => "On a scale of 1 to 10, how intense was this activity? For example, a casual walk would be 1 or 2. However, a sprint session where you achieve > 80% of your maximum heart rate would be around 8-10" %>
-
+    <%= f.number_field :intensity, :min => '1', :max => '10', :title => "On a scale of 1 to 10, how intense was this activity? For example, a casual walk would be 1 or 2. However, a sprint session where you achieve > 80% of your maximum heart rate would be around 8-10", :class => 'form-control', :placeholder => '1 (Very Light) - 10 (Maximal exertion)'  %>
+    </div>
+    <div class="form-group">
     <%= f.label :activity_date, "Date of activity", :title => 'When did you do this activity?' %>
-    <%= f.date_field :activity_date, :title => 'When did you do this activity?' %>
-
+    <%= f.date_field :activity_date, :title => 'When did you do this activity?', :class => 'form-control'  %>
+    </div>
+    <div class="form-group">
     <%= f.label :activity_time, "Activity end time", :title => 'What time did you finish this activity?' %>
-    <%= f.time_field :activity_time, :title => 'What time did you finish this activity?' %>
+    <%= f.time_field :activity_time, :title => 'What time did you finish this activity?', :class => 'form-control'  %>
+    </div>
 
-    <%= f.submit %>
+    <%= f.submit :class => 'btn btn-primary' %>
 <% end %>
