@@ -4,7 +4,7 @@
 <% unless @current_user.meals.length == 0 %>
 <ol>
   <% @meals.each do |meal| %>
-    <li data-mealid="<%= meal.id %>"><%= link_to (meal.meal_time.strftime('%R, %e %B %Y')), meal_path(meal) %> <a href="<%= edit_meal_path(meal.id) %>"><span class="fa fa-pencil"></span></a> <%= link_to "<span class='fa fa-trash-o'></span>".html_safe, meal_path(meal.id), :method => 'delete' %>
+    <li data-mealid="<%= meal.id %>"><%= link_to (meal.meal_time.strftime('%R, %e %B %Y')), meal_path(meal) %> <span class="badge"> Carbs: <%= meal.total_carbs %> </span> <a href="<%= edit_meal_path(meal.id) %>"><span class="fa fa-pencil"></span></a> <%= link_to "<span class='fa fa-trash-o'></span>".html_safe, meal_path(meal.id), :method => 'delete' %>
     </li>
   <% end %>
 </ol>
