@@ -37,6 +37,6 @@
       </table>
     </tbody>
       <%= button_to 'Edit', edit_user_path, :class => 'btn btn-primary btn-md col-md-2' %>
-      <%= button_to 'Delete', @user, :method => 'delete', :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-danger btn-md col-md-2'  %>
+      <%= button_to 'Delete Account', @user, :method => 'delete', :data => {:confirm => 'Are you sure? This action will permanently delete your account.'}, :class => 'btn btn-danger btn-md col-md-2'  %>
   </div>
 </div>
