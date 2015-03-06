@@ -1,7 +1,7 @@
 <%= form_for @user do |f| %>
 
   <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-4">
       <h4>Personal Details</h4>
         <div class="form-group">
           <%= f.label :username, "Username" %>
@@ -28,14 +28,14 @@
           <%= f.number_field :height, :class => "form-control", :required => true, :title => 'Please enter your height in centimetres.' %>
         </div>
     </div>
-      <div class="col-md-4 col-md-offset-2">
+      <div class="col-md-4 col-md-offset-1">
       <h4>Medical Details</h4>
       <div class="alert alert-warning" role="alert">
-        <p><strong>Recommendation:</strong><br>Consult your healthcare professional for an individualised plan to complete your profile accurately.</p>
+        <p><strong>Recommendation:</strong><br>Consult your healthcare professional for an individualised plan to complete your profile accurately. Please note, Glucosy is currently designed only for Type 1 Diabetics.</p>
       </div>
         <div class="form-group">
-          <%= f.label :diabetes_type, "Diabetes Type", :title => 'Please select if you have been diagnosed with Type 1 or Type 2 diabetes.'%>
-          <%= f.select :diabetes_type, [['Type 1','Type 1'],['Type 2','Type 2']], :required => true, :include_blank => true %>
+          <%= f.label :diabetes_type, "Diabetes Type", :title => 'Please confirm that you have been diagnosed with Type 1.'%>
+          <%= f.select :diabetes_type, [['Type 1','Type 1']], :required => true %>
         </div>
         <div class="form-group">
           <%= f.label :basal_insulin, "Basal Insulin Dose (unit)", :title => 'Please enter your Basal insulin dose as determined by your doctor.' %>
