@@ -2,10 +2,10 @@ Rails.application.routes.draw do
 
   root :to => 'pages#index'
 
-  get '/uhoh' => 'pages#redirect'
-
-  get '/index' => 'pages#index'
-  get '/gridcode' => 'pages#gridcode'
+  # get '/index' => 'pages#index'
+  # OPEN SINGLE CALC PAGE
+  get '/singlecalculation' => 'pages#calc'
+  get '/weather' => 'pages#weather'  
 
   resources :users, :activities
 
@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 
   # JSON ROUTES
   get '/dashboard' => 'users#dashboard'
-  get '/weather' => 'pages#weather'
 
   # BLOODSUGAR DATA JSON PAGE
   get '/readingdata' => 'bloodsugars#data'
@@ -45,10 +44,5 @@ Rails.application.routes.draw do
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
 
-  # OPEN SINGLE CALC PAGE
-  get '/singlecalculation' => 'pages#calc'
 
-  # TODO: DO WE NEED THESE?
-  post '/whatever' => "foods#test"
-  get '/testing' => 'pages#testing'
 end

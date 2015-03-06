@@ -1,13 +1,10 @@
-
 class MealsController < ApplicationController
 
   before_action :check_if_logged_in, :only => [:index]
 
-
   def index
     @meals = @current_user.meals
     sum = 0
-
   end
 
   def new
@@ -26,10 +23,8 @@ class MealsController < ApplicationController
   end
 
   def show
-    # binding.pry
     @meal = Meal.find params[:id]
   end
-
 
   def edit
     @meal = Meal.find params[:id]

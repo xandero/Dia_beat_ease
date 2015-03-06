@@ -44,7 +44,6 @@ class ActivitiesController < ApplicationController
     end
 
     # ACTIVITY CHART ACTIONS
-
     def duration
         activity = Activity.pluck :duration
         render :json => activity

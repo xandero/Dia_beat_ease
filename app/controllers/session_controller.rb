@@ -2,7 +2,6 @@ class SessionController < ApplicationController
 
   before_action :check_if_logged_in, :only => [:index]
 
-
   def new
   end
 
@@ -20,9 +19,10 @@ class SessionController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path
   end
-end
-
+  
   private
   def check_if_logged_in
     redirect_to(root_path) unless @current_user.present?
   end
+
+end

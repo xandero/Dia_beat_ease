@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  require 'mandrill'
+  
   before_action :check_if_logged_in, :only => [:index]
 
   def index
@@ -41,6 +41,7 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  # Obtains IP address and location after each user login
   def dashboard
     @user = User.find_by :id => session[:user_id]    
     @ip_address = request.remote_ip
@@ -49,6 +50,7 @@ class UsersController < ApplicationController
     @user.update(:lat => @list[0].latitude, :long => @list[0].longitude, :location => @city)  
   end
 
+  # Blood sugar chart
   def readingtime
     readingtimes = Bloodsugar.pluck :readingtime
     render :json => readingtimes
@@ -72,7 +74,6 @@ class UsersController < ApplicationController
       end
     render :json => readingtimeStrf
   end
-
 
   private
   def user_params
