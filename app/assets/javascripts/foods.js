@@ -186,13 +186,20 @@ $(document).ready(function() {
       var minusCarbs = carbs * quantity;
       var original = $('#total-carbs').text();
       original = original.split(' ');
-      var totalCarbCount = parseInt(original[7]) - Math.round(minusCarbs);
+      var totalCarbCount;
+      var totalCarbCount = parseInt(original[2]) - Math.round(minusCarbs);
 
       $('#total-carbs').text('Total Carbs: ' + Math.round(totalCarbCount));
 
       var userBolusInsulin = parseInt($('#insulin-required').data('bolus-insulin'));
       var dosage = totalCarbCount / 15 * userBolusInsulin;
-      $('#insulin-required').text('Required Insulin Dose: ' + (Math.round( dosage * 10 ) / 10));
+      var prettyDosage = (Math.round( dosage * 10 ) / 10);
+      if (prettyDosage < 0) {
+        $('#insulin-required').text('Required Insulin Dose: 0');
+      } else {
+        $('#insulin-required').text('Required Insulin Dose: ' + prettyDosage);
+      }
+
       $rubyLi.remove();
     });
   });
