@@ -3,7 +3,8 @@
 var searchSingleFoods = function () {
   var query = $('#single-calc').val();
   var nutritionixUrl = 'https://api.nutritionix.com/v1_1/search/' + query;
-
+  
+  // Returns search results
   $.getJSON(nutritionixUrl, {
     appId: "92a57023",
     appKey: "5a11032e7168104fdfa242bd3b62e636",
@@ -35,7 +36,6 @@ $(document).ready(function() {
     searchSingleFoods();
   });
 
-  // Makes the search work when enter is pressed. Take that, Bootstrap.
   $('#single-calc').keydown(function(event){
     if(event.keyCode == 13) {
       $('#search-results').empty();
@@ -49,11 +49,11 @@ $(document).ready(function() {
     $(this).addClass('selected');
     var item_id = $(this).data('item_id');
 
-    // Get rid of other results (parent here is the <li>, so we don't get left with random bullet points)
     $('#search-results a').not('.selected').parent().remove();
 
     var nutritionixUrl = 'https://api.nutritionix.com/v1_1/item';
 
+    // Searches individual foods
     $.getJSON(nutritionixUrl, {
       id: item_id,
       appId: "92a57023",
@@ -80,5 +80,4 @@ $(document).ready(function() {
     $('#search-results').empty();
     $('#single-calc').val('').focus();
   });
-
 });

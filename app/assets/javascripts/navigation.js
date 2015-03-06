@@ -1,3 +1,5 @@
+// Over-riding bootstrap 'active' class
+// Workaround due to dropzone interference with menu selection
 $(document).ready(function() {
   $('.active').removeClass('active');
   var page = $('body').attr('class');
