@@ -1,3 +1,4 @@
+# Heroku scheduler will rake these tasks to compare weather forecast, construct weather email and send to users.
 desc "Daily weather check"
 task :weather_forecast => :environment do
   puts "Weather forecast"
