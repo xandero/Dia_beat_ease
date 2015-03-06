@@ -39,7 +39,7 @@ class Food < ActiveRecord::Base
   end
 
   def total_carbs
-    self.carbs * self.quantity
+    self.carbs.round * self.quantity.round
   end
 end
 
