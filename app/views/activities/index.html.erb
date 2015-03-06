@@ -1,9 +1,9 @@
 <h2>Activities Index</h2>
 
-<ul>
+<ol>
     <% @activities.each do |activity| %>
         <li><%= link_to activity.activityname, activity_path(activity) %>: <%= activity.activity_time.strftime('%e %B %Y, %R') %> <span class="badge">Intensity: <%= activity.intensity %></span> <a href="<%= edit_activity_path(activity.id) %>"><span class="fa fa-pencil"></span></a> <%= link_to "<span class='fa fa-trash-o'></span>".html_safe, activity_path(activity.id), :method => 'delete' %></li>
     <% end %>
-</ul>
+</ol>
 
 <%= link_to 'Add New Activity', new_activity_path, :class => 'btn btn-primary' %>
