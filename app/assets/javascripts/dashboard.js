@@ -1,10 +1,3 @@
-// EXAMPLE LINE STEP
-// var myLineChart = new Chart(ctx).Line(data, {
-//     labelsFilter: function (value, index) {
-//         return (index + 1) % 5 !== 0;
-//     }
-// });
-
 // BLOODSUGAR CHART
 var data = {
     labels: [],
@@ -22,9 +15,6 @@ var data = {
         {
             label: "Optimal Blood Sugar Level",
             fillColor: "rgba(0,220,0,0.5)",
-            // strokeColor: "rgba(220,220,220,0.5)",
-            // highlightFill: "rgba(220,220,220,0.75)",
-            // highlightStroke: "rgba(220,220,220,1)",
             data: [8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 
             8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8]
         },
@@ -32,9 +22,6 @@ var data = {
         {
             label: "Danger Blood Sugar Level",
             fillColor: "rgba(220,0,0,0.5)",
-            // strokeColor: "rgba(220,220,220,0.5)",
-            // highlightFill: "rgba(220,220,220,0.75)",
-            // highlightStroke: "rgba(220,220,220,1)",
             data: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
             4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
         }
@@ -42,7 +29,6 @@ var data = {
 };
 
 $(document).ready(function() {
-
     Chart.defaults.global.responsive = true;
     // if this chart doesn't exist then don't run the rest of the code in doc ready, just return and 'break'
     var $chart = $('#myChart');
@@ -64,16 +50,13 @@ $(document).ready(function() {
     // when the two requests are done then draw the chart
     $.when(readingtimeRequest, bslevelRequest).then(function() {
         var myLineChart = new Chart(ctx).Line(data, {
-            // datasetStrokeWidth : 10,
             pointDot : false,
             showTooltips: false
         });
     });
-
 });
 
 // MEALCARBS CHART
-
 var carbsData = {
     labels: [],
     datasets: [
@@ -81,20 +64,16 @@ var carbsData = {
             label: "Total Carbs",
             fillColor: "rgba(51,122,183,0.5)",
             strokeColor: "rgba(220,220,220,0.8)",
-            // highlightFill: "rgba(220,220,220,0.75)",
-            // highlightStroke: "rgba(220,220,220,1)",
             data: []
         }
     ]
 };
 
 $(document).ready(function() {
-    // if this chart doesn't exist then don't run the rest of the code in doc ready, just return and 'break'
     var $carbsChart = $('#carbsChart');
     if ($carbsChart.length === 0) {
         return;
     }
-              // this refers to the canvas (which is returned in an array when targeted)
     var ctx = $carbsChart.get(0).getContext('2d');
 
     var carbsRequest = $.getJSON('/readingdata/carbs_lastthirty').done(function (carbs) {
@@ -105,8 +84,6 @@ $(document).ready(function() {
         carbsData.labels = mealtime;
     });
 
-    // the above two requests return promises
-    // when the two requests are done then draw the chart
     $.when(mealtimeRequest, carbsRequest).then(function() {
         var myCarbChart = new Chart(ctx).Line(carbsData, {
             datasetStrokeWidth : false,
@@ -124,20 +101,16 @@ var durationData = {
             label: "Total Activities",
             fillColor: "rgba(51,122,183,0.5)",
             strokeColor: "rgba(220,220,220,0.8)",
-            // highlightFill: "rgba(220,220,220,0.75)",
-            // highlightStroke: "rgba(220,220,220,1)",
             data: []
         }
     ]
 };
 
 $(document).ready(function() {
-    // if this chart doesn't exist then don't run the rest of the code in doc ready, just return and 'break'
     var $activitiesChart = $('#activityChart');
     if ($activitiesChart.length === 0) {
         return;
     }
-    // this refers to the canvas (which is returned in an array when targeted)
     var ctx = $activitiesChart.get(0).getContext('2d');
 
     var durationRequest = $.getJSON('/readingdata/duration_lastthirty').done(function (duration) {
@@ -148,8 +121,6 @@ $(document).ready(function() {
         durationData.labels = activity_time;
     });
 
-    // the above two requests return promises
-    // when the two requests are done then draw the chart
     $.when(activitytimeRequest, durationRequest).then(function() {
         var myActivityChart = new Chart(ctx).Line(durationData, {
             datasetStrokeWidth : false,
