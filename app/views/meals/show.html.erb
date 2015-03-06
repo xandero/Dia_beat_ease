@@ -3,6 +3,13 @@
 <h3>Here's your meal from <%= @meal.meal_time.strftime('%I:%M %P, %e %B %Y') %></h3>
 
 <div class="row">
+  <div class="col-md-12">
+    <div class="alert alert-info" role="alert">In the Glucosy Calculator, an exchange is the quantity of food that contains approximately 15g of carbohydrates.
+    <p>Search for a food below, read the nutritional information and add your prescribed insulation exchange ratio. Glucosy will provide the Calculated Insulin Dosage.</p></div>
+  </div>
+</div>
+
+<div class="row">
 
   <div class="col-md-4">
     <div id="construct-meal-forms" class="hide-meal-construction">
@@ -36,7 +43,7 @@
           <input type="text" id="form-serving-size-weight" name="form-serving-size-weight" class="form-control" readonly="readonly">
 
           <label for="form-carbs">Carbs</label>
-          <input type="text" id="form-carbs" name="form-carbs" class="form-control" readonly="readonly">
+          <input type="text" id="form-carbs" name="form-carbs" class="form-control">
 
           <input type="hidden" name="form-meal-id" id="form-meal-id" value="<%= @meal.id %>">
           <br>
