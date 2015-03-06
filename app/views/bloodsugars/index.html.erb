@@ -2,12 +2,11 @@
 
 <%= form_tag '/bloodsugars/import', method: :post, class: "dropzone", id: "bloodsugar-dropzone" do %>
  <div class="fallback">
-   <%= file_field_tag "bloodsugar", multiple: true%>
+   <%= file_field_tag "bloodsugar", multiple: true %>
  </div>
 <% end %>
 
 <h1>Blood Glucose Results</h1>
-
     <table border="1" id="bloodsugar-table">
         <thead id = "data-table">
             <tr>
@@ -16,11 +15,6 @@
             </tr>
         </thead>
         <tbody>
-
+        <!-- Handlebars will render this - see script tags on application.html.erb -->
         </tbody>
     </table> 
-
-
-<!-- ENSURE THAT BLOOD READING CORRESPONDS TO USER SESSION -->
-
-

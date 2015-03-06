@@ -66,7 +66,6 @@
                     <button class="btn btn-default btn-sm">Sign in</button>
                   <% end %>
                 </div>
-
                 <% if flash[:error].present? %>
                     <p class="text-right error-msg"><%= flash[:error] if flash[:error].present? %></p>
                 <% end %>
@@ -113,6 +112,7 @@
     </div>
     <!-- /#wrapper -->
 
+<!-- Populates bloodsugar table -->
 <script type ="x-handlebars-template" id="bloodsugarTemplate">
     <tr class = "readings-row">
         <td>{{readingtime}}</td>
