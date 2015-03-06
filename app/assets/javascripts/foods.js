@@ -7,7 +7,7 @@ var searchFoods = function () {
   $.getJSON(nutritionixUrl, {
     appId: "92a57023",
     appKey: "5a11032e7168104fdfa242bd3b62e636",
-    results: "0:10"
+    results: "0:2"
   }).done(listResults);
 };
 
@@ -167,6 +167,33 @@ $(document).ready(function() {
       $('#insulin-required').text('Required Insulin Dose: ' + (Math.round( dosage * 10 ) / 10));
 
       $li.remove();
+    });
+  });
+
+  $('#added-foods').on('click', '.ruby-delete', function () {
+    $rubyLi = $(this).parent();
+    var rubyMealId = $rubyLi.data('meal-id');
+    var rubyFoodId = $rubyLi.data('food-id');
+    $.ajax(('/meals/' + rubyMealId + '/foods/' + rubyFoodId), {
+      type: 'POST',
+      data: {
+        _method: 'DELETE'
+      }
+    }).done(function () {
+    // Updates the maths when a food is removed
+      var carbs = $rubyLi.data('carbs');
+      var quantity = $rubyLi.data('quantity');
+      var minusCarbs = carbs * quantity;
+      var original = $('#total-carbs').text();
+      original = original.split(' ');
+      var totalCarbCount = parseInt(original[7]) - Math.round(minusCarbs);
+
+      $('#total-carbs').text('Total Carbs: ' + Math.round(totalCarbCount));
+
+      var userBolusInsulin = parseInt($('#insulin-required').data('bolus-insulin'));
+      var dosage = totalCarbCount / 15 * userBolusInsulin;
+      $('#insulin-required').text('Required Insulin Dose: ' + (Math.round( dosage * 10 ) / 10));
+      $rubyLi.remove();
     });
   });
 });

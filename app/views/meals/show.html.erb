@@ -58,8 +58,8 @@
     <ul id="added-foods">
       <% @meal.foods.each do |food| %>
 
-        <li data-food-id="<%= food.id %>" data-meal-id="<%= food.meal_id %>" data-carbs="<%= food.carbs %>" data-quantity="<%= food.quantity %>">
-          <span class="badge food-badge">Qty: <%= food.quantity.to_i %></span><span class="badge food-badge">Carbs: <%= (food.total_carbs).round %></span><%= food.foodname %><span class="fa fa-trash-o delete"></span>
+        <li class="ruby-foods" data-food-id="<%= food.id %>" data-meal-id="<%= food.meal_id %>" data-carbs="<%= food.carbs %>" data-quantity="<%= food.quantity %>">
+          <span class="badge food-badge">Qty: <%= food.quantity.to_i %></span><span class="badge food-badge">Carbs: <%= (food.total_carbs).round %></span><%= food.foodname %><span class="fa fa-trash-o ruby-delete"></span>
         </li>
 
       <% end %>
