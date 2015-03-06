@@ -4,10 +4,11 @@ var searchFoods = function () {
   var query = $('#query').val();
   var nutritionixUrl = 'https://api.nutritionix.com/v1_1/search/' + query;
 
+  // Returns search results
   $.getJSON(nutritionixUrl, {
     appId: "92a57023",
     appKey: "5a11032e7168104fdfa242bd3b62e636",
-    results: "0:2"
+    results: "0:10"
   }).done(listResults);
 };
 
@@ -35,7 +36,6 @@ $(document).ready(function() {
     searchFoods();
   });
 
-  // Makes the search work when enter is pressed. Take that, Bootstrap.
   $('#query').keydown(function(event){
     if(event.keyCode == 13) {
       $('#search-results').empty();
@@ -50,11 +50,11 @@ $(document).ready(function() {
     $('#form-quantity').focus();
     var item_id = $(this).data('item_id');
 
-    // Get rid of other results (parent here is the <li>, so we don't get left with random bullet points)
     $('#search-results a').not('.selected').parent().remove();
 
     var nutritionixUrl = 'https://api.nutritionix.com/v1_1/item';
 
+    // Searches individual foods
     $.getJSON(nutritionixUrl, {
       id: item_id,
       appId: "92a57023",
@@ -74,7 +74,6 @@ $(document).ready(function() {
     event.preventDefault();
 
     if (($('#form-foodname').val() === "") || ($('#form-quantity').val() <= 0)) {
-      // Maybe this should flash an error of some kind?
       return;
     }
 
@@ -119,7 +118,6 @@ $(document).ready(function() {
       // Insulin dosage
       var userBolusInsulin = parseInt($('#insulin-required').data('bolus-insulin'));
       var dosage = totalCarbCount / 15 * userBolusInsulin;
-      // Math.round magic makes JavaScript play nice and round to 1dp (sans .000000000007 freebie)
       $('#insulin-required').text('Required Insulin Dose: ' + (Math.round( dosage * 10 ) / 10));
     });
   });
@@ -153,7 +151,7 @@ $(document).ready(function() {
         _method: 'DELETE'
       }
     }).done(function () {
-      // Updates the maths when a food is removed
+      // Updates the badges when a food is removed
       var carbs = $li.data('carbs');
       var quantity = $li.data('quantity');
       var minusCarbs = carbs * quantity;
@@ -180,7 +178,6 @@ $(document).ready(function() {
         _method: 'DELETE'
       }
     }).done(function () {
-    // Updates the maths when a food is removed
       var carbs = $rubyLi.data('carbs');
       var quantity = $rubyLi.data('quantity');
       var minusCarbs = carbs * quantity;
